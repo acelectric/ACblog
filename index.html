@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>首頁</title>
+        <script
+            src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous">
+        </script>
+        <script>
+            $(document).ready(function(){//網頁載入完成
+                $("#text1").fadeIn(1000,function(){
+                    $("#text2").fadeIn(1000,function(){
+                        $("#text3").fadeIn(1000,function(){
+                            $("#text4").fadeIn(1000,function(){
+                                $("#text5").fadeIn(1000,function(){
+                                    $("#btn").fadeIn(1000);
+                                });
+                            });
+                        });
+                    });
+                });
+            });
+
+        </script>
+        <style>
+            body {
+                height: 1000px;
+                background-image: url("indexWallpaper.jpg");
+                background-size: cover;
+                background-position: bottom;
+                background-repeat: no-repeat;
+                overflow: hidden;
+                font-size: 60px;
+                font-family: "微軟正黑體";
+                font-weight: 600;
+                margin: 0px;
+                text-align: center;
+            }
+
+            .text {
+                padding: 10px 100px;
+                display: none;
+            }
+
+            #btn {
+                background-color: rgba(112, 54, 15, 0.897);
+                color: white;
+                padding: 10px;
+                margin-right: 400px;
+                float: right;
+                width: 150px;
+                height: 50px;
+                line-height: 50px;
+                font-size: 40px;
+                border: 2px solid black;
+                border-radius: 15px;
+                display: none;
+                text-align: center
+            }
+            #btn>a {
+                width: 150px;
+                height: 50px;
+                color: white;
+                text-decoration:none;
+            }
+            @media screen and (max-width:1024px) {
+                body {
+                    font-size: 30px;
+                }
+                .text {
+                    padding: 5px 30px;
+                    display: none;
+                }
+                #btn {
+                    margin-top: 50px;
+                    margin-right: auto;
+                    margin-left: auto;
+                    float:none;
+                    width: 70px;
+                    height: 25px;
+                    line-height: 25px;
+                    font-size: 20px;
+                }
+            } 
+            @media screen and (max-width:700px) {
+                body {
+                    font-size: 20px;
+                }
+                .text {
+                    padding: 5px 30px;
+                    display: none;
+                }
+                #btn {
+                    margin-top: 50px;
+                    margin-right: auto;
+                    margin-left: auto;
+                    float:none;
+                    width: 70px;
+                    height: 25px;
+                    line-height: 25px;
+                    font-size: 20px;
+                }
+            } 
+        </style>
+    </head>
+    <body>
+        <div id="text1" class="text" style="margin-top: 200px">紙，是古代中國四大發明之一，</div>
+        <div id="text2" class="text">是人們長期經驗的累積和智慧的結晶，</div>
+        <div id="text3" class="text">承載了人類的科技、藝術、文化、歷史及宗教等紀錄。</div>
+        <div id="text4" class="text">紙在台灣走過四百年的足跡，</div>
+        <div id="text5" class="text">現在，就讓我們一同跟隨。</div>
+        <div id="btn"><a href="home.html">往首頁</a></div>
+    </body>
+</html>

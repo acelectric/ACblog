@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>HOME</title>
+        <script
+            src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous">
+        </script>
+        <script>
+            $(document).ready(function(){//網頁載入完成
+                var isOpen = false;
+                $(".nav-hamburger").click(function(){//漢堡被按下
+                    if(isOpen) {
+                        //選單已開啟
+                        $("#nav-itemList").animate({"right":-200},500);
+                        isOpen = !isOpen;
+                    } else {
+                        //選單未開啟
+                        $("#nav-itemList").animate({"right":0},500);
+                        isOpen = !isOpen;
+                    }
+                });
+            });
+        </script>
+        <link rel="stylesheet" href="default.css" type="text/css">
+        <link rel="stylesheet" href="RWD.css" type="text/css">
+    </head>
+    <body>
+        <header class="nav-bar">
+            <div class="nav-logo">
+                <a href="index.html" style="color: white">
+                    <img src="img/logo.png" alt="" style="height: 80px">
+                </a>
+            </div>
+            <ul id="nav-itemList">
+                <li class="nav-item"><a href="home.html">首頁</a></li>
+                <li class="nav-item"><a href="paperStory.html">紙場故事</a></li>
+                <li class="nav-item"><a href="paperProducts.html">作品</a></li>
+                <li class="nav-item"><a href="picture.html">圖片</a></li>
+                <li class="nav-item"><a href="aboutUs.html">關於我們</a></li>
+            </ul>
+            <div class="nav-hamburger">
+                <div class="hamburger-line"></div>
+                <div class="hamburger-line"></div>
+                <div class="hamburger-line"></div>
+            </div>
+        </header>
+        
+
+
+        <div class="homeTopImg">
+            標題圖內文
+        </div>
+        <div class="content">
+        </div>
+
+
+
+        <footer>
+            建議使用chrome 67.0.3396.87 以上版本，配合1920x1080解析度可得最佳瀏覽畫面
+        </footer>
+    </body>
+</html>
+
+
