@@ -62,21 +62,7 @@ function setup() {
 
     //function setup
     //function (x) { return ;};
-    x1 = function (x) { return 25*unitStep(x)+25*unitStep(x-3)+50*unitStep(x-9); };
-    let flag = 1;
-    y1 = function (x) {
-        if(x<0) {
-            return 0;
-        }
-        ans = (1+0.05)*y1(x-1)+x1(x)
-        if(flag && ans >= 1000){
-            console.log("y("+x+")="+ans);
-            flag = 0;
-        }
-        return ans;
-    };
-    funcList.push(new Line(x1, "投入"));
-    funcList.push(new Line(y1, "總資產"));
+    
 }
 function draw() {
     blockSizeX = sliderX.value();
