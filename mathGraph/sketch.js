@@ -33,8 +33,8 @@ var isChange = true;
 var rootDiv;
 
 function setup() {
-    createCanvas(displayWidth, displayHeight);
-    //createCanvas(windowWidth, windowHeight);
+    //createCanvas(displayWidth, displayHeight);
+    createCanvas(windowWidth, windowHeight);
 
     sliderX = createSlider(1, width * 5, blockSizeX);
     sliderY = createSlider(1, height * 5, blockSizeY);
@@ -62,7 +62,7 @@ function setup() {
 
     //function setup
     //function (x) { return ;};
-    
+
 }
 function draw() {
     blockSizeX = sliderX.value();
@@ -118,8 +118,8 @@ function mouseMoved() {
     isChange = true;
 }
 function mouseDragged() {
-    centerX += mouseX - pmouseX;
-    centerY += mouseY - pmouseY;
+    centerX += winMouseX - pwinMouseX;
+    centerY += winMouseY - pwinMouseY;
     isChange = true;
 }
 
