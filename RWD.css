@@ -32,4 +32,15 @@
         background-color: transparent;
     }
 
+    .content {
+        flex-direction: column;
+    }
+
+    .box {
+        width:90%;
+    }
+}
+@media screen and (max-width:800px){
+    
+
 }
