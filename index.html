@@ -1,65 +1,48 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>HOME</title>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
-        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous">
-        </script>
-    <script>
-        $(document).ready(function () {//網頁載入完成
-            var isOpen = false;
-            $(".nav-hamburger").click(function () {//漢堡被按下
-                if (isOpen) {
-                    //選單已開啟
-                    $("#nav-itemList").animate({ "right": -200 }, 500);
-                    isOpen = !isOpen;
-                } else {
-                    //選單未開啟
-                    $("#nav-itemList").animate({ "right": 0 }, 500);
-                    isOpen = !isOpen;
-                }
-            });
-        });
-    </script>
-    <link rel="stylesheet" href="default.css" type="text/css">
-    <link rel="stylesheet" href="RWD.css" type="text/css">
-</head>
-
-<body>
-    <header class="nav-bar">
-        <div class="nav-logo">
-            <a href="index.html" style="color: rgb(255, 255, 255)">
-                AC blog
-            </a>
-        </div>
-        <ul id="nav-itemList">
-            <li class="nav-item"><a href="index.html">首頁</a></li>
-            <!-- >li class="nav-item"><a href="paperStory.html">紙場故事</a></li>
-                <li class="nav-item"><a href="paperProducts.html">作品</a></li>
-                <li class="nav-item"><a href="picture.html">圖片</a></li>
-                <li class="nav-item"><a href="aboutUs.html">關於我們</a></li -->
-        </ul>
-        <div class="nav-hamburger">
-            <div class="hamburger-line"></div>
-            <div class="hamburger-line"></div>
-            <div class="hamburger-line"></div>
-        </div>
-    </header>
-
-    <div class="content">
-        <div style="width:300px;height:50px">
-            <a href="mathGraph/" style="font-size: 38px">
-                mathGraph
-            </a>
-        </div>
-    </div>
-
-    <!-- >footer>
-        建議使用chrome 67.0.3396.87 以上版本，配合1920x1080解析度可得最佳瀏覽畫面
-    </footer -->
-</body>
-
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>AC blog</title>
+        
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+        
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">AC blog</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                  <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Dropdown
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                  </div>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link disabled" href="#">Disabled</a>
+                </li>
+              </ul>
+              <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+              </form>
+            </div>
+          </nav>
+    </body>
 </html>
