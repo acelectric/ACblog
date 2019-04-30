@@ -8,7 +8,7 @@ function Spot(i, j) {
     this.previous = undefined;
     this.wall = false;
 
-    if (random(1) < wallProbability.value()) {
+    if (random(1) < setting.wallProbability) {
         this.wall = true;
     }
 
@@ -37,7 +37,7 @@ function Spot(i, j) {
             this.neighbors.push(grid[i][j - 1]);
         }
         //對角線
-        if (diagonal) {
+        if (setting.diagonal) {
             if (i > 0 && j > 0) {
                 this.neighbors.push(grid[i - 1][j - 1]);
             }

@@ -2,10 +2,10 @@ function mousePressed() {
     var i = floor(mouseX / w);
     var j = floor(mouseY / h);
     if (i < cols && j < rows) {
-        fill(color(128, 0, 128));
-        rect(i * w, j * h, w, h);
+        //fill(color(128, 0, 128));
+        //rect(i * w, j * h, w, h);
         console.log("grid[" + i + "][" + j + "].wall=true");
-        grid[i][j].wall = true;
+        //grid[i][j].wall = true;
     }
 
     /*// prevent default
@@ -23,7 +23,11 @@ function diagonalCheckedEvent() {
 }
 
 function startPathFinding() {
-    startFinding = true;
+    //background(255);
+    cols = setting.cols;
+    rows = setting.rows;
+    w = width / cols;
+    h = height / rows;
     grid = new Array(cols);
     openSet = [];
     closedSet = [];
@@ -39,7 +43,6 @@ function startPathFinding() {
             grid[i][j] = new Spot(i, j);
         }
     }
-
     for (var i = 0; i < cols; i++) {
         for (var j = 0; j < rows; j++) {
             grid[i][j].addNeighbors(grid);
@@ -60,4 +63,5 @@ function startPathFinding() {
             grid[i][j].show(color(255));
         }
     }
+    startFinding = true;
 }

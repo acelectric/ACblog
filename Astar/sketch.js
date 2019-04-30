@@ -1,3 +1,14 @@
+var setting={
+    mode:"ASTAR",
+    diagonal:false,
+    wallProbability: 0.35,
+    cols: 100,
+    rows: 100,
+    frameRate: 30,
+    start: function(){startPathFinding()}
+}
+
+
 function removeFromArray(arr, elt) {
     for (var i = arr.length - 1; i >= 0; i--) {
         if (arr[i] == elt) {
@@ -9,13 +20,13 @@ function removeFromArray(arr, elt) {
 function heuristic(a, b) {
     var d = dist(a.i, a.j, b.i, b.j);
     //var d = abs(a.i-b.i) + abs(a.j-b.j);
-    //var d = 0;
+    //var d = 0;//BFS
     return d;
 }
 
-var cols = 100;
-var rows = 100;
-var grid = new Array(cols);
+//var cols = 50;
+//var rows = 50;
+var grid;
 
 var openSet = [];
 var closedSet = [];
@@ -37,22 +48,32 @@ var complete = false;
 function setup() {
     createCanvas(800, 800);
 
-    diagonalCheckbox = createCheckbox("允許對角走法", diagonal);
-    diagonalCheckbox.changed(diagonalCheckedEvent);
+    // diagonalCheckbox = createCheckbox("允許對角走法", diagonal);
+    // diagonalCheckbox.changed(diagonalCheckedEvent);
 
-    wallProbability = createSlider(0, 1, 0, 0.01);
-    showWallProbability = createSpan(wallProbability.value());
+    // wallProbability = createSlider(0, 1, 0, 0.01);
+    // showWallProbability = createSpan(wallProbability.value());
 
-    startButton = createButton("開始");
-    startButton.mousePressed(startPathFinding);
+    // startButton = createButton("開始");
+    // startButton.mousePressed(startPathFinding);
 
-    w = width / cols;
-    h = height / rows;
+    //w = width / cols;
+    //h = height / rows;
 
     background(0);
+    //GUI setup
+    gui = new dat.GUI();
+    gui.add(setting, 'mode',["DFS","BFS","ASTAR"]);
+    gui.add(setting, 'diagonal');
+    gui.add(setting, 'wallProbability', 0,1);
+    gui.add(setting, 'cols', 5,100,1);
+    gui.add(setting, 'rows', 5,100,1);
+    gui.add(setting, 'frameRate', 1,120,1);
+    gui.add(setting, 'start').listen();
 }
 var test = 0;
 function draw() {
+    frameRate(setting.frameRate);
     if (startFinding) {
         AStar();
 
@@ -72,7 +93,7 @@ function draw() {
         end.show(color(255, 0, 255));
     }
 
-    showWallProbability.html(floor(wallProbability.value()*100)+"%");
+    //showWallProbability.html(floor(wallProbability.value() * 100) + "%");
 }
 
 function AStar() {
@@ -118,8 +139,20 @@ function AStar() {
                     }
                     if (newPath) {
                         neighbor.h = heuristic(neighbor, end);
-                        neighbor.f = neighbor.g + neighbor.h;
-                        //neighbor.f = neighbor.h;
+                        switch (setting.m) {
+                            case 'DFS':
+                                neighbor.f = neighbor.h;
+                                break;
+                            case 'BFS':
+                                neighbor.f = neighbor.g;
+                                break;
+                            case 'ASTAR':
+                                neighbor.f = neighbor.g + neighbor.h;
+                                break;
+                            default:
+                                neighbor.f = neighbor.g + neighbor.h;
+                                break;
+                        }
                         neighbor.previous = current;
                     }
                 }
