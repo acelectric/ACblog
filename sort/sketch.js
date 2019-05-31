@@ -75,17 +75,17 @@ function draw() {
 
         switch (mode) {
             case m.quickSort:
-                for (i = 0; i < 10; i++) {
+                for (i = 0; i < 10&&!isStop; i++) {
                     quickSort();
                 }
                 break;
             case m.bubbleSort:
-                for (i = 0; i < 1000; i++) {
+                for (i = 0; i < 1000&&!isStop; i++) {
                     bubbleSort();
                 }
                 break;
             case m.selectionSort:
-                for (i = 0; i < 1000; i++) {
+                for (i = 0; i < 1000&&!isStop; i++) {
                     selectionSort();
                 }
                 break;
@@ -112,9 +112,9 @@ function selectionSort() {
     if (sortJ == list.length) {
         swap(sortI, minIndex);
         list[sortI].state = s.hasSort;
-        sortI = sortI + 1;
+        sortI++;
         sortJ = sortI;
-        minIndex = sortI;
+        minIndex = sortJ;
     }
     if (sortI >= list.length) {
         isStop = true;
