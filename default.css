@@ -3,95 +3,65 @@ body {
     overflow: scroll;
     overflow-x: hidden;
     font-family: "微軟正黑體";
-}
-ul li {
-    list-style: none;
-}
-
-li:hover {/* 滑鼠移到上li上 */
-    background-color: rgb(20, 20, 20);
-}
-
-li>a {
-    height: 80px;
-    color: rgb(255, 255, 255);
-}
-
-footer {
-    background-color: rgb(45, 45, 45);
-    color: white;
-    height: 200px;
     text-align: center;
+    font-size: 40px;
+    background-color: #FDFFFC;
+    color: #FDFFFC;
 }
 
-a {
-    color:rgb(45, 45, 45);
-    text-decoration:none;
-    /* 取消點擊時的反藍效果 */
-    outline:none;
-    border: none;
-    line-height: 100%;
-    -webkit-tap-highlight-color: rgba(0,0,0,0);
-    -webkit-tap-highlight-color:transparent;
-}
-
-.nav-bar {
-    background-color: rgb(45, 45, 45);
-    width: 100%;
-    height: 80px;
-    position: fixed;
-}
-
-.nav-logo {
-    width: 200px;
-    height: 100%;
+.nav {
+    background-color: #011627;
+    /*height: 80px;*/
+    display:flex;
+    justify-content: flex-end;
     line-height: 80px;
-    font-size: 50px;
-    float: left;
-    text-align: center;
-}
-.nav-logo>a {
-    text-align: center;
-    line-height: 100%;
+    flex-wrap: wrap;
+    align-items: center;
 }
 
-#nav-itemList {
-    float: right;
-    margin: 0px;
-    padding: 0px;
-    padding-right: 50px;
-    display: block;
+.nav-brand {
+    /*background-color: #fff;*/
+    height: 80px;
+    /*width:150px;*/
+    margin-left: 20px;
+}
+
+.nav-blank {
+    background-color: transparent;
+    width:10px;
+    flex: auto;
 }
 
 .nav-item {
+    /*background-color: red;*/
     height: 80px;
-    line-height: 80px;
-    font-size: 28px;
-    text-align: center;
-    padding: 0px 30px;
-    float: left;
+    width: 150px;
+    margin-right: 10px;
+    margin-left: 10px;
 }
 
 .nav-hamburger {
-    background-color: transparent;
-    width: 60px;
+    /*background-color: #fff;*/
+    width:40px;
+    height:40px;
+    margin-right: 20px;
     display: none;
-    float: right;
-    margin-top: 10px;
-    margin-right: 10px;
 }
-
-.hamburger-line {
-    background-color: black;
-    width: 50px;
+.nav-hamburger-close {
+    display: none;
+    margin-right: 20px;
+}
+.nav-hamburger-close::before{
+    content: "\2716";
+}
+.line {
+    background-color: #fff;
+    width: 100%;
     height: 5px;
-    margin-top: 10px;
 }
 
 .content {
     background-color: rgb(255, 255, 255);
-    height: 500px;
-    padding-top: 80px;
     margin-left: auto;
     margin-right: auto;
     display:flex;
@@ -99,10 +69,33 @@ a {
     justify-content:center;
 }
 .box {
-    background-color: rgb(211, 109, 40);
+    background-color: #FF9F1C;
     width: 300px;
     height: 100px;
     line-height: 100px;
-    text-align: center;
     margin: 50px;
+}
+
+.color-a {
+    background-color: #2EC4B6;
+}
+.color-b {
+    background-color: #FF9F1C;
+}
+.color-c {
+    background-color: #E71D36;
+}
+
+.box>a {
+    font-size: 38px;
+}
+a {
+    color:#FDFFFC;
+    text-decoration:none;
+    /* 取消點擊時的反藍效果 */
+    outline:none;
+    border: none;
+    line-height: 100%;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color:transparent;
 }

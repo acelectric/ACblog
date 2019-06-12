@@ -12,16 +12,25 @@
         $(document).ready(function () {//網頁載入完成
             var isOpen = false;
             $(".nav-hamburger").click(function () {//漢堡被按下
-                if (isOpen) {
+                $(".nav-item").show();
+                $(".nav-hamburger").hide();
+                $(".nav-hamburger-close").show();
+                /*if (isOpen) {
                     //選單已開啟
-                    $("#nav-itemList").animate({ "right": -200 }, 500);
+                    $(".nav-item").hide();
                     isOpen = !isOpen;
                 } else {
                     //選單未開啟
-                    $("#nav-itemList").animate({ "right": 0 }, 500);
+                    $(".nav-item").show();
                     isOpen = !isOpen;
-                }
+                }*/
             });
+            $(".nav-hamburger-close").click(function () {//漢堡被按下
+                $(".nav-item").hide();
+                $(".nav-hamburger").show();
+                $(".nav-hamburger-close").hide();
+            });
+
         });
     </script>
     <link rel="stylesheet" href="default.css" type="text/css">
@@ -30,52 +39,46 @@
 </head>
 
 <body>
-    <header class="nav-bar">
-        <div class="nav-logo">
-            <a href="index.html" style="color: rgb(255, 255, 255)">
-                AC blog
-            </a>
-        </div>
-        <ul id="nav-itemList">
-            <li class="nav-item"><a href="index.html">首頁</a></li>
-            <!-- >li class="nav-item"><a href="paperStory.html">紙場故事</a></li>
-                <li class="nav-item"><a href="paperProducts.html">作品</a></li>
-                <li class="nav-item"><a href="picture.html">圖片</a></li>
-                <li class="nav-item"><a href="aboutUs.html">關於我們</a></li -->
-        </ul>
+    <div class="nav">
+        <div class="nav-brand">AC blog</div>
+        <div class="nav-blank"></div>
+        <div class="nav-hamburger-close"></div>
         <div class="nav-hamburger">
-            <div class="hamburger-line"></div>
-            <div class="hamburger-line"></div>
-            <div class="hamburger-line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
         </div>
-    </header>
-
+        <div class="nav-item"><a href="index.html">首頁</a></div>
+        <div class="nav-item">item2</div>
+        <div class="nav-item">item3</div>
+    </div>
     <div class="content">
-        <div class="box">
-            <a href="mathGraph/" style="font-size: 38px">
+        <div class="box"> 
+            <a href="mathGraph/">
                 math graph
             </a>
         </div>
         <div class="box">
-            <a href="Astar/" style="font-size: 38px">
+            <a href="Astar/">
                 Astar
             </a>
         </div>
         <div class="box">
-            <a href="sort/" style="font-size: 38px">
+            <a href="sort/">
                 sort
             </a>
         </div>
         <div class="box">
-            <a href="bulletJournal/" style="font-size: 38px">
+            <a href="bulletJournal/">
                 bullet journal
             </a>
         </div>
+        <div class="box">
+            <a href="/">
+                none
+            </a>
+        </div>
     </div>
-
-    <!-- >footer>
-        建議使用chrome 67.0.3396.87 以上版本，配合1920x1080解析度可得最佳瀏覽畫面
-    </footer -->
 </body>
 
 </html>
