@@ -5,9 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>HOME</title>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
         integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
         crossorigin="anonymous"></script>
@@ -17,14 +15,37 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
         integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link rel="stylesheet" href="default.css" type="text/css">
+    <link rel="stylesheet" href="RWD.css" type="text/css">
     <link rel="shortcut icon" href="#">
     <script type="text/javascript">
-        $('.carousel').carousel();
+        //$('.carousel').carousel();
+        function scrollChangeNav() {
+            if (window.scrollY > 10) {
+                $('#nav').css('background-color', "rgba(182,182,182,1)");
+            } else {
+                $('#nav').css('background-color', "rgba(182,182,182,0.85)");
+            }
+        }
+        $(document).ready(function () {
+            var nav = $('#nav');
+            $(this).scroll(scrollChangeNav);
+            $('#hamburger').click(function () {
+                $(this).css('display', 'none');
+                $('#hamburger-close').css('display', 'block');
+                $('.nav-item').css('display', 'block');
+            });
+            $('#hamburger-close').click(function () {
+                $(this).css('display', 'none');
+                $('#hamburger').css('display', 'flex');
+                $('.nav-item').css('display', 'none');
+            });
+        });
     </script>
 </head>
 
 <body id="top">
-    <div id="homeCarousel" class="carousel slide" data-ride="carousel">
+
+    <div id="homeCarousel" class="carousel slide w-100" data-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <img src="https://images.unsplash.com/photo-1535139262971-c51845709a48?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"
@@ -50,8 +71,16 @@
     </div>
 
 
-    <div class="nav color-ochre">
-        <div class="nav-brand"><a href="#top">搜奇訪古</a></div>
+    <div id="nav" class="nav color-ochre">
+        <div class="nav-brand">
+            <a href="#top">搜奇訪古</a>
+            <div id="hamburger-close"></div>
+            <div id="hamburger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
         <div class="nav-item"><a>國定古蹟</a></div>
         <div class="nav-item"><a>直轄市定古蹟</a></div>
         <div class="nav-item"><a>縣(市)定古蹟</a></div>
@@ -68,7 +97,9 @@
         <div class="box bgc-peach"></div>
         <div class="box bgc-ochre"></div>
     </div>
-    <a href="#top">top</a>
+    <div id="topbtn">
+        <a href="#top">top</a>
+    </div>
 </body>
 
 </html>
