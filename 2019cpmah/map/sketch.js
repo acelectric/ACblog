@@ -7,8 +7,16 @@ const maxY = 26.17537080357254;
 
 let sizeX = maxX - minX;
 let sizeY = maxY - minY;
-const scale = 300;
+const scale = 200;
 const margin = 0;
+
+function createRandomColor() {
+    let r = Math.floor(Math.random() * 255);
+    let g = Math.floor(Math.random() * 255);
+    let b = Math.floor(Math.random() * 255);
+    return color(r, g, b);
+}
+
 function preload() {
     taiwanJSON = loadJSON("https://acblog.nctu.me/taiwan.geo.json")
 }
@@ -24,7 +32,8 @@ function setup() {
         let feature = taiwanJSON.features[i];
         switch (feature.geometry.type) {
             case "Polygon":
-                stroke(0)
+                stroke(0);
+                fill(createRandomColor());
                 for (let k = 0; k < feature.geometry.coordinates.length; k++) {
                     beginShape();
                     for (let j = 0; j < feature.geometry.coordinates[k].length; j++) {
@@ -39,6 +48,7 @@ function setup() {
             case "MultiPolygon":
                 for (let k = 0; k < feature.geometry.coordinates.length; k++) {
                     stroke(0);
+                    fill(createRandomColor());
                     beginShape();
                     for (let j = 0; j < feature.geometry.coordinates[k][0].length; j++) {
                         coordinate = feature.geometry.coordinates[k][0][j];
