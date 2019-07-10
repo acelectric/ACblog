@@ -1,36 +1,61 @@
 let taiwanJSON;
-const scaleX = 0.000785569666066603 * 1000
-const scaleY = 0.0005688545404540484 * 1000
-const translateX = 116.7062384090001
-const translateY = 20.697301579000055
 
+const minX = 118.21296102851583;
+const minY = 21.902704350222184;
+const maxX = 122.00490580661933;
+const maxY = 26.17537080357254;
 
+let sizeX = maxX - minX;
+let sizeY = maxY - minY;
+const scale = 300;
+const margin = 0;
 function preload() {
-    taiwanJSON = loadJSON("https://acblog.nctu.me/topoTaiwan.json")
+    taiwanJSON = loadJSON("https://acblog.nctu.me/taiwan.geo.json")
 }
 
 function setup() {
-    createCanvas(600, 600);
-    background(51);
-    //console.log(taiwanJSON.arcs);
-    data = taiwanJSON.arcs;
-
-    //translate(width / 2, height / 2);
-    translate(translateX, translateY);
-    for (let i = 0; i < data.length; i++) {
-        let str = "";
-        for (let j = 1; j < data[i].length; j++) {
-            str += "(";
-            str += data[i][j][0];
-            str += ",";
-            str += data[i][j][1];
-            str += ")";
-            stroke(255);
-            point(data[i][j][0] * scaleX, data[i][j][1] * scaleY);
-            stroke(color(255, 0, 0));
-            point(data[i][j][0], data[i][j][1]);
+    createCanvas(sizeX * scale + margin * 2, sizeY * scale + margin * 2);
+    background(color(0, 0, 0));
+    translate(0 + margin, height - margin);
+    // fill(color("#EDDBCD"));
+    fill(color(255, 0, 0))
+    //console.log(taiwanJSON.features[0].geometry.coordinates[0][0]);
+    for (let i = 0; i < taiwanJSON.features.length; i++) {
+        let feature = taiwanJSON.features[i];
+        switch (feature.geometry.type) {
+            case "Polygon":
+                stroke(0)
+                for (let k = 0; k < feature.geometry.coordinates.length; k++) {
+                    beginShape();
+                    for (let j = 0; j < feature.geometry.coordinates[k].length; j++) {
+                        coordinate = feature.geometry.coordinates[k][j];
+                        x = (coordinate[0] - minX) * scale;
+                        y = (coordinate[1] - minY) * scale;
+                        vertex(x, -y);
+                    }
+                    endShape();
+                }
+                break;
+            case "MultiPolygon":
+                for (let k = 0; k < feature.geometry.coordinates.length; k++) {
+                    stroke(0);
+                    beginShape();
+                    for (let j = 0; j < feature.geometry.coordinates[k][0].length; j++) {
+                        coordinate = feature.geometry.coordinates[k][0][j];
+                        x = (coordinate[0] - minX) * scale;
+                        y = (coordinate[1] - minY) * scale;
+                        // x = (coordinate[0] - 118) * 100;
+                        // y = (coordinate[1] - 21) * 100;
+                        vertex(x, -y);
+                    }
+                    endShape();
+                }
+                break;
+            default:
+                console.log(feature.geometry.type);
+                break;
         }
-        console.log(str);
+
     }
 }
 function draw() {
