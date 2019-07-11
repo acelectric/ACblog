@@ -7,8 +7,8 @@ const minY = 21.902704350222184;
 const maxX = 122.00490580661933;
 const maxY = 26.17537080357254;
 
-let sizeX = maxX - minX;
-let sizeY = maxY - minY;
+let sizeX = Math.round(maxX - minX);
+let sizeY = Math.round(maxY - minY);
 const scl = 200;
 const margin = 0;
 
@@ -44,7 +44,6 @@ function setup() {
     }
 
     //-------------
-    console.log(JSON.stringify(areas, ["cName", "path"]));
     noLoop();
 }
 // let counter = 0;
@@ -56,6 +55,7 @@ function draw() {
         // if (counter === i) areas[i].show();
         areas[i].show();
     }
+    console.log(JSON.stringify(areas, ["cName", "path"]));
 }
 function mousePressed() {
     //function mouseMoved() {
