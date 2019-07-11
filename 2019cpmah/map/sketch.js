@@ -17,6 +17,7 @@ function coordinate2xy(coordinate) {
     let y = (coordinate[1] - minY) * scl;
     x = Math.round(x);
     y = Math.round(y);
+    y = height - y;
     return [x, y];
 }
 
@@ -28,54 +29,37 @@ function createRandomColor() {
 }
 
 function preload() {
-    mapJSON = loadJSON("https://acblog.nctu.me/2019cpmah/map.json")
+    mapJSON = loadJSON("https://acblog.nctu.me/2019cpmah/map.json");
 }
 
 function setup() {
     createCanvas(sizeX * scl + margin * 2, sizeY * scl + margin * 2);
     background(color(0, 0, 0, 0));
-    translate(0 + margin, height - margin);
+    //translate(0 + margin, height - margin);
+
+    mapJSON = mapJSON.feature;
     for (let i = 0; i < mapJSON.length; i++) {
-        console.log(mapJSON.i);
+        console.log(mapJSON[i]);
         areas[i] = new area(mapJSON[i]);
     }
-    // frameRate(10);
-    // console.log(areas);
-    translate(0 + margin, height - margin);
-    for (let i = 0; i < areas.length; i++) {
-        // if (counter === i) areas[i].show();
-        areas[i].show();
-    }
+
     //-------------
-    console.log(JSON.stringify(areas, ["cName", "path", "C_Name"]));
+    console.log(JSON.stringify(areas, ["cName", "path"]));
     noLoop();
 }
 // let counter = 0;
 function draw() {
     background(51);
     // counter = (counter + 1) % areas.length;
-    translate(0 + margin, height - margin);
+    // translate(0 + margin, height - margin);
     for (let i = 0; i < areas.length; i++) {
         // if (counter === i) areas[i].show();
         areas[i].show();
-
-        // for (let j = 0; j < areas[i].path.length; j++) {
-        //     fill(areas[i].fillColor);
-        //     beginShape();
-        //     for (let k = 0; k < areas[i].path[j].length; k++) {
-        //         if (k > 0) beginContour();
-        //         for (let l = 0; l < areas[i].path[j][k].length; l++) {
-        //             let point = areas[i].path[j][k][l];
-        //             // let x = (point[0] - minX) * scl;
-        //             // let y = (point[1] - minY) * scl;
-        //             let x = point[0];
-        //             let y = point[1];
-        //             vertex(x, -y);
-        //         }
-        //         console.log(k);
-        //         if (k > 0) endContour();
-        //     }
-        //     endShape();
-        // }
+    }
+}
+function mousePressed() {
+    //function mouseMoved() {
+    for (let i = 0; i < areas.length; i++) {
+        areas[i].isPointInArea(mouseX, mouseY);
     }
 }

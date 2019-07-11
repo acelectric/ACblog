@@ -79,16 +79,17 @@ class area {
         }
         console.log(this.type, this.path);
     */}
-        for (let j = 0; j < this.path.length; j++) {
-            fill(areas[i].fillColor);
+        for (let i = 0; i < this.path.length; i++) {
+            fill(this.fillColor);
             beginShape();
-            for (let k = 0; k < this.path[j].length; k++) {
-                if (k > 0) beginContour();
-                for (let l = 0; l < this.path[j][k].length; l++) {
-                    let point = this.path[j][k][l];
-                    vertex(point[0], -point[1]);
+            for (let j = 0; j < this.path[i].length; j++) {
+                if (j > 0) beginContour();
+                for (let k = 0; k < this.path[i][j].length; k++) {
+                    let point = this.path[i][j][k];
+                    point[1] = height - point[1];
+                    vertex(point[0], point[1]);
                 }
-                if (k > 0) endContour();
+                if (j > 0) endContour();
             }
             endShape();
         }
@@ -96,11 +97,52 @@ class area {
     changeColor() {
         this.fillColor = createRandomColor();
     }
-    isPointInArea(x, y) {
+    // 监听Canvas内部元素点击事件的三种方法
+    // https://refined-x.com/2019/04/27/canvas-click/
+    isPointInPolyline(point, polylinePoints) {
         let leftSide = 0;
-
-
-
+        const A = point;
+        for (let i = 0; i < polylinePoints.length; i++) {
+            let B, C;
+            if (i === polylinePoints.length - 1) {
+                B = {
+                    x: polylinePoints[i][0],
+                    y: polylinePoints[i][1]
+                };
+                C = {
+                    x: polylinePoints[0][0],
+                    y: polylinePoints[0][1]
+                };
+            } else {
+                B = {
+                    x: polylinePoints[i][0],
+                    y: polylinePoints[i][1]
+                };
+                C = {
+                    x: polylinePoints[i + 1][0],
+                    y: polylinePoints[i + 1][1]
+                };
+            }
+            //判断左侧相交
+            let sortByY = [B.y, C.y].sort((a, b) => a - b)
+            if (sortByY[0] < A.y && sortByY[1] > A.y) {
+                if (B.x < A.x || C.x < A.x) {
+                    leftSide++;;
+                }
+            }
+        }
         return leftSide % 2 === 1;
+    }
+    isPointInArea(x, y) {
+        for (let i = 0; i < this.path.length; i++) {
+            for (let j = 0; j < this.path[i].length; j++) {
+                //console.log("test");
+                if (this.isPointInPolyline({ "x": x, "y": y }, this.path[i][j])) {
+                    console.log(this.cName);
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }
