@@ -1,11 +1,11 @@
 class area {
-    constructor(feature) {
-        this.cName = feature.properties.C_Name;
-        this.type = feature.geometry.type;
-        this.coordinates = feature.geometry.coordinates;
+    constructor(obj) {
+        this.cName = obj.cName;
+        // this.type = feature.geometry.type;
+        // this.coordinates = feature.geometry.coordinates;
         this.fillColor = createRandomColor();
         this.strokeColor = color(0);
-        this.path = [];
+        this.path = obj.path;
         // console.log(this.properties, this.coordinates);
     }
     show() {

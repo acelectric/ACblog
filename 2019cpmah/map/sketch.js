@@ -28,16 +28,16 @@ function createRandomColor() {
 }
 
 function preload() {
-    taiwanJSON = loadJSON("https://acblog.nctu.me/taiwan.geo.json")
+    mapJSON = loadJSON("https://acblog.nctu.me/2019cpmah/map.json")
 }
 
 function setup() {
     createCanvas(sizeX * scl + margin * 2, sizeY * scl + margin * 2);
     background(color(0, 0, 0, 0));
     translate(0 + margin, height - margin);
-    for (let i = 0; i < taiwanJSON.features.length; i++) {
-        let feature = taiwanJSON.features[i];
-        areas[i] = new area(feature);
+    for (let i = 0; i < mapJSON.length; i++) {
+        console.log(mapJSON.i);
+        areas[i] = new area(mapJSON[i]);
     }
     // frameRate(10);
     // console.log(areas);
