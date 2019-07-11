@@ -44,22 +44,24 @@ function setup() {
     }
 
     //-------------
-    noLoop();
+    // noLoop();
 }
 // let counter = 0;
 function draw() {
-    background(51);
+    background(255);
     // counter = (counter + 1) % areas.length;
     // translate(0 + margin, height - margin);
     for (let i = 0; i < areas.length; i++) {
         // if (counter === i) areas[i].show();
         areas[i].show();
     }
-    console.log(JSON.stringify(areas, ["cName", "path"]));
-}
-function mousePressed() {
-    //function mouseMoved() {
+    // console.log(JSON.stringify(areas, ["cName", "path"]));
+
+
     for (let i = 0; i < areas.length; i++) {
         areas[i].isPointInArea(mouseX, mouseY);
     }
+}
+//function mousePressed() {
+function mouseMoved() {
 }

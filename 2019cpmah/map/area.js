@@ -4,9 +4,9 @@ class area {
         // this.type = feature.geometry.type;
         // this.coordinates = feature.geometry.coordinates;
         this.fillColor = createRandomColor();
-        this.strokeColor = color(0);
         this.path = obj.path;
         // console.log(this.properties, this.coordinates);
+        this.offset = 0;
     }
     show() {
         {/* make own json
@@ -80,15 +80,14 @@ class area {
         console.log(this.type, this.path);
     */}
         fill(this.fillColor);
-        stroke(this.strokeColor);
+        noStroke();
         for (let i = 0; i < this.path.length; i++) {
             beginShape();
             for (let j = 0; j < this.path[i].length; j++) {
                 if (j > 0) beginContour();
                 for (let k = 0; k < this.path[i][j].length; k++) {
                     let point = this.path[i][j][k];
-                    point[1] = height - point[1];
-                    vertex(point[0], point[1]);
+                    vertex(point[0] - this.offset, point[1] - this.offset);
                 }
                 if (j > 0) endContour();
             }
@@ -102,6 +101,7 @@ class area {
     // https://refined-x.com/2019/04/27/canvas-click/
     isPointInPolyline(point, polylinePoints) {
         let leftSide = 0;
+        let upSide = 0;
         const A = point;
         for (let i = 0; i < polylinePoints.length; i++) {
             let B, C;
@@ -131,20 +131,38 @@ class area {
                     leftSide++;;
                 }
             }
-        }
-        return leftSide % 2 === 1;
-    }
-    isPointInArea(x, y) {
-        for (let i = 0; i < this.path.length; i++) {
-            for (let j = 0; j < this.path[i].length; j++) {
-                //console.log("test");
-                if (this.isPointInPolyline({ "x": x, "y": y }, this.path[i][j])) {
-                    console.log(this.cName);
-                    this.fillColor = createRandomColor();
-                    return true;
+            // 判斷上側相交
+            let sortByX = [B.x, C.x].sort((a, b) => a - b)
+            if (sortByX[0] < A.x && sortByX[1] > A.x) {
+                if (B.y < A.y || C.y < A.y) {
+                    upSide++;;
                 }
             }
         }
+        return [leftSide, upSide];
+    }
+    isPointInArea(x, y) {
+        for (let i = 0; i < this.path.length; i++) {
+            let leftSide = 0;
+            let upSide = 0;
+            for (let j = 0; j < this.path[i].length; j++) {
+                //console.log("test");
+                let temp = this.isPointInPolyline({ "x": x, "y": y }, this.path[i][j]);
+                if (j === 0) {
+                    leftSide += temp[0];
+                    upSide += temp[1];
+                }
+
+
+            }
+            if (leftSide % 2 === 1 && upSide % 2 === 1) {
+                console.log(this.cName);
+                this.fillColor = createRandomColor();
+                //this.offset = 5;
+                return true;
+            }
+        }
+        this.offset = 0;
         return false;
     }
 }
