@@ -79,8 +79,9 @@ class area {
         }
         console.log(this.type, this.path);
     */}
+        fill(this.fillColor);
+        stroke(this.strokeColor);
         for (let i = 0; i < this.path.length; i++) {
-            fill(this.fillColor);
             beginShape();
             for (let j = 0; j < this.path[i].length; j++) {
                 if (j > 0) beginContour();
@@ -139,6 +140,7 @@ class area {
                 //console.log("test");
                 if (this.isPointInPolyline({ "x": x, "y": y }, this.path[i][j])) {
                     console.log(this.cName);
+                    this.fillColor = createRandomColor();
                     return true;
                 }
             }
