@@ -52,32 +52,8 @@ function setup() {
     canvas.parent("canvas");
     //createCanvas(sizeX * scl + margin * 2, sizeY * scl + margin * 2);
     background(51);
-    //translate(0 + margin, height - margin);
 
     mapJSON = mapJSON.feature;
-    let swap = function (a, b) {
-        const temp = mapJSON[a];
-        mapJSON[a] = mapJSON[b];
-        mapJSON[b] = temp;
-    }
-    swap(0, 13);
-    swap(1, 18);
-    swap(2, 16);
-    swap(3, 21);
-    swap(4, 21);
-    swap(5, 14);
-    swap(6, 21);
-    swap(7, 19);
-    swap(8, 14);
-    swap(9, 19);
-    swap(10, 14);
-    swap(11, 15);
-    swap(12, 20);
-    swap(13, 17);
-    swap(14, 19);
-    swap(15, 21);
-    swap(17, 21);
-    swap(18, 19);
     for (let i = 0; i < mapJSON.length; i++) {
         areas[i] = new area(mapJSON[i]);
         for (let j = 0; j < eName.length; j++) {
@@ -86,18 +62,20 @@ function setup() {
             }
         }
     }
-    areas[10].path[0].push(areas[11].path[0][0].reverse());
 
 
     console.log(areas);
+
+    for (let i = 0; i < areas.length; i++) {
+        createA(areas[i].eName + ".html", "").id(areas[i].eName);
+    }
+
     //-------------
     // noLoop();
     //frameRate(10);
-    console.log(JSON.stringify(areas, ["cName", "eName", "path"]));
+    //console.log(JSON.stringify(areas, ["cName", "eName", "path"]));
 }
-//let counter = 0;
 function draw() {
-    //strokeWeight(3);
     background(51);
     for (let i = 0; i < areas.length; i++) {
         areas[i].show();
@@ -108,13 +86,13 @@ function draw() {
         areas[i].isPointInArea(mouseX, mouseY);
     }
 
-    line(0, mouseY, width, mouseY);
-    line(mouseX, 0, mouseX, height);
-
-    //counter = (counter + 1) % areas.length;
 }
 function mousePressed() {
-    //console.log(mouseX, mouseY);
+    for (let i = 0; i < areas.length; i++) {
+        if (areas[i].isPointInArea(mouseX, mouseY)) {
+            document.getElementById(areas[i].eName).click();
+        }
+    }
 }
 function mouseMoved() {
 }
