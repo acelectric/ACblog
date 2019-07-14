@@ -35,7 +35,11 @@
             addChildInContent(obj.name, 'h1');
             addChildInContent('', 'hr');
             addChildInContent('級別 : ' + obj.level);
-            addChildInContent(obj.article);
+
+            for (let i = 0; i < obj.article.length; i++) {
+
+                let temp = addChildInContent(obj.article[i]);
+            }
             addChildInContent('', 'hr');
             addChildInContent('開放時間 : ' + obj.openingHours);
             addChildInContent('門票資訊 : ' + obj.ticket);
