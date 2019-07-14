@@ -2,8 +2,6 @@ body {
     margin: 0px;
     overflow: scroll;
     font-family: "微軟正黑體";
-    text-align: center;
-    font-size: 40px;
     overflow-y: scroll;
     scroll-behavior: smooth;
 }
@@ -17,6 +15,7 @@ a {
     -webkit-tap-highlight-color:transparent;
     cursor: pointer;
     color: inherit;
+    display: block;
 }
 a:hover {
     text-decoration: none;
@@ -50,6 +49,7 @@ img {
     background-color: rgba(182, 182, 182, 0.85);
     box-shadow: 0 0 10px rgba(0, 0, 0, .5);
     transition: background-color 0.5s;
+    text-align: center;
 }
 .nav-brand {
     height: 100%;
@@ -145,6 +145,7 @@ img {
     position: fixed;
     right: 30px;
     bottom: 30px;
+    text-align: center;
 }
 
 .content {

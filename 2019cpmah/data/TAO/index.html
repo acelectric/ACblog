@@ -14,16 +14,38 @@
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
         integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-    <link rel="stylesheet" href="default.css" type="text/css">
-    <link rel="stylesheet" href="RWD.css" type="text/css">
+    <link rel="stylesheet" href="../../default.css" type="text/css">
+    <link rel="stylesheet" href="../../RWD.css" type="text/css">
     <link rel="shortcut icon" href="#">
-    <script type="text/javascript" src="hamburger.js"></script>
+    <script type="text/javascript" src="../../hamburger.js"></script>
     <script type="text/javascript">
+
+        let addChildInBody = function (resource) {
+            let temp = document.createElement('div');
+            temp.innerHTML = resource;
+            document.body.appendChild(temp);
+            return temp;
+        }
         var xhr = new XMLHttpRequest();
         xhr.open('GET', 'https://acblog.nctu.me/2019cpmah/data/TAO/1.json', true);
         xhr.send('null');
         xhr.onload = function () {
-            console.log(xhr.responseText);
+            let obj = JSON.parse(xhr.responseText);
+            console.log(obj);
+            addChildInBody(obj.name);
+            addChildInBody('級別 : ' + obj.level);
+            addChildInBody(obj.article);
+            addChildInBody('開放時間 : ' + obj.openingHours);
+            addChildInBody('門票資訊 : ' + obj.ticket);
+            let source = addChildInBody('資料來源 : <br />');
+
+            for (let i = 0; i < obj.source.length; i++) {
+                let a = document.createElement('a');
+                a.innerHTML = obj.source[i];
+                a.href = obj.source[i];
+                source.appendChild(a);
+            }
+
         }
     </script>
 </head>
