@@ -9,6 +9,15 @@ class area {
         // console.log(this.properties, this.coordinates);
         this.offset = 0;
     }
+    reSize() {
+        for (let i = 0; i < this.path.length; i++) {
+            for (let j = 0; j < this.path[i].length; j++) {
+                for (let k = 0; k < this.path[i][j].length; k++) {
+                    this.path[i][j][k] = size2newSize(this.path[i][j][k]);
+                }
+            }
+        }
+    }
     show() {
         fill(this.fillColor);
         //noStroke();
@@ -18,7 +27,6 @@ class area {
                 if (j > 0) beginContour();
                 for (let k = 0; k < this.path[i][j].length; k++) {
                     let point = this.path[i][j][k];
-                    point = size2newSize(point);
                     vertex(point[0] - this.offset, point[1] - this.offset);
                 }
                 if (j > 0) endContour();
@@ -34,7 +42,7 @@ class area {
     isPointInPolyline(point, polylinePoints) {
         let leftSide = 0;
         let upSide = 0;
-        const A = point;
+        let A = point;
         for (let i = 0; i < polylinePoints.length; i++) {
             let B, C;
             if (i === polylinePoints.length - 1) {

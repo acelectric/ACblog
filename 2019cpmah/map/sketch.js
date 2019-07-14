@@ -61,6 +61,7 @@ function setup() {
                 areas[i].eName = eName[j][1];
             }
         }
+        areas[i].reSize();
     }
 
 
