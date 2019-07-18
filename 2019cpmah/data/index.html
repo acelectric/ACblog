@@ -20,7 +20,7 @@
     <script type="text/javascript" src="../hamburger.js"></script>
     <script type="text/javascript">
 
-        let addChildInContent = function (resource, label = 'div') {
+        let addChildInContent = function (resource = '', label = 'div') {
             let temp = document.createElement(label);
             temp.innerHTML = resource;
             document.getElementById('content').appendChild(temp);
@@ -34,21 +34,34 @@
             console.log(obj);
             addChildInContent(obj.name, 'h1');
             addChildInContent('', 'hr');
+
+            let divContainer = addChildInContent();
+            console.log(divContainer);
+            divContainer.classList.value += ' img-container';
+
+            for (let i = 0; i < obj.img.length; i++) {
+                let temp = document.createElement('img');
+                temp.src = "../img/" + obj.img[i] + ".jpg";
+                divContainer.appendChild(temp);
+            }
             addChildInContent('級別 : ' + obj.level);
 
             for (let i = 0; i < obj.article.length; i++) {
                 let temp = addChildInContent(obj.article[i]);
-                temp.classList.value = ' style-' + (i % 2 + 1);
+                //temp.classList.value += ' style-' + (i % 2 + 1);
+                temp.classList.value += ' text';
+                addChildInContent('', 'hr');
             }
-            addChildInContent('', 'hr');
-            addChildInContent('開放時間 : ' + obj.openingHours);
-            addChildInContent('門票資訊 : ' + obj.ticket);
+            addChildInContent('開放時間 : ' + obj.openingHours).classList += ' text';
+            addChildInContent('門票資訊 : ' + obj.ticket).classList += ' text';
             let source = addChildInContent('資料來源 : <br />');
+            source.classList += ' text';
 
             for (let i = 0; i < obj.source.length; i++) {
                 let a = document.createElement('a');
                 a.innerHTML = obj.source[i] + '<br />';
                 a.href = obj.source[i];
+                a.classList += ' sourceA';
                 source.appendChild(a);
             }
 
