@@ -14,10 +14,10 @@
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
         integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-    <link rel="stylesheet" href="../../default.css" type="text/css">
-    <link rel="stylesheet" href="../../RWD.css" type="text/css">
+    <link rel="stylesheet" href="../default.css" type="text/css">
+    <link rel="stylesheet" href="../RWD.css" type="text/css">
     <link rel="shortcut icon" href="#">
-    <script type="text/javascript" src="../../hamburger.js"></script>
+    <script type="text/javascript" src="../hamburger.js"></script>
     <script type="text/javascript">
 
         let addChildInContent = function (resource, label = 'div') {
@@ -27,7 +27,7 @@
             return temp;
         }
         var xhr = new XMLHttpRequest();
-        xhr.open('GET', 'https://acblog.nctu.me/2019cpmah/data/TAO/1.json', true);
+        xhr.open('GET', 'https://acblog.nctu.me/2019cpmah/data/1.json', true);
         xhr.send('null');
         xhr.onload = function () {
             let obj = JSON.parse(xhr.responseText);
@@ -37,8 +37,8 @@
             addChildInContent('級別 : ' + obj.level);
 
             for (let i = 0; i < obj.article.length; i++) {
-
                 let temp = addChildInContent(obj.article[i]);
+                temp.classList.value = ' style-' + (i % 2 + 1);
             }
             addChildInContent('', 'hr');
             addChildInContent('開放時間 : ' + obj.openingHours);

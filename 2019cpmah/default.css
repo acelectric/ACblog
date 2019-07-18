@@ -5,6 +5,9 @@ body {
     overflow-y: scroll;
     scroll-behavior: smooth;
     text-align: center;
+    font-size: 24px;
+    line-height: 30px;
+    
 }
 h1,h2,h3 {
     margin:auto;
@@ -44,14 +47,22 @@ img {
     height: auto;
 }
 .content,#content{
-    width: 90%;
+    width: 100%;
     /* background-color: rgb(121, 121, 121); */
     text-align: left;
     margin: auto;
     height: fit-content;
-    margin-top: 150px;
+    margin: 150px 0px;
 }
-.title {
+#content>div{
+    padding: 0px 50px;
+}
+
+.style-1 {
+    background-color: #CDCDCD;
+}
+.style-2 {
+    background-color: #EDDBCD;
 }
 .nav {
     width: 100%!important;
