@@ -26,11 +26,18 @@
             document.getElementById('content').appendChild(temp);
             return temp;
         }
-        var xhr = new XMLHttpRequest();
-        xhr.open('GET', 'https://acblog.nctu.me/2019cpmah/data/1.json', true);
-        xhr.send('null');
-        xhr.onload = function () {
-            let obj = JSON.parse(xhr.responseText);
+        var xhr1 = new XMLHttpRequest();
+        xhr1.open('GET', 'https://acblog.nctu.me/2019cpmah/data/nav.json');
+        xhr1.send('null');
+        xhr1.onload = function () {
+            let obj = JSON.parse(xhr1.responseText);
+            document.getElementById('header').innerHTML = obj.nav;
+        }
+        var xhr2 = new XMLHttpRequest();
+        xhr2.open('GET', 'https://acblog.nctu.me/2019cpmah/data/1.json', true);
+        xhr2.send('null');
+        xhr2.onload = function () {
+            let obj = JSON.parse(xhr2.responseText);
             // console.log(obj);
             addChildInContent(obj.name, 'h1');
             addChildInContent('', 'hr');
@@ -67,37 +74,25 @@
             }
 
         }
+        var xhr3 = new XMLHttpRequest();
+        xhr3.open('GET', 'https://acblog.nctu.me/2019cpmah/data/footer.json');
+        xhr3.send('null');
+        xhr3.onload = function () {
+            let obj = JSON.parse(xhr3.responseText);
+            document.getElementById('footer').innerHTML = obj.footer;
+        }
     </script>
 </head>
 
 <body id="top">
-    <div class="header">
-        <div id="nav" class="nav color-ochre">
-            <div class="nav-brand">
-                <a href="#top">搜奇訪古</a>
-                <div id="hamburger-close"></div>
-                <div id="hamburger">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                </div>
-            </div>
-            <div class="nav-item"><a href="national.html">國定古蹟</a></div>
-            <div class="nav-item"><a href="municipality.html">直轄市定古蹟</a></div>
-            <div class="nav-item"><a href="county.html">縣(市)定古蹟</a></div>
-            <div class="nav-item"><a href="map.html">古蹟地圖</a></div>
-            <div class="nav-item"><a href="#p5">製作團隊</a></div>
-            <div class="nav-item"><a href="#p6">資料來源</a></div>
-        </div>
-        <div id="topbtn">
-            <a href="#top">top</a>
-        </div>
+    <div id="header">
+
     </div>
 
     <div id="content">
     </div>
 
-    <div class="footer">copyright</div>
+    <div id="footer"></div>
 </body>
 
 </html>
