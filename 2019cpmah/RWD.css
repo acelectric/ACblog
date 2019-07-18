@@ -9,7 +9,15 @@
         width: 100%;
         height: 50px;
         line-height: 50px;
+        text-align: center;
         display: none;
+    }
+    .nav-item>a {
+        width: 100%;
+    }
+    #content>.text{
+        padding: 0px 20px;
+        line-height: 1.5em;
     }
     #hamburger {
         display: flex;
