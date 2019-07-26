@@ -36,10 +36,12 @@ function ajaxPage(page, link) {
                 addChildInContent('開放時間 : ' + obj.openingHours).classList += ' text';
                 addChildInContent('門票資訊 : ' + obj.ticket).classList += ' text';
 
-                addChildInContent('交通方式：<br />');
+                addChildInContent('交通方式：<br />').classList += ' text';
                 for (let i = 0; i < obj.traffic.length; i++) {
-                    addChildInContent((i + 1) + obj.traffic[i][0]);
-                    addChildInContent(obj.traffic[i][1]);
+                    let temp = addChildInContent((i + 1) + "." + obj.traffic[i][0]);
+                    temp.classList += ' text';
+                    addChildInContent(obj.traffic[i][1]).classList += ' text';
+                    addChildInContent().style.height = '30px';
                 }
             }
 
@@ -59,4 +61,10 @@ function ajaxPage(page, link) {
         }
 
     }
+
+    let back = document.getElementById('back');
+    back.style.display = 'block';
+    back.onclick = function () {
+        location.reload();
+    };
 }

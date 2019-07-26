@@ -27,7 +27,7 @@
 
     <div id="content">
     </div>
-
+    <div id="back">back</div>
     <div id="footer"></div>
     <script type="text/javascript" src="./js/basic.js"></script>
     <script type="text/javascript" src="./js/hamburger.js"></script>
@@ -56,6 +56,11 @@
                     boxLink.onclick = function () {
                         document.getElementById('content').innerHTML = '';
                         ajaxPage(obj.json, obj.link[i]);
+                        let back = document.getElementById('back');
+                        back.style.display = 'block';
+                        back.onclick = function () {
+                            location.reload();
+                        };
                     };
                     temp.appendChild(boxLink);
                 }

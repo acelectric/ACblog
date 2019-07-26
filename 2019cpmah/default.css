@@ -63,6 +63,25 @@ a:hover {
 #content>.text{
     padding: 0px 50px;
 }
+#back {
+    background-color: #C06014;
+    color: white;
+    border-radius: 10px;
+    width: 250px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 20px;
+    margin: auto;
+    display: none;
+}
+#footer {
+    width: 100%;
+    font-size: 26px;
+    line-height: 2em;
+    margin-top: 20px;
+    background-color: black;
+    color: white;
+}
 .img-container {
     display:block;
     width: 100%;
@@ -212,14 +231,7 @@ img {
     line-height: inherit;
 }
 
-#footer {
-    width: 100%;
-    font-size: 26px;
-    line-height: 2em;
-    margin-top: 20px;
-    background-color: black;
-    color: white;
-}
+
 
 #canvas {
     width: 500px;
