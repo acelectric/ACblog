@@ -35,6 +35,12 @@ function ajaxPage(page, link) {
                 addChildInContent('級別 : ' + obj.level).classList += ' text';
                 addChildInContent('開放時間 : ' + obj.openingHours).classList += ' text';
                 addChildInContent('門票資訊 : ' + obj.ticket).classList += ' text';
+
+                addChildInContent('交通方式：<br />');
+                for (let i = 0; i < obj.traffic.length; i++) {
+                    addChildInContent((i + 1) + obj.traffic[i][0]);
+                    addChildInContent(obj.traffic[i][1]);
+                }
             }
 
             if (link == '資料來源' || link == 'all') {
