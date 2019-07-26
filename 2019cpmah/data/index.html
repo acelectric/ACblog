@@ -29,52 +29,11 @@
 
     <div id="footer"></div>
 
-    <script type="text/javascript" src="../js/"></script>
-    <script type="text/javascript" src="../hamburger.js"></script>
-    <script type="text/javascript">
-        var xhr2 = new XMLHttpRequest();
-        xhr2.open('GET', 'https://acblog.nctu.me/2019cpmah/data/1.json');
-        xhr2.send('null');
-        xhr2.onload = function () {
-            let obj = JSON.parse(xhr2.responseText);
-            // console.log(obj);
-            addChildInContent(obj.name, 'h1');
-            addChildInContent('', 'hr');
+    <script type="text/javascript" src="../js/basic.js"></script>
+    <script type="text/javascript" src="../js/hamburger.js"></script>
+    <script type="text/javascript" src="../js/page.js"></script>
+    <script type="text/javascript">ajaxPage(1, 'all')</script>
 
-            let divContainer = addChildInContent();
-            // console.log(divContainer);
-            divContainer.classList.value += ' img-container';
-
-            for (let i = 0; i < obj.img.length; i++) {
-                let temp = document.createElement('img');
-                temp.src = "../img/" + obj.img[i] + ".jpg";
-                divContainer.appendChild(temp);
-            }
-
-            for (let i = 0; i < obj.article.length; i++) {
-                let temp;
-                temp = addChildInContent(obj.article[i][0], 'h1');
-                temp.classList.value += ' text';
-                temp = addChildInContent(obj.article[i][1]);
-                temp.classList.value += ' text';
-                addChildInContent('', 'hr');
-            }
-            addChildInContent().style.height = '10px';
-            addChildInContent('級別 : ' + obj.level).classList += ' text';
-            addChildInContent('開放時間 : ' + obj.openingHours).classList += ' text';
-            addChildInContent('門票資訊 : ' + obj.ticket).classList += ' text';
-            let source = addChildInContent('資料來源 : <br />');
-            source.classList += ' text';
-
-            for (let i = 0; i < obj.source.length; i++) {
-                let a = document.createElement('a');
-                a.innerHTML = obj.source[i] + '<br />';
-                a.href = obj.source[i];
-                a.classList += ' sourceA';
-                source.appendChild(a);
-            }
-        }
-    </script>
 </body>
 
 </html>

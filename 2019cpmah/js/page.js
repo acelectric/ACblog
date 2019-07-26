@@ -1,0 +1,57 @@
+function ajaxPage(page, link) {
+    let xhr = new XMLHttpRequest();
+    xhr.open('GET', 'https://acblog.nctu.me/2019cpmah/data/' + page + '.json');
+    xhr.send('null');
+    xhr.onload = function () {
+        let obj = JSON.parse(xhr.responseText);
+        // console.log(obj);
+        addChildInContent(obj.name, 'h1');
+        addChildInContent('', 'hr');
+
+        let divContainer = addChildInContent();
+        // console.log(divContainer);
+        divContainer.classList.value += ' img-container';
+
+        for (let i = 0; i < obj.img.length; i++) {
+            let temp = document.createElement('img');
+            temp.src = "https://acblog.nctu.me/2019cpmah/img/" + obj.img[i] + ".jpg";
+            divContainer.appendChild(temp);
+        }
+
+
+        if (link !== null) {
+            for (let i = 0; i < obj.article.length; i++) {
+                if (link == obj.article[i][0] || link == 'all') {
+                    let temp;
+                    temp = addChildInContent(obj.article[i][0], 'h1');
+                    temp.classList.value += ' text';
+                    temp = addChildInContent(obj.article[i][1]);
+                    temp.classList.value += ' text';
+                    addChildInContent('', 'hr');
+                }
+            }
+            addChildInContent().style.height = '10px';
+
+            if (link == obj.article[0][0] || link == 'all') {
+                addChildInContent('級別 : ' + obj.level).classList += ' text';
+                addChildInContent('開放時間 : ' + obj.openingHours).classList += ' text';
+                addChildInContent('門票資訊 : ' + obj.ticket).classList += ' text';
+            }
+
+            if (link == obj.article[obj.article.length - 1][0] || link == 'all') {
+                let source = addChildInContent('資料來源 : <br />');
+                source.classList += ' text';
+
+                for (let i = 0; i < obj.source.length; i++) {
+                    let a = document.createElement('a');
+                    a.innerHTML = obj.source[i] + '<br />';
+                    a.href = obj.source[i];
+                    a.classList += ' sourceA';
+                    source.appendChild(a);
+                }
+            }
+
+        }
+
+    }
+}

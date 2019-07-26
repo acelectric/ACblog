@@ -1,4 +1,4 @@
-let addChildInContent = function (resource = '', label = 'div') {
+function addChildInContent(resource = '', label = 'div') {
     let temp = document.createElement(label);
     temp.innerHTML = resource;
     document.getElementById('content').appendChild(temp);
