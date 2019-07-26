@@ -38,13 +38,39 @@
         </div>
     </div>
     <script type="text/javascript" src="./js/basic.js"></script>
+    <script type="text/javascript" src="./js/hamburger.js"></script>
     <script type="text/javascript">
-        var nationalXhr = new XMLHttpRequest();
+        let nationalXhr = new XMLHttpRequest();
         nationalXhr.open('GET', 'https://acblog.nctu.me/2019cpmah/data/national.json');
         nationalXhr.send('null');
         nationalXhr.onload = function () {
-            var obj = JSON.parse(nationalXhr.responseText);
-            console.log(obj);
+            let generateBox = function (obj) {
+                let temp;
+                temp = addChildInContent().classList += ' box';
+                let boxImg = document.createElement('div').classList += ' box-img';
+                boxImg.backgroundImage = 'url(' + 'https://acblog.nctu.me/2019cpmah/img/' + obj.img[0] + '.jpg' + ')';
+                temp.appendChild(boxImg);
+                let boxText = document.createElement('div').classList += ' box-text';
+                boxText.innerHTML = obj.name;
+                temp.appendChild(boxText);
+                for (let i = 0; i < obj.link.length; i++) {
+                    let boxLink = document.createElement('div').classList += 'box-link';
+                    boxLink.innerHTML += obj.link[i];
+                    temp.appendChild(boxLink);
+                }
+                return temp;
+            }
+            let obj = JSON.parse(nationalXhr.responseText);
+            obj = obj.feature;
+            for (let i = 0; i < obj.length; i++) {
+                let xhr = new XMLHttpRequest();
+                let json = 'https://acblog.nctu.me/2019cpmah/data/' + obj[i].json + '.json';
+                xhr.open(json);
+                xhr.send('null');
+                xhr.onload = function () {
+                    generateBox(obj[i]);
+                };
+            }
 
         };
     </script>
