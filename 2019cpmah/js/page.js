@@ -14,7 +14,7 @@ function ajaxPage(page, link) {
 
         for (let i = 0; i < obj.img.length; i++) {
             let temp = document.createElement('img');
-            temp.src = "https://acblog.nctu.me/2019cpmah/img/" + obj.img[i] + ".jpg";
+            temp.src = "https://acblog.nctu.me/2019cpmah/img/img" + obj.img[i] + ".jpg";
             divContainer.appendChild(temp);
         }
 
