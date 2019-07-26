@@ -63,6 +63,11 @@ a:hover {
 #content>.text{
     padding: 0px 50px;
 }
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
 #back {
     background-color: #C06014;
     color: white;
@@ -210,8 +215,8 @@ img {
     background-color: #EDDBCD;
     font-size: 18px;
     line-height: 25px;
-    margin: 10px;
     border-radius: 5px;
+    margin: 5px;
 }
 #topbtn {
     background-color: #C06014;

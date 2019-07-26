@@ -25,7 +25,7 @@
 
     </div>
 
-    <div id="content">
+    <div id="content" class="flex">
     </div>
     <div id="back">back</div>
     <div id="footer"></div>
@@ -56,11 +56,6 @@
                     boxLink.onclick = function () {
                         document.getElementById('content').innerHTML = '';
                         ajaxPage(obj.json, obj.link[i]);
-                        let back = document.getElementById('back');
-                        back.style.display = 'block';
-                        back.onclick = function () {
-                            location.reload();
-                        };
                     };
                     temp.appendChild(boxLink);
                 }
