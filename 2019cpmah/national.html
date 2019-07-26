@@ -18,6 +18,14 @@
     <link rel="stylesheet" href="default.css" type="text/css">
     <link rel="stylesheet" href="RWD.css" type="text/css">
     <link rel="shortcut icon" href="#">
+    <script type="text/javascript">
+        var nationalXhr = new XMLHttpRequest();
+        nationalXhr.open('https://acblog.nctu.me/2019cpmah/data/national.json');
+        nationalXhr.send('null');
+        nationalXhr.onload = function () {
+            console.log(nationalXhr.responseText);
+        };
+    </script>
 </head>
 
 <body>
