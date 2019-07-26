@@ -53,8 +53,10 @@
             }
 
             for (let i = 0; i < obj.article.length; i++) {
-                let temp = addChildInContent(obj.article[i]);
-                //temp.classList.value += ' style-' + (i % 2 + 1);
+                let temp;
+                temp = addChildInContent(obj.article[i][0], 'h1');
+                temp.classList.value += ' text';
+                temp = addChildInContent(obj.article[i][1]);
                 temp.classList.value += ' text';
                 addChildInContent('', 'hr');
             }
