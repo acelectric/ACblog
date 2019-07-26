@@ -167,6 +167,8 @@ img {
     width: 300px;
     height: fit-content;
     margin: 20px;
+    display: flex;
+    flex-wrap: wrap;
 }
 .box-img {
     width: 100%;
@@ -181,6 +183,13 @@ img {
     line-height: 50px;
     font-size: 30px;
     border: 3px solid red;
+}
+.box-link {
+    background-color: #EDDBCD;
+    font-size: 18px;
+    line-height: 25px;
+    margin: 10px;
+    border-radius: 5px;
 }
 #topbtn {
     background-color: #C06014;
