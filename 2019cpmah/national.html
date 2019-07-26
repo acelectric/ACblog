@@ -46,15 +46,19 @@
         nationalXhr.onload = function () {
             let generateBox = function (obj) {
                 let temp;
-                temp = addChildInContent().classList += ' box';
-                let boxImg = document.createElement('div').classList += ' box-img';
-                boxImg.backgroundImage = 'url(' + 'https://acblog.nctu.me/2019cpmah/img/' + obj.img[0] + '.jpg' + ')';
+                temp = addChildInContent();
+                temp.classList += ' box';
+                let boxImg = document.createElement('div');
+                boxImg.classList += ' box-img';
+                boxImg.style.backgroundImage = 'url(' + 'https://acblog.nctu.me/2019cpmah/img/' + obj.img[0] + '.jpg' + ')';
                 temp.appendChild(boxImg);
-                let boxText = document.createElement('div').classList += ' box-text';
+                let boxText = document.createElement('div');
+                boxText.classList += ' box-text';
                 boxText.innerHTML = obj.name;
                 temp.appendChild(boxText);
                 for (let i = 0; i < obj.link.length; i++) {
-                    let boxLink = document.createElement('div').classList += 'box-link';
+                    let boxLink = document.createElement('div');
+                    boxLink.classList += 'box-link';
                     boxLink.innerHTML += obj.link[i];
                     temp.appendChild(boxLink);
                 }
@@ -65,7 +69,7 @@
             for (let i = 0; i < obj.length; i++) {
                 let xhr = new XMLHttpRequest();
                 let json = 'https://acblog.nctu.me/2019cpmah/data/' + obj[i].json + '.json';
-                xhr.open(json);
+                xhr.open('GET', json);
                 xhr.send('null');
                 xhr.onload = function () {
                     generateBox(obj[i]);
