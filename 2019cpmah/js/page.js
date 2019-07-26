@@ -27,7 +27,6 @@ function ajaxPage(page, link) {
                     temp.classList.value += ' text';
                     temp = addChildInContent(obj.article[i][1]);
                     temp.classList.value += ' text';
-                    addChildInContent('', 'hr');
                 }
             }
             addChildInContent().style.height = '10px';

@@ -54,10 +54,8 @@
                     boxLink.classList += 'box-link';
                     boxLink.innerHTML += obj.link[i];
                     boxLink.onclick = function () {
+                        document.getElementById('content').innerHTML = '';
                         ajaxPage(obj.json, obj.link[i]);
-                        let temp;
-
-                        console.log("test");
                     };
                     temp.appendChild(boxLink);
                 }
