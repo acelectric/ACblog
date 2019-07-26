@@ -32,13 +32,13 @@ function ajaxPage(page, link) {
             }
             addChildInContent().style.height = '10px';
 
-            if (link == obj.article[0][0] || link == 'all') {
+            if (link == '簡介' || link == 'all') {
                 addChildInContent('級別 : ' + obj.level).classList += ' text';
                 addChildInContent('開放時間 : ' + obj.openingHours).classList += ' text';
                 addChildInContent('門票資訊 : ' + obj.ticket).classList += ' text';
             }
 
-            if (link == obj.article[obj.article.length - 1][0] || link == 'all') {
+            if (link == '資料來源' || link == 'all') {
                 let source = addChildInContent('資料來源 : <br />');
                 source.classList += ' text';
 
