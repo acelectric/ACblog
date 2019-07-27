@@ -71,13 +71,16 @@ a:hover {
 #back {
     background-color: #C06014;
     color: white;
-    border-radius: 10px;
-    width: 250px;
-    height: 30px;
-    line-height: 30px;
-    font-size: 20px;
-    margin: auto;
     display: none;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 20px;
+    border-radius: 50%;
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+    text-align: center;
 }
 #footer {
     width: 100%;
