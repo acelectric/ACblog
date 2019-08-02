@@ -6,6 +6,14 @@ let datas = new Array(fileCount);
 
 let readFinishCount = 0;
 
+let createJsonFile = function (name, objs) {
+    let str = JSON.stringify(objs);
+    fs.writeFile(name + '.json', str, 'utf-8', function (error) {
+        if (error) console.log(error);
+        console.log(name + " done!");
+    });
+}
+
 let processDatas = function () {
     let objs = { "feature": [] };
     for (let i = 0; i < datas.length; i++) {
@@ -14,7 +22,8 @@ let processDatas = function () {
             "json": i + 1,
             "name": "",
             "link": [],
-            "img": []
+            "img": [],
+            "level": ""
         }
         obj.name = datas[i].name;
         for (let j = 0; j < datas[i].article.length; j++) {
@@ -22,15 +31,32 @@ let processDatas = function () {
         }
         obj.link.push("資料來源");
         obj.img = datas[i].img;
+        obj.level = datas[i].level;
         objs.feature.push(obj);
     }
-    let str = JSON.stringify(objs);
-    fs.writeFile('all.json', str, 'utf-8', function (error) {
-        if (error) console.log(error);
-        console.log("done");
+    createJsonFile('all', objs);
 
-    });
+    let nationalObjs = { "feature": [] };
+    let municipalityObjs = { "feature": [] };
+    let countyObjs = { "feature": [] };
+    for (let i = 0; i < objs.feature.length; i++) {
+        if (objs.feature[i].level == '國定古蹟') {
+            nationalObjs.feature.push(objs.feature[i]);
+        } else if (objs.feature[i].level == '直轄市定古蹟') {
+            municipalityObjs.feature.push(objs.feature[i]);
+        } else if (objs.feature[i].level == '縣(市)定古蹟') {
+            countyObjs.feature.push(objs.feature[i]);
+        } else {
+            console.log("'" + objs.feature[i].level + "'");
+        }
+    }
+    createJsonFile('national', nationalObjs);
+    createJsonFile('municipality', municipalityObjs);
+    createJsonFile('county', countyObjs);
+
 };
+
+
 
 for (let i = 1; i <= fileCount; i++) {
     fs.readFile(i + '.json', 'utf-8', function (error, data) {
@@ -44,10 +70,3 @@ for (let i = 1; i <= fileCount; i++) {
         }
     });
 }
-
-
-// fs.readFile(1 + '.json', 'utf-8', function (error, data) {
-//     if (error) throw error;
-
-//     console.log(data)
-// });

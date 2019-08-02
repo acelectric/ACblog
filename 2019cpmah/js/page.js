@@ -68,3 +68,57 @@ function ajaxPage(page, link) {
         location.reload();
     };
 }
+
+function ajaxclassificationPage(category) {
+    let categorys = ['KEE', 'TPQ', 'TPE', 'TAO', 'HSQ', 'HSZ', 'MIA', 'TXG', 'CHA', 'YUN', 'CYQ', 'CYI', 'TNN', 'KHH', 'PIF', 'NAN', 'ILA', 'HUA', 'TTT', 'JME', 'PEN', 'LJF', 'all', 'national', 'municipality', 'county'];
+
+
+    if (categorys.indexOf(category) != -1) {
+        // 正確的類別
+    } else {
+        category = 'none';
+    }
+    let xhr = new XMLHttpRequest();
+    xhr.open('GET', 'https://acblog.nctu.me/2019cpmah/data/' + category + '.json');
+    xhr.send('null');
+    xhr.onload = function () {
+        let generateBox = function (obj) {
+            let temp;
+            temp = addChildInContent();
+            temp.classList += ' box';
+            let boxImg = document.createElement('div');
+            boxImg.classList += ' box-img';
+            boxImg.style.backgroundImage = 'url(' + 'https://acblog.nctu.me/2019cpmah/img/img' + obj.img[0] + '.jpg' + ')';
+            temp.appendChild(boxImg);
+            let boxText = document.createElement('div');
+            boxText.classList += ' box-text';
+            boxText.innerHTML = obj.name;
+            temp.appendChild(boxText);
+            for (let i = 0; i < obj.link.length; i++) {
+                let boxLink = document.createElement('div');
+                boxLink.classList += 'box-link';
+                boxLink.innerHTML += obj.link[i];
+                boxLink.onclick = function () {
+                    document.getElementById('content').innerHTML = '';
+                    ajaxPage(obj.json, obj.link[i]);
+                };
+                temp.appendChild(boxLink);
+            }
+            return temp;
+        }
+        let obj = JSON.parse(xhr.responseText);
+        obj = obj.feature;
+        for (let i = 0; i < obj.length; i++) {
+            let xhr = new XMLHttpRequest();
+            let json = 'https://acblog.nctu.me/2019cpmah/data/' + obj[i].json + '.json';
+            xhr.open('GET', json);
+            xhr.send('null');
+            xhr.onload = function () {
+                generateBox(obj[i]);
+            };
+        }
+
+    };
+
+}
+
