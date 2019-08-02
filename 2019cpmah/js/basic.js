@@ -7,6 +7,8 @@ function addChildInContent(resource = '', label = 'div') {
 function ajaxNav() {
     let header = document.createElement('div');
     header.id = 'header';
+    document.body.appendChild(header);
+
     var navXhr = new XMLHttpRequest();
     navXhr.open('GET', 'https://acblog.nctu.me/2019cpmah/data/nav.json');
     navXhr.send('null');
@@ -18,6 +20,8 @@ function ajaxNav() {
 function ajaxFooter() {
     let footer = document.createElement('div');
     footer.id = 'footer';
+    document.body.appendChild(footer);
+
     var footerXhr = new XMLHttpRequest();
     footerXhr.open('GET', 'https://acblog.nctu.me/2019cpmah/data/footer.json');
     footerXhr.send('null');
@@ -33,8 +37,11 @@ function ajaxPage(page, link) {
     let content = document.createElement('div');
     content.id = 'content';
     content.className += " flex";
+    document.body.appendChild(content);
     let back = document.createElement('div');
     back.id = 'back';
+    document.body.appendChild(back);
+
     let xhr = new XMLHttpRequest();
     xhr.open('GET', 'https://acblog.nctu.me/2019cpmah/data/' + page + '.json');
     xhr.send('null');
@@ -109,6 +116,13 @@ function ajaxclassificationPage(category) {
     document.body.innerHTML = '';
     ajaxNav();
     ajaxFooter();
+    let content = document.createElement('div');
+    content.id = 'content';
+    content.className += " flex";
+    document.body.appendChild(content);
+    let back = document.createElement('div');
+    back.id = 'back';
+    document.body.appendChild(back);
     let categorys = ['KEE', 'TPQ', 'TPE', 'TAO', 'HSQ', 'HSZ', 'MIA', 'TXG', 'CHA', 'YUN', 'CYQ', 'CYI', 'TNN', 'KHH', 'PIF', 'NAN', 'ILA', 'HUA', 'TTT', 'JME', 'PEN', 'LJF', 'all', 'national', 'municipality', 'county'];
 
 
