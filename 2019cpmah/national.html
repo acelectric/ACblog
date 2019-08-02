@@ -34,7 +34,7 @@
     <script type="text/javascript" src="./js/page.js"></script>
     <script type="text/javascript">
         let nationalXhr = new XMLHttpRequest();
-        nationalXhr.open('GET', 'https://acblog.nctu.me/2019cpmah/data/national.json');
+        nationalXhr.open('GET', 'https://acblog.nctu.me/2019cpmah/data/all.json');
         nationalXhr.send('null');
         nationalXhr.onload = function () {
             let generateBox = function (obj) {
