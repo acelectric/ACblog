@@ -31,49 +31,49 @@
     <div id="footer"></div>
     <script type="text/javascript" src="./js/basic.js"></script>
     <script type="text/javascript" src="./js/hamburger.js"></script>
-    <script type="text/javascript" src="./js/page.js"></script>
     <script type="text/javascript">
-        let nationalXhr = new XMLHttpRequest();
-        nationalXhr.open('GET', 'https://acblog.nctu.me/2019cpmah/data/all.json');
-        nationalXhr.send('null');
-        nationalXhr.onload = function () {
-            let generateBox = function (obj) {
-                let temp;
-                temp = addChildInContent();
-                temp.classList += ' box';
-                let boxImg = document.createElement('div');
-                boxImg.classList += ' box-img';
-                boxImg.style.backgroundImage = 'url(' + 'https://acblog.nctu.me/2019cpmah/img/img' + obj.img[0] + '.jpg' + ')';
-                temp.appendChild(boxImg);
-                let boxText = document.createElement('div');
-                boxText.classList += ' box-text';
-                boxText.innerHTML = obj.name;
-                temp.appendChild(boxText);
-                for (let i = 0; i < obj.link.length; i++) {
-                    let boxLink = document.createElement('div');
-                    boxLink.classList += 'box-link';
-                    boxLink.innerHTML += obj.link[i];
-                    boxLink.onclick = function () {
-                        document.getElementById('content').innerHTML = '';
-                        ajaxPage(obj.json, obj.link[i]);
-                    };
-                    temp.appendChild(boxLink);
-                }
-                return temp;
-            }
-            let obj = JSON.parse(nationalXhr.responseText);
-            obj = obj.feature;
-            for (let i = 0; i < obj.length; i++) {
-                let xhr = new XMLHttpRequest();
-                let json = 'https://acblog.nctu.me/2019cpmah/data/' + obj[i].json + '.json';
-                xhr.open('GET', json);
-                xhr.send('null');
-                xhr.onload = function () {
-                    generateBox(obj[i]);
-                };
-            }
+        ajaxclassificationPage('all');
+        // let nationalXhr = new XMLHttpRequest();
+        // nationalXhr.open('GET', 'https://acblog.nctu.me/2019cpmah/data/all.json');
+        // nationalXhr.send('null');
+        // nationalXhr.onload = function () {
+        //     let generateBox = function (obj) {
+        //         let temp;
+        //         temp = addChildInContent();
+        //         temp.classList += ' box';
+        //         let boxImg = document.createElement('div');
+        //         boxImg.classList += ' box-img';
+        //         boxImg.style.backgroundImage = 'url(' + 'https://acblog.nctu.me/2019cpmah/img/img' + obj.img[0] + '.jpg' + ')';
+        //         temp.appendChild(boxImg);
+        //         let boxText = document.createElement('div');
+        //         boxText.classList += ' box-text';
+        //         boxText.innerHTML = obj.name;
+        //         temp.appendChild(boxText);
+        //         for (let i = 0; i < obj.link.length; i++) {
+        //             let boxLink = document.createElement('div');
+        //             boxLink.classList += 'box-link';
+        //             boxLink.innerHTML += obj.link[i];
+        //             boxLink.onclick = function () {
+        //                 document.getElementById('content').innerHTML = '';
+        //                 ajaxPage(obj.json, obj.link[i]);
+        //             };
+        //             temp.appendChild(boxLink);
+        //         }
+        //         return temp;
+        //     }
+        //     let obj = JSON.parse(nationalXhr.responseText);
+        //     obj = obj.feature;
+        //     for (let i = 0; i < obj.length; i++) {
+        //         let xhr = new XMLHttpRequest();
+        //         let json = 'https://acblog.nctu.me/2019cpmah/data/' + obj[i].json + '.json';
+        //         xhr.open('GET', json);
+        //         xhr.send('null');
+        //         xhr.onload = function () {
+        //             generateBox(obj[i]);
+        //         };
+        //     }
 
-        };
+        // };
     </script>
 </body>
 
