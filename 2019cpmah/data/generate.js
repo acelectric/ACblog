@@ -23,7 +23,8 @@ let processDatas = function () {
             "name": "",
             "link": [],
             "img": [],
-            "level": ""
+            "level": "",
+            "area": ""
         }
         obj.name = datas[i].name;
         for (let j = 0; j < datas[i].article.length; j++) {
@@ -32,6 +33,7 @@ let processDatas = function () {
         obj.link.push("資料來源");
         obj.img = datas[i].img;
         obj.level = datas[i].level;
+        obj.area = datas[i].area;
         objs.feature.push(obj);
     }
     createJsonFile('all', objs);
@@ -54,6 +56,19 @@ let processDatas = function () {
     createJsonFile('municipality', municipalityObjs);
     createJsonFile('county', countyObjs);
 
+    let areas = ['KEE', 'TPQ', 'TPE', 'TAO', 'HSQ', 'HSZ', 'MIA', 'TXG', 'CHA', 'YUN', 'CYQ', 'CYI', 'TNN', 'KHH', 'PIF', 'NAN', 'ILA', 'HUA', 'TTT', 'JME', 'PEN', 'LJF'];
+
+
+
+    for (let i = 0; i < areas.length; i++) {
+        let areaObjs = { "feature": [] };
+        for (let j = 0; j < objs.feature.length; j++) {
+            if (areas[i] == objs.feature[j].area) {
+                areaObjs.feature.push(objs.feature[j]);
+            }
+        }
+        createJsonFile(areas[i], areaObjs);
+    }
 };
 
 

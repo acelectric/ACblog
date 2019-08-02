@@ -30,7 +30,7 @@ function ajaxFooter() {
         document.getElementById('footer').innerHTML = obj.footer;
     }
 }
-function ajaxPage(page, link) {
+function initPage() {
     document.body.innerHTML = '';
     ajaxNav();
     ajaxFooter();
@@ -41,6 +41,9 @@ function ajaxPage(page, link) {
     let back = document.createElement('div');
     back.id = 'back';
     document.body.appendChild(back);
+}
+function ajaxPage(page, link) {
+    initPage();
 
     let xhr = new XMLHttpRequest();
     xhr.open('GET', 'https://acblog.nctu.me/2019cpmah/data/' + page + '.json');
@@ -104,7 +107,6 @@ function ajaxPage(page, link) {
         }
 
     }
-
     let back = document.getElementById('back');
     back.style.display = 'block';
     back.onclick = function () {
@@ -113,16 +115,8 @@ function ajaxPage(page, link) {
 }
 
 function ajaxClassificationPage(category) {
-    document.body.innerHTML = '';
-    ajaxNav();
-    ajaxFooter();
-    let content = document.createElement('div');
-    content.id = 'content';
-    content.className += " flex";
-    document.body.appendChild(content);
-    let back = document.createElement('div');
-    back.id = 'back';
-    document.body.appendChild(back);
+    initPage();
+
     let categorys = ['KEE', 'TPQ', 'TPE', 'TAO', 'HSQ', 'HSZ', 'MIA', 'TXG', 'CHA', 'YUN', 'CYQ', 'CYI', 'TNN', 'KHH', 'PIF', 'NAN', 'ILA', 'HUA', 'TTT', 'JME', 'PEN', 'LJF', 'all', 'national', 'municipality', 'county'];
 
 
@@ -174,6 +168,3 @@ function ajaxClassificationPage(category) {
     };
 
 }
-
-
-ajaxClassificationPage('all');
