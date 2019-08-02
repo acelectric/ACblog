@@ -112,7 +112,7 @@ function ajaxPage(page, link) {
     };
 }
 
-function ajaxclassificationPage(category) {
+function ajaxClassificationPage(category) {
     document.body.innerHTML = '';
     ajaxNav();
     ajaxFooter();
@@ -175,3 +175,5 @@ function ajaxclassificationPage(category) {
 
 }
 
+
+ajaxClassificationPage('all');
