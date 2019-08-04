@@ -4,7 +4,7 @@ let categorys = ['KEE', 'TPQ', 'TPE', 'TAO', 'HSQ', 'HSZ', 'MIA', 'TXG', 'CHA', 
 
 function createHtmlForCategory(template, categorysIndex) {
     while (template.match(/\$\$\$/)) {
-        template = template.replace('$$$', 'national');
+        template = template.replace('$$$', categorys[categorysIndex]);
     }
     fs.writeFile('../result/' + categorys[categorysIndex] + '.html', template, 'utf-8', function (error) {
         if (error) {
