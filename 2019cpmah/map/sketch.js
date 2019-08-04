@@ -41,7 +41,7 @@ function createRandomColor() {
 }
 
 function preload() {
-    mapJSON = loadJSON("https://acblog.nctu.me/2019cpmah/map.json");
+    mapJSON = loadJSON("https://acblog.nctu.me/2019cpmah/map/map.json");
 }
 var a;
 function setup() {

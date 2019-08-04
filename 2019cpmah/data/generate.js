@@ -1,7 +1,7 @@
 
 let fs = require("fs");
 
-let fileCount = 44
+let fileCount = 58
 let datas = new Array(fileCount);
 
 let readFinishCount = 0;
