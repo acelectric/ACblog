@@ -46,11 +46,11 @@ function ajaxFooter() {
 function initPage() {
     document.body.innerHTML = '';
     ajaxNav();
-    ajaxFooter();
     let content = document.createElement('div');
     content.id = 'content';
     content.className += " flex";
     document.body.appendChild(content);
+    ajaxFooter();
     let back = document.createElement('div');
     back.id = 'back';
     document.body.appendChild(back);
