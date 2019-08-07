@@ -15,6 +15,17 @@ function ajaxNav() {
     navXhr.onload = function () {
         let obj = JSON.parse(navXhr.responseText);
         document.getElementById('header').innerHTML = obj.nav;
+
+        $('#hamburger').click(function () {
+            $(this).css('display', 'none');
+            $('#hamburger-close').css('display', 'block');
+            $('.nav-item').css('display', 'block');
+        });
+        $('#hamburger-close').click(function () {
+            $(this).css('display', 'none');
+            $('#hamburger').css('display', 'flex');
+            $('.nav-item').css('display', 'none');
+        });
     }
 }
 function ajaxFooter() {
