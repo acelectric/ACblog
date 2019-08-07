@@ -2,7 +2,7 @@ let fs = require('fs');
 
 
 // ===================
-let fileCount = 81;
+let fileCount = 89;
 let address = 'https://acblog.nctu.me/2019cpmah/';
 // ===================
 
@@ -10,13 +10,51 @@ let datas = new Array(fileCount);
 
 let readFinishCount = 0;
 
+let buildLogStr = "";
+buildLogStr += '==============================================================\n';
+
+let today = new Date();
+let currentDateTime = today.getFullYear() + '年' + (today.getMonth() + 1) + '月' + today.getDate() + '日';
+currentDateTime += '(' + today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds() + ')';
+
+buildLogStr += 'Date : ' + currentDateTime + '\n';
+buildLogStr += 'fileCount : ' + fileCount + '\n';
+buildLogStr += 'address : ' + address + '\n';
+
+buildLogStr += '==============================================================\n';
+
+fs.writeFileSync('build.log', buildLogStr, { "flag": "a" }, function (error) {
+    if (error) {
+        buildLog('END', error, "ERROR!");
+    } else {
+    }
+});
+
+function buildLog(func, message, status = 'NORMAL', ) {
+    let str = "";
+    if (status == 'ERROR!') {
+        str += '==============================================================\n';
+    }
+    str += '[' + status + ']' + func + " ==> " + message + '\n';
+    if (status == 'ERROR!') {
+        str += '==============================================================\n';
+    }
+    fs.writeFile('build.log', str, { "flag": "a" }, function (error) {
+        if (error) {
+            buildLog('END', error, "ERROR!");
+            console.log("ERROR");
+        } else {
+        }
+    });
+}
+
 let createJsonFile = function (name, objs) {
     let str = JSON.stringify(objs);
     fs.writeFile('../data/categorys/' + name + '.json', str, 'utf-8', function (error) {
         if (error) {
-            console.log(error);
+            buildLog('createJsonFile', error, 'ERROR!');
         } else {
-            console.log('../data/categorys/' + name + '.json' + " done!");
+            buildLog('createJsonFile', '../data/categorys/' + name + '.json' + " done!");
         }
     });
 }
@@ -56,7 +94,7 @@ let processDatas = function () {
         } else if (objs.feature[i].level == '縣(市)定古蹟') {
             countyObjs.feature.push(objs.feature[i]);
         } else {
-            console.log("'" + objs.feature[i].level + "'");
+            buildLog("processDatas", "'" + objs.feature[i].level + "'", "-WARN-");
         }
     }
     createJsonFile('national', nationalObjs);
@@ -82,13 +120,15 @@ let processDatas = function () {
 // process raw data to category data
 for (let i = 1; i <= fileCount; i++) {
     fs.readFile('../data/raw/' + i + '.json', 'utf-8', function (error, data) {
-        if (error) console.log(error);
-
-        let obj = JSON.parse(data)
-        datas[i - 1] = obj;
-        readFinishCount++;
-        if (readFinishCount == fileCount) {
-            processDatas();
+        if (error) {
+            buildLog('LINE-97', error, 'ERROR!');
+        } else {
+            let obj = JSON.parse(data)
+            datas[i - 1] = obj;
+            readFinishCount++;
+            if (readFinishCount == fileCount) {
+                processDatas();
+            }
         }
     });
 }
@@ -109,9 +149,9 @@ function createHtmlForCategory(template, categorysIndex) {
     template = matchToStr(template, /\$\$\$/, categorys[categorysIndex]);
     fs.writeFile('../result/' + categorys[categorysIndex] + '.html', template, 'utf-8', function (error) {
         if (error) {
-            console.log(error);
+            buildLog('createHtmlForCategory', error, 'ERROR!');
         } else {
-            console.log(categorys[categorysIndex] + '.html complete');
+            buildLog('createHtmlForCategory', categorys[categorysIndex] + '.html complete');
         }
     });
 }
@@ -119,7 +159,7 @@ function createHtmlForCategory(template, categorysIndex) {
 // generate category html file by template.html
 fs.readFile('template.html', 'utf-8', function (error, data) {
     if (error) {
-        console.log(error);
+        buildLog('LINE-135', error, 'ERROR!');
     } else {
         for (let i = 0; i < categorys.length; i++) {
             createHtmlForCategory(data, i);
@@ -131,19 +171,17 @@ fs.readFile('template.html', 'utf-8', function (error, data) {
 function generateElementJson(element) {
     fs.readFile(element + '.html', 'utf-8', function (error, data) {
         if (error) {
-            console.log('[generateElementJson]' + error);
+            buildLog('generateElementJson', error, 'ERROR!');
         } else {
-            console.log(element);
             let updateData = matchToStr(data, /\$address\$/, address);
-            console.log(element);
             let obj = { "feature": "" };
             obj.feature = updateData;
             let str = JSON.stringify(obj);
             fs.writeFile('../data/' + element + '.json', str, 'utf-8', function (error) {
                 if (error) {
-                    console.log('[generateElementJson]' + error);
+                    buildLog('generateElementJson', error, 'ERROR!');
                 } else {
-                    console.log('[generateElementJson]' + element + '.json' + ' complete');
+                    buildLog('generateElementJson', element + '.json' + ' complete');
                 }
             });
         }
@@ -153,3 +191,4 @@ function generateElementJson(element) {
 generateElementJson('nav');
 // generate ../data/footer.json by footer.html
 generateElementJson('footer');
+
