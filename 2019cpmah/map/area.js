@@ -87,7 +87,7 @@ class area {
                 upSide += temp[1];
             }
             if (leftSide % 2 === 1) {
-                console.log(this.cName, leftSide, upSide);
+                // console.log(this.cName, leftSide, upSide);
                 //this.fillColor = createRandomColor();
                 this.offset = 5;
                 this.fillColor = alpha(0);
