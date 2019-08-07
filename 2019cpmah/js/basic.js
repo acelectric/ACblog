@@ -137,7 +137,7 @@ function ajaxClassificationPage(category) {
         category = 'none';
     }
     let xhr = new XMLHttpRequest();
-    xhr.open('GET', 'https://acblog.nctu.me/2019cpmah/data/' + category + '.json');
+    xhr.open('GET', 'https://acblog.nctu.me/2019cpmah/data/categorys/' + category + '.json');
     xhr.send('null');
     xhr.onload = function () {
         let generateBox = function (obj) {
