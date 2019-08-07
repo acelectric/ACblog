@@ -43,12 +43,12 @@ function ajaxFooter() {
         document.getElementById('footer').innerHTML = obj.feature;
     }
 }
-function initPage() {
+function initPage(contentClass) {
     document.body.innerHTML = '';
     ajaxNav();
     let content = document.createElement('div');
     content.id = 'content';
-    content.className += " flex";
+    content.className += contentClass;
     document.body.appendChild(content);
     ajaxFooter();
     let back = document.createElement('div');
@@ -56,7 +56,7 @@ function initPage() {
     document.body.appendChild(back);
 }
 function ajaxPage(page, link) {
-    initPage();
+    initPage('');
 
     let xhr = new XMLHttpRequest();
     xhr.open('GET', address + 'data/raw/' + page + '.json');
@@ -88,12 +88,13 @@ function ajaxPage(page, link) {
                     temp.classList.value += ' text';
                 }
             }
-            addChildInContent().style.height = '10px';
+            addChildInContent().style.height = '100px';
 
             if (link == '簡介' || link == 'all') {
                 addChildInContent('級別 : ' + obj.level).classList += ' text';
                 addChildInContent('開放時間 : ' + obj.openingHours).classList += ' text';
                 addChildInContent('門票資訊 : ' + obj.ticket).classList += ' text';
+                addChildInContent('地址 : ' + obj.address).classList += ' text';
 
                 addChildInContent('交通方式：<br />').classList += ' text';
                 for (let i = 0; i < obj.traffic.length; i++) {
@@ -102,6 +103,13 @@ function ajaxPage(page, link) {
                     addChildInContent(obj.traffic[i][1]).classList += ' text';
                     addChildInContent().style.height = '30px';
                 }
+                let mapContainer = addChildInContent();
+                mapContainer.style.textAlign = 'center';
+                let googleMap = document.createElement('iframe');
+                googleMap.src = 'https://www.google.com/maps/embed/v1/place?key=AIzaSyDUhIo7me0xLxCnncSfh9iE9RFs5c1XNJI&language=zh-tw&q=' + obj.name;
+                googleMap.frameBorder = "0";
+                googleMap.id = 'googleMap';
+                mapContainer.appendChild(googleMap);
             }
 
             if (link == '資料來源' || link == 'all') {
@@ -129,7 +137,7 @@ function ajaxPage(page, link) {
 }
 
 function ajaxClassificationPage(category) {
-    initPage();
+    initPage('flex');
 
     let categorys = ['KEE', 'TPQ', 'TPE', 'TAO', 'HSQ', 'HSZ', 'MIA', 'TXG', 'CHA', 'YUN', 'CYQ', 'CYI', 'TNN', 'KHH', 'PIF', 'NAN', 'ILA', 'HUA', 'TTT', 'JME', 'PEN', 'LJF', 'all', 'national', 'municipality', 'county'];
 

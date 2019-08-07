@@ -61,20 +61,20 @@ function setup() {
                 areas[i].eName = eName[j][1];
             }
         }
-        //areas[i].reSize();
+        areas[i].reSize();
     }
-    for (let i = 0; i < areas.length; i++) {
-        for (let j = 0; j < areas[i].path.length; j++) {
-            for (let k = 0; k < areas[i].path[j].length; k++) {
-                for (let l = 0; l < areas[i].path[j][k].length; l++) {
-                    areas[i].path[j][k][l][1] += 55;
-                }
-            }
-        }
-    }
-    let str = JSON.stringify(areas, ["feature", "eName", "cName", "path"]);
+    // for (let i = 0; i < areas.length; i++) {
+    //     for (let j = 0; j < areas[i].path.length; j++) {
+    //         for (let k = 0; k < areas[i].path[j].length; k++) {
+    //             for (let l = 0; l < areas[i].path[j][k].length; l++) {
+    //                 areas[i].path[j][k][l][1] += 55;
+    //             }
+    //         }
+    //     }
+    // }
+    // let str = JSON.stringify(areas, ["feature", "eName", "cName", "path"]);
 
-    console.log(str);
+    // console.log(str);
     console.log(areas);
 
     for (let i = 0; i < areas.length; i++) {
