@@ -57,7 +57,7 @@ function ajaxPage(page, link) {
     initPage();
 
     let xhr = new XMLHttpRequest();
-    xhr.open('GET', 'https://acblog.nctu.me/2019cpmah/data/' + page + '.json');
+    xhr.open('GET', 'https://acblog.nctu.me/2019cpmah/data/raw/' + page + '.json');
     xhr.send('null');
     xhr.onload = function () {
         let obj = JSON.parse(xhr.responseText);
@@ -168,7 +168,7 @@ function ajaxClassificationPage(category) {
         obj = obj.feature;
         for (let i = 0; i < obj.length; i++) {
             let xhr = new XMLHttpRequest();
-            let json = 'https://acblog.nctu.me/2019cpmah/data/' + obj[i].json + '.json';
+            let json = 'https://acblog.nctu.me/2019cpmah/data/raw/' + obj[i].json + '.json';
             xhr.open('GET', json);
             xhr.send('null');
             xhr.onload = function () {
