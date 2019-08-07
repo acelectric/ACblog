@@ -92,16 +92,21 @@ function ajaxPage(page, link) {
 
             if (link == '簡介' || link == 'all') {
                 addChildInContent('級別 : ' + obj.level).classList += ' text';
+                addChildInContent().style.height = '20px';
                 addChildInContent('開放時間 : ' + obj.openingHours).classList += ' text';
+                addChildInContent().style.height = '20px';
                 addChildInContent('門票資訊 : ' + obj.ticket).classList += ' text';
+                addChildInContent().style.height = '20px';
                 addChildInContent('地址 : ' + obj.address).classList += ' text';
+                addChildInContent().style.height = '20px';
 
                 addChildInContent('交通方式：<br />').classList += ' text';
+                addChildInContent().style.height = '20px';
                 for (let i = 0; i < obj.traffic.length; i++) {
                     let temp = addChildInContent((i + 1) + "." + obj.traffic[i][0]);
                     temp.classList += ' text';
                     addChildInContent(obj.traffic[i][1]).classList += ' text';
-                    addChildInContent().style.height = '30px';
+                    addChildInContent().style.height = '10px';
                 }
                 let mapContainer = addChildInContent();
                 mapContainer.style.textAlign = 'center';
@@ -158,6 +163,9 @@ function ajaxClassificationPage(category) {
             let boxImg = document.createElement('div');
             boxImg.classList += ' box-img';
             boxImg.style.backgroundImage = 'url(' + address + 'img/img' + obj.img[0] + '.jpg' + ')';
+            boxImg.onclick = function () {
+                ajaxPage(obj.json, 'all');
+            };
             temp.appendChild(boxImg);
             let boxText = document.createElement('div');
             boxText.classList += ' box-text';
@@ -168,7 +176,6 @@ function ajaxClassificationPage(category) {
                 boxLink.classList += 'box-link';
                 boxLink.innerHTML += obj.link[i];
                 boxLink.onclick = function () {
-                    document.getElementById('content').innerHTML = '';
                     ajaxPage(obj.json, obj.link[i]);
                 };
                 temp.appendChild(boxLink);

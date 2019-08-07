@@ -93,12 +93,13 @@ a:hover {
 }
 .img-container {
     display:block;
-    width: 100%;
+    width: 80%;
     height: 300px;
     overflow-x: scroll;
     margin: 10px 0px;
     text-align: center;
     white-space: nowrap;
+    margin: auto;
 }
 img {
     max-height: 300px;
