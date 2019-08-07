@@ -2,7 +2,8 @@ let fs = require('fs');
 
 
 // ===================
-let fileCount = 81
+let fileCount = 81;
+let address = 'https://acblog.nctu.me/2019cpmah/';
 // ===================
 
 let datas = new Array(fileCount);
@@ -78,7 +79,7 @@ let processDatas = function () {
 };
 
 
-
+// process raw data to category data
 for (let i = 1; i <= fileCount; i++) {
     fs.readFile('../data/raw/' + i + '.json', 'utf-8', function (error, data) {
         if (error) console.log(error);
@@ -92,13 +93,20 @@ for (let i = 1; i <= fileCount; i++) {
     });
 }
 
+let matchToStr = function (data, match, str) {
+    while (data.match(match)) {
+        data = data.replace(match, str);
+    }
+    return data;
+}
 
 let categorys = ['KEE', 'TPQ', 'TPE', 'TAO', 'HSQ', 'HSZ', 'MIA', 'TXG', 'CHA', 'YUN', 'CYQ', 'CYI', 'TNN', 'KHH', 'PIF', 'NAN', 'ILA', 'HUA', 'TTT', 'JME', 'PEN', 'LJF', 'all', 'national', 'municipality', 'county'];
 
 function createHtmlForCategory(template, categorysIndex) {
-    while (template.match(/\$\$\$/)) {
-        template = template.replace('$$$', categorys[categorysIndex]);
-    }
+    // while (template.match(/\$\$\$/)) {
+    //     template = template.replace('$$$', categorys[categorysIndex]);
+    // }
+    template = matchToStr(template, /\$\$\$/, categorys[categorysIndex]);
     fs.writeFile('../result/' + categorys[categorysIndex] + '.html', template, 'utf-8', function (error) {
         if (error) {
             console.log(error);
@@ -107,6 +115,8 @@ function createHtmlForCategory(template, categorysIndex) {
         }
     });
 }
+
+// generate category html file by template.html
 fs.readFile('template.html', 'utf-8', function (error, data) {
     if (error) {
         console.log(error);
@@ -116,3 +126,30 @@ fs.readFile('template.html', 'utf-8', function (error, data) {
         }
     }
 });
+
+// generate ../data/nav.json by nav.html
+function generateElementJson(element) {
+    fs.readFile(element + '.html', 'utf-8', function (error, data) {
+        if (error) {
+            console.log('[generateElementJson]' + error);
+        } else {
+            console.log(element);
+            let updateData = matchToStr(data, /\$address\$/, address);
+            console.log(element);
+            let obj = { "feature": "" };
+            obj.feature = updateData;
+            let str = JSON.stringify(obj);
+            fs.writeFile('../data/' + element + '.json', str, 'utf-8', function (error) {
+                if (error) {
+                    console.log('[generateElementJson]' + error);
+                } else {
+                    console.log('[generateElementJson]' + element + '.json' + ' complete');
+                }
+            });
+        }
+    });
+}
+// generate ../data/nav.json by nav.html
+generateElementJson('nav');
+// generate ../data/footer.json by footer.html
+generateElementJson('footer');
