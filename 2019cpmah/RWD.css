@@ -3,12 +3,19 @@
         width: 100%;
         padding: 0px 30px;
         border-bottom: 1px solid black;
+        font-size: 25px;
+        line-height: 50px;
+    }
+    .nav {
+        height: 50px;
+        line-height: 50px;
+        font-size: 20px;
     }
     .nav-item {
         background-color: inherit;
         width: 100%;
-        height: 50px;
-        line-height: 50px;
+        height: 40px;
+        line-height: 40px;
         text-align: center;
         display: none;
     }
@@ -20,6 +27,15 @@
         line-height: 1.5em;
     }
     #hamburger {
+        width: 30px;
+        height: 30px;
+        margin: 10px 0px;
         display: flex;
+    }
+    #hamburger-close {
+        display: none;
+        font-size: 50px;
+        margin: -5px 0px;
+        cursor: pointer;
     }
 }

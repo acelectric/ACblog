@@ -87,6 +87,9 @@ function ajaxPage(page, link) {
                     temp = addChildInContent(obj.article[i][1]);
                     temp.classList.value += ' text';
                 }
+                if (link == 'all') {
+                    addChildInContent().style.height = '30px';
+                }
             }
             addChildInContent().style.height = '100px';
 

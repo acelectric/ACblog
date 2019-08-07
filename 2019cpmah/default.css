@@ -16,6 +16,9 @@ h1,h2,h3 {
     color: #C06014;
     line-height: 3em;
 }
+h2 {
+    color: rgb(182, 125, 79);
+}
 hr {
     border: 0;
     width: 100%;
@@ -28,7 +31,6 @@ a {
     /* 取消點擊時的反藍效果 */
     outline:none;
     border: none;
-    line-height: 100%;
     -webkit-tap-highlight-color: rgba(0,0,0,0);
     -webkit-tap-highlight-color:transparent;
     cursor: pointer;
@@ -138,7 +140,6 @@ img {
 .nav-brand>a {
     height:inherit;
     width: 200px;
-    line-height: 100px;
     display: block;
     background-color: transparent;
     color: #C06014;
@@ -172,14 +173,14 @@ img {
     height: 40px;
     margin: 30px 0px;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
     display: none;
     cursor: pointer;
 }
 #hamburger>div {
     background-color: #C06014;
     width: 100%;
-    height: 6px;
+    height: 14%;
     border-radius: 3px;
 }
 #hamburger-close {
@@ -215,6 +216,7 @@ img {
     background-size: 300px;
     background-position: center center;
     border-radius: 10px 10px 0px 0px;
+    cursor: pointer;
 }
 .box-text {
     width: 100%;
@@ -229,6 +231,7 @@ img {
     line-height: 25px;
     border-radius: 5px;
     margin: 5px;
+    cursor: pointer;
 }
 #topbtn {
     background-color: #C06014;
