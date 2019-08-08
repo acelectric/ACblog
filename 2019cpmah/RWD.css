@@ -1,7 +1,7 @@
 @media screen and (max-width:1024px){
     .nav-brand {
         width: 100%;
-        padding: 0px 30px;
+        padding: 0px 5%;
         border-bottom: 1px solid black;
         font-size: 25px;
         line-height: 50px;
@@ -40,5 +40,11 @@
         font-size: 50px;
         margin: -5px 0px;
         cursor: pointer;
+    }
+    #googleMap {
+        width: 80%;
+        height: 300px;
+        margin-left: auto;
+        margin-right: auto;
     }
 }

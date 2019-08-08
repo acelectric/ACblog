@@ -48,6 +48,9 @@ a:hover {
 }
 .sourceA {
     color: #007bff;
+    line-height: 1em;
+    padding: 10px 0px;
+    display: block;
 }
 .sourceA:hover {
     color: #007bff;
@@ -251,7 +254,9 @@ img {
     line-height: inherit;
 }
 
-
+.articleImg {
+    max-width: 100%;
+}
 
 #canvas {
     width: 500px;

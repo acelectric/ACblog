@@ -108,14 +108,21 @@ function ajaxPage(page, link) {
                 let labelCount = 0;
                 for (let i = 0; i < obj.traffic.length; i++) {
                     if (obj.traffic[i][0] == '<a>') {
-                        let temp = addChildInContent(obj.traffic[i][1], 'a');
-                        temp.className += ' text sourceA';
+                        let container = addChildInContent();
+                        container.className += ' text';
+                        let temp = document.createElement('a');
+                        temp.innerHTML = obj.traffic[i][1];
+                        temp.className += 'sourceA';
                         temp.href = obj.traffic[i][1];
+                        container.appendChild(temp);
                         labelCount++;
                     } else if (obj.traffic[i][0] == '<img>') {
-                        let temp = addChildInContent('', 'img');
+                        let container = addChildInContent();
+                        container.className += ' text';
+                        let temp = document.createElement('img');
                         temp.src = address + 'img/img' + obj.traffic[i][1] + '.jpg';
-                        temp.className += ' text articleImg';
+                        temp.className += 'articleImg';
+                        container.appendChild(temp);
                         labelCount++;
                     } else {
                         let temp = addChildInContent((i + 1 - labelCount) + "." + obj.traffic[i][0]);
