@@ -5,7 +5,7 @@
     "address": "番路鄉民和村二鄰岩仔6號",
     "traffic": [
         [
-            " 公車",
+            "公車",
             "➔ 搭乘開往半天岩的嘉義縣公車，於紫雲寺下車即可 。<br />"
         ],
         [
@@ -19,7 +19,9 @@
         "https://zh.wikipedia.org/wiki/%E5%8D%8A%E5%A4%A9%E5%B2%A9%E7%B4%AB%E9%9B%B2%E5%AF%BA",
         "https://nchdb.boch.gov.tw/assets/overview/monument/19851127000039"
     ],
-    "img": [],
+    "img": [
+        376
+    ],
     "article": [
         [
             "簡介",

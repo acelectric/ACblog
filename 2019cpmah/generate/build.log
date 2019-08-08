@@ -57,3 +57,62 @@ address : https://acblog.nctu.me/2019cpmah/
 [NORMAL]createJsonFile ==> ../data/categorys/NAN.json done!
 [NORMAL]createHtmlForCategory ==> CHA.html complete
 [NORMAL]createJsonFile ==> ../data/categorys/CYI.json done!
+==============================================================
+Date : 2019年8月8日(21:26:5)
+fileCount : 106
+address : https://acblog.nctu.me/2019cpmah/
+==============================================================
+[NORMAL]createHtmlForCategory ==> MIA.html complete
+[NORMAL]createHtmlForCategory ==> CHA.html complete
+[NORMAL]createHtmlForCategory ==> CYI.html complete
+[NORMAL]createHtmlForCategory ==> TXG.html complete
+[NORMAL]createHtmlForCategory ==> TNN.html complete
+[NORMAL]createHtmlForCategory ==> NAN.html complete
+[NORMAL]createHtmlForCategory ==> YUN.html complete
+[NORMAL]createHtmlForCategory ==> HUA.html complete
+[NORMAL]createHtmlForCategory ==> PEN.html complete
+[NORMAL]createHtmlForCategory ==> ILA.html complete
+[NORMAL]createHtmlForCategory ==> LJF.html complete
+[NORMAL]createHtmlForCategory ==> JME.html complete
+[NORMAL]createHtmlForCategory ==> all.html complete
+[NORMAL]createHtmlForCategory ==> municipality.html complete
+[NORMAL]createHtmlForCategory ==> CYQ.html complete
+[NORMAL]createHtmlForCategory ==> national.html complete
+[NORMAL]createHtmlForCategory ==> TTT.html complete
+[NORMAL]createHtmlForCategory ==> PIF.html complete
+[NORMAL]generateElementJson ==> footer.json complete
+[NORMAL]createHtmlForCategory ==> county.html complete
+[NORMAL]createJsonFile ==> ../data/categorys/all.json done!
+[NORMAL]createHtmlForCategory ==> TPE.html complete
+[NORMAL]createHtmlForCategory ==> KHH.html complete
+[NORMAL]createHtmlForCategory ==> HSQ.html complete
+[NORMAL]createHtmlForCategory ==> TAO.html complete
+[NORMAL]createHtmlForCategory ==> KEE.html complete
+[NORMAL]createJsonFile ==> ../data/categorys/municipality.json done!
+[NORMAL]createJsonFile ==> ../data/categorys/national.json done!
+[NORMAL]createJsonFile ==> ../data/categorys/TAO.json done!
+[NORMAL]createJsonFile ==> ../data/categorys/county.json done!
+[NORMAL]createJsonFile ==> ../data/categorys/TPQ.json done!
+[NORMAL]createJsonFile ==> ../data/categorys/KEE.json done!
+[NORMAL]createJsonFile ==> ../data/categorys/HSQ.json done!
+[NORMAL]createJsonFile ==> ../data/categorys/HSZ.json done!
+[NORMAL]createJsonFile ==> ../data/categorys/MIA.json done!
+[NORMAL]createJsonFile ==> ../data/categorys/CHA.json done!
+[NORMAL]createJsonFile ==> ../data/categorys/TPE.json done!
+[NORMAL]createJsonFile ==> ../data/categorys/CYQ.json done!
+[NORMAL]createJsonFile ==> ../data/categorys/TXG.json done!
+[NORMAL]createJsonFile ==> ../data/categorys/CYI.json done!
+[NORMAL]createJsonFile ==> ../data/categorys/TNN.json done!
+[NORMAL]createJsonFile ==> ../data/categorys/YUN.json done!
+[NORMAL]createJsonFile ==> ../data/categorys/NAN.json done!
+[NORMAL]createJsonFile ==> ../data/categorys/ILA.json done!
+[NORMAL]createJsonFile ==> ../data/categorys/PEN.json done!
+[NORMAL]createJsonFile ==> ../data/categorys/PIF.json done!
+[NORMAL]createJsonFile ==> ../data/categorys/KHH.json done!
+[NORMAL]createJsonFile ==> ../data/categorys/LJF.json done!
+[NORMAL]createJsonFile ==> ../data/categorys/JME.json done!
+[NORMAL]createJsonFile ==> ../data/categorys/HUA.json done!
+[NORMAL]createHtmlForCategory ==> TPQ.html complete
+[NORMAL]createHtmlForCategory ==> HSZ.html complete
+[NORMAL]generateElementJson ==> nav.json complete
+[NORMAL]createJsonFile ==> ../data/categorys/TTT.json done!

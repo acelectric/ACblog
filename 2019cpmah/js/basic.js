@@ -105,10 +105,23 @@ function ajaxPage(page, link) {
 
                 addChildInContent('交通方式：<br />').classList += ' text';
                 addChildInContent().style.height = '20px';
+                let labelCount = 0;
                 for (let i = 0; i < obj.traffic.length; i++) {
-                    let temp = addChildInContent((i + 1) + "." + obj.traffic[i][0]);
-                    temp.classList += ' text';
-                    addChildInContent(obj.traffic[i][1]).classList += ' text';
+                    if (obj.traffic[i][0] == '<a>') {
+                        let temp = addChildInContent(obj.traffic[i][1], 'a');
+                        temp.className += ' text sourceA';
+                        temp.href = obj.traffic[i][1];
+                        labelCount++;
+                    } else if (obj.traffic[i][0] == '<img>') {
+                        let temp = addChildInContent('', 'img');
+                        temp.src = address + 'img/img' + obj.traffic[i][1] + '.jpg';
+                        temp.className += ' text articleImg';
+                        labelCount++;
+                    } else {
+                        let temp = addChildInContent((i + 1 - labelCount) + "." + obj.traffic[i][0]);
+                        temp.classList += ' text';
+                        addChildInContent(obj.traffic[i][1]).classList += ' text';
+                    }
                     addChildInContent().style.height = '10px';
                 }
                 let mapContainer = addChildInContent();
