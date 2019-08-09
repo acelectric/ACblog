@@ -47,7 +47,6 @@ function preload() {
 }
 var a;
 function setup() {
-    initPage('flex-center');
     ajaxMapPage(mapJSON.feature);
     newSize = windowWidth < windowHeight ? windowWidth : windowHeight;
     newSize -= margin * 2;
