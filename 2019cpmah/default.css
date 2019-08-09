@@ -344,6 +344,11 @@ img {
     outline: none;
 }
 
+.tab {
+    display:inline-block;
+    width: 30px;
+}
+
 .bgc-ochre {
     background-color: #C06014;
 }
