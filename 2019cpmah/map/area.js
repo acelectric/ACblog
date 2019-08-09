@@ -1,10 +1,11 @@
 class area {
     constructor(obj) {
         this.cName = obj.cName;
-        this.eName = "";
+        this.eName = obj.eName;
         // this.type = feature.geometry.type;
         // this.coordinates = feature.geometry.coordinates;
-        this.fillColor = color(255, 0, 0)//createRandomColor();
+        this.fillColor = color('#EDDBCD');
+        this.initColor = this.fillColor;
         this.path = obj.path;
         // console.log(this.properties, this.coordinates);
         this.offset = 0;
@@ -21,6 +22,7 @@ class area {
     show() {
         fill(this.fillColor);
         //noStroke();
+        stroke('#C06014');
         for (let i = 0; i < this.path.length; i++) {
             beginShape();
             for (let j = 0; j < this.path[i].length; j++) {
@@ -33,6 +35,12 @@ class area {
             }
             endShape();
         }
+    }
+    showName() {
+        fill('#000000');
+        noStroke();
+        textSize(16);
+        text(this.cName, mouseX + 10, mouseY + 20);
     }
     changeColor() {
         this.fillColor = createRandomColor();
@@ -87,15 +95,11 @@ class area {
                 upSide += temp[1];
             }
             if (leftSide % 2 === 1) {
-                // console.log(this.cName, leftSide, upSide);
-                //this.fillColor = createRandomColor();
-                this.offset = 5;
-                this.fillColor = alpha(0);
                 return true;
             }
         }
         this.offset = 0;
-        this.fillColor = color(255, 0, 0);
+        this.fillColor = this.initColor;
         return false;
     }
 }

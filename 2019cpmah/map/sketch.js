@@ -1,4 +1,4 @@
-let address = 'https://acblog.nctu.me/2019cpmah/';
+
 
 let taiwanJSON;
 
@@ -11,7 +11,7 @@ let areas = new Array(22);
 
 // let sizeX = Math.round(maxX - minX);
 // let sizeY = Math.round(maxY - minY);
-const size = 800;
+const size = 855;
 // const scl = 200;
 const margin = 0;
 
@@ -47,25 +47,23 @@ function preload() {
 }
 var a;
 function setup() {
+    initPage('flex-center');
+    ajaxMapPage(mapJSON.feature);
     newSize = windowWidth < windowHeight ? windowWidth : windowHeight;
     newSize -= margin * 2;
+    newSize -= 100; // nav's height
     scl = newSize / size;
     canvas = createCanvas(newSize + margin * 2, newSize + margin * 2);
-    canvas.parent("canvas");
+    canvas.parent("content");
     //createCanvas(sizeX * scl + margin * 2, sizeY * scl + margin * 2);
-    background(51);
+
 
     mapJSON = mapJSON.feature;
     for (let i = 0; i < mapJSON.length; i++) {
         areas[i] = new area(mapJSON[i]);
-        for (let j = 0; j < eName.length; j++) {
-            if (areas[i].cName === eName[j][0]) {
-                areas[i].eName = eName[j][1];
-            }
-        }
         areas[i].reSize();
     }
-    // console.log(areas);
+    console.log(areas);
 
     for (let i = 0; i < areas.length; i++) {
         createA(address + 'result/' + areas[i].eName + ".html", "").id(areas[i].eName);
@@ -79,14 +77,27 @@ function setup() {
     //console.log(JSON.stringify(areas, ["cName", "eName", "path"]));
 }
 function draw() {
-    background(51);
+    background(color('transpatent'));
     for (let i = 0; i < areas.length; i++) {
         areas[i].show();
     }
 
-
+    let inAreas = false;
     for (let i = 0; i < areas.length; i++) {
-        areas[i].isPointInArea(mouseX, mouseY);
+        if (areas[i].isPointInArea(mouseX, mouseY)) {
+            areas[i].showName();
+            areas[i].fillColor = color('#C06014');
+            let a = document.getElementById('areas');
+            a.options[i].selected = true;
+
+
+            inAreas = true;
+        }
+    }
+    if (inAreas) {
+        cursor('pointer');
+    } else {
+        cursor('default');
     }
 
 }
@@ -94,6 +105,7 @@ function mousePressed() {
     for (let i = 0; i < areas.length; i++) {
         if (areas[i].isPointInArea(mouseX, mouseY)) {
             document.getElementById(areas[i].eName).click();
+            console.log(document.getElementById('areas').value);
         }
     }
 }
