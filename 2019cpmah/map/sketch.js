@@ -86,7 +86,7 @@ function draw() {
         if (areas[i].isPointInArea(mouseX, mouseY)) {
             areas[i].showName();
             areas[i].fillColor = color('#C06014');
-            let a = document.getElementById('areas');
+            let a = document.getElementById('optionList');
             a.options[i].selected = true;
 
 
