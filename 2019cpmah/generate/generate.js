@@ -2,7 +2,7 @@ let fs = require('fs');
 
 
 // ===================
-let fileCount = 106;
+let fileCount = 120;
 let address = 'https://acblog.nctu.me/2019cpmah/';
 // ===================
 
@@ -113,6 +113,11 @@ let processDatas = function () {
             }
         }
         createJsonFile(areas[i], areaObjs);
+    }
+    for (let i = 0; i < objs.feature.length; i++) {
+        if (areas.indexOf(objs.feature[i].area) == -1) {
+            buildLog('processDatas', objs.feature[i] + 'area may error', '-WARN-');
+        }
     }
 };
 
