@@ -14,28 +14,39 @@
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
         integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-    <link rel="stylesheet" href="default.css" type="text/css">
-    <link rel="stylesheet" href="RWD.css" type="text/css">
+    <link rel="stylesheet" href="./default.css" type="text/css">
+    <link rel="stylesheet" href="./RWD.css" type="text/css">
     <link rel="shortcut icon" href="#">
-
-
-    <script src="./js/p5.min.js"></script>
-    <script src="./js/addons/p5.dom.min.js"></script>
-    <script src="./js/addons/p5.sound.min.js"></script>
-    <script src="./js/basic.js"></script>
-    <script src="./map/sketch.js"></script>
-    <script src="./map/area.js"></script>
-
-
+    <script type="text/javascript" src="./js/basic.js"></script>
 </head>
 
 <body>
-    <div id="header"></div>
-    <div class="content">
-        <div id="canvas"></div>
-    </div>
-    <div id="footer"></div>
+
 </body>
 
+
+<script type="text/javascript">
+    initPage();
+
+    let xhr = new XMLHttpRequest();
+
+    xhr.open('GET', address + 'data/categorys/all.json');
+    xhr.send('null');
+    xhr.onload = function () {
+        let obj = JSON.parse(xhr.responseText);
+        let data = obj.feature;
+        for (let i = 0; i < data.length; i++) {
+            for (let j = 0; j < data[i].img.length; j++) {
+                let temp = addChildInContent('', 'img');
+                temp.src = address + 'img/img' + data[i].img[j] + '.jpg';
+                temp.className += ' img-all';
+                temp.onclick = function () {
+                    console.log(data[i].json);
+                };
+            }
+        }
+    }
+
+</script>
 
 </html>

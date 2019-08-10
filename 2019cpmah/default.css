@@ -113,6 +113,11 @@ img {
     margin: 0px 10px;
     display: inline;
 }
+.img-all {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+}
 .style-1 {
     background-color: #CDCDCD;
 }
