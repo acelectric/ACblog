@@ -93,10 +93,20 @@ a:hover {
 #footer {
     width: 100%;
     font-size: 26px;
-    line-height: 2em;
+    line-height: 26px;
     margin-top: 20px;
     background-color: black;
     color: white;
+    display: flex;
+}
+#footer> .box {
+    
+}
+#footer> .verticalLine {
+    padding: 10px;
+    height: 100%;
+    width: 0px;
+    border: 1px solid white;
 }
 .img-container {
     display:block;
