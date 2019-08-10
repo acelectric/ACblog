@@ -92,21 +92,27 @@ a:hover {
 }
 #footer {
     width: 100%;
-    font-size: 26px;
-    line-height: 26px;
-    margin-top: 20px;
+    font-size: 16px;
+    line-height: 22px;
     background-color: black;
     color: white;
     display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    align-items: stretch;
 }
-#footer> .box {
-    
+.footerBox {
+    width: 30%;
+    max-width: 300px;
+    margin: 20px;
+    align-self: center;
+    flex-grow: 1;
 }
-#footer> .verticalLine {
-    padding: 10px;
-    height: 100%;
+
+.verticalLine {
     width: 0px;
     border: 1px solid white;
+    margin: 20px 0px;
 }
 .img-container {
     display:block;
