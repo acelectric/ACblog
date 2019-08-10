@@ -2,7 +2,7 @@ let fs = require('fs');
 
 
 // ===================
-let fileCount = 120;
+let fileCount = 129;
 let address = 'https://acblog.nctu.me/2019cpmah/';
 // ===================
 
@@ -29,7 +29,17 @@ fs.writeFileSync('build.log', buildLogStr, { "flag": "a" }, function (error) {
     } else {
     }
 });
-
+function eNameToCName(target) {
+    let map = [["連江縣", "LJF"], ["金門縣", "JME"], ["宜蘭縣", "ILA"], ["新竹縣", "HSQ"], ["苗栗縣", "MIA"], ["彰化縣", "CHA"], ["南投縣", "NAN"], ["雲林縣", "YUN"], ["嘉義縣", "CYQ"], ["屏東縣", "PIF"], ["臺東縣", "TTT"], ["花蓮縣", "HUA"], ["澎湖縣", "PEN"], ["基隆市", "KEE"], ["新竹市", "HSZ"], ["嘉義市", "CYI"], ["臺北市", "TPE"], ["高雄市", "KHH"], ["新北市", "TPQ"], ["臺中市", "TXG"], ["臺南市", "TNN"], ["桃園市", "TAO"], ["總覽", "all"], ["國定古蹟", "national"], ["直轄市定古蹟", "municipality"], ["縣(市)定古蹟", "county"]];
+    let result = "none";
+    for (let i = 0; i < map.length; i++) {
+        if (target == map[i][1]) {
+            result = map[i][0];
+            break;
+        }
+    }
+    return result;
+}
 function buildLog(func, message, status = 'NORMAL', ) {
     let str = "";
     if (status == 'ERROR!') {
@@ -80,6 +90,10 @@ let processDatas = function () {
         obj.level = datas[i].level;
         obj.area = datas[i].area;
         objs.feature.push(obj);
+        if (obj.link[0] != '簡介') {
+            buildLog('processDatas', 'json:' + obj.json + ',name:' + obj.name + '沒有簡介', '-WARN-');
+            //console.log(obj.name + ' 沒有簡介');
+        }
     }
     createJsonFile('all', objs);
 
@@ -107,10 +121,15 @@ let processDatas = function () {
 
     for (let i = 0; i < areas.length; i++) {
         let areaObjs = { "feature": [] };
+        let counter = 0;
         for (let j = 0; j < objs.feature.length; j++) {
             if (areas[i] == objs.feature[j].area) {
                 areaObjs.feature.push(objs.feature[j]);
+                counter++;
             }
+        }
+        if (counter == 0) {
+            buildLog('processDatas', eNameToCName(areas[i]) + '未完成', '-WARN-');
         }
         createJsonFile(areas[i], areaObjs);
     }
@@ -196,4 +215,6 @@ function generateElementJson(element) {
 generateElementJson('nav');
 // generate ../data/footer.json by footer.html
 generateElementJson('footer');
+
+
 

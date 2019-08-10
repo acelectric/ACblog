@@ -76,6 +76,8 @@ a:hover {
     flex-wrap: wrap;
     justify-content: center;
 }
+
+
 #back {
     background-color: #C06014;
     color: white;
@@ -124,15 +126,24 @@ a:hover {
     white-space: nowrap;
     margin: auto;
 }
-img {
+/* img {
     max-height: 300px;
     margin: 0px 10px;
     display: inline;
+} */
+.img-small {
+    height: 200px;
+    width: 200px;
+    margin: 3px;
+    object-fit: cover;
+    align-self: flex-start;
 }
-.img-all {
-    width: 80px;
-    height: 80px;
-    object-fit: contain;
+.img-big {
+    height: 406px;
+    width: 406px;
+    margin: 3px;
+    object-fit: cover;
+    align-self: flex-start;
 }
 .style-1 {
     background-color: #CDCDCD;
@@ -175,7 +186,7 @@ img {
 .nav-brand>a:hover {
 }
 .nav-item {
-    width: 150px;
+    width: 130px;
     height: 100%;
     color: #000000;
     line-height: 100px;
@@ -183,7 +194,7 @@ img {
 }
 .nav-item>a {
     height:inherit;
-    width: 150px;
+    width: 130px;
     line-height: inherit;
     display: block;
     background-color: transparent;
