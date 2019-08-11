@@ -1,5 +1,3 @@
-
-
 let taiwanJSON;
 
 let areas = new Array(22);
@@ -47,14 +45,16 @@ function preload() {
 }
 var a;
 function setup() {
-    ajaxMapPage(mapJSON.feature);
-    newSize = windowWidth < windowHeight ? windowWidth : windowHeight;
-    newSize -= margin * 2;
-    newSize -= 100; // nav's height
+    initPage('');
+    let temp = addChildInContent('');
+    temp.className = 'index-scope';
+
+    newSize = temp.offsetWidth < temp.offsetHeight ? temp.offsetWidth : temp.offsetHeight;
+    newSize -= 100;
     scl = newSize / size;
-    canvas = createCanvas(newSize + margin * 2, newSize + margin * 2);
-    canvas.parent("content");
-    //createCanvas(sizeX * scl + margin * 2, sizeY * scl + margin * 2);
+
+    let cvs = createCanvas(newSize, newSize);
+    cvs.parent(temp);
 
 
     mapJSON = mapJSON.feature;
@@ -75,29 +75,37 @@ function setup() {
     //frameRate(10);
     //console.log(JSON.stringify(areas, ["cName", "eName", "path"]));
 }
+let counter = 0;
 function draw() {
-    background(color(255));
+    background(color(0, 0, 0, 0));
     for (let i = 0; i < areas.length; i++) {
         areas[i].show();
     }
 
-    let inAreas = false;
+    // let inAreas = false;
+    // for (let i = 0; i < areas.length; i++) {
+    //     if (areas[i].isPointInArea(mouseX, mouseY)) {
+    //         areas[i].showName();
+    //         areas[i].fillColor = color('#C06014');
+
+
+    //         inAreas = true;
+    //     }
+    // }
+    // if (inAreas) {
+    //     cursor('pointer');
+    // } else {
+    //     cursor('default');
+    // }
     for (let i = 0; i < areas.length; i++) {
-        if (areas[i].isPointInArea(mouseX, mouseY)) {
-            areas[i].showName();
+        if (i == counter) {
             areas[i].fillColor = color('#C06014');
-            let a = document.getElementById('optionList');
-            a.options[i].selected = true;
-
-
-            inAreas = true;
+        } else {
+            areas[i].fillColor = areas[i].initColor;
         }
     }
-    if (inAreas) {
-        cursor('pointer');
-    } else {
-        cursor('default');
-    }
+    counter = (++counter % areas.length);
+    frameRate(10);
 
 }
 function mousePressed() {
@@ -110,3 +118,6 @@ function mousePressed() {
 }
 function mouseMoved() {
 }
+
+
+

@@ -47,6 +47,19 @@
 
                 temp.onclick = function () {
                     console.log(data[i].json);
+                    let imgViewContainer = addChildInContent();
+                    imgViewContainer.className = 'img-view-container';
+                    imgViewContainer.onclick = function () {
+                        imgViewContainer.parentNode.removeChild(imgViewContainer);
+                    }
+                    let cross = document.createElement('div');
+                    cross.className = 'cross';
+                    imgViewContainer.appendChild(cross);
+                    let imgView = document.createElement('img');
+                    imgView.src = temp.src;
+                    imgView.className = 'img-view';
+                    imgViewContainer.appendChild(imgView);
+
                 };
             }
         }

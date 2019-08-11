@@ -71,9 +71,26 @@ function ajaxPage(page, link) {
         // console.log(divContainer);
         divContainer.classList.value += ' img-container';
 
+
+
         for (let i = 0; i < obj.img.length; i++) {
             let temp = document.createElement('img');
+            temp.className += ' img-small'
             temp.src = address + "img/img" + obj.img[i] + ".jpg";
+            temp.onclick = function () {
+                let imgViewContainer = addChildInContent();
+                imgViewContainer.className = 'img-view-container';
+                imgViewContainer.onclick = function () {
+                    imgViewContainer.parentNode.removeChild(imgViewContainer);
+                }
+                let cross = document.createElement('div');
+                cross.className = 'cross';
+                imgViewContainer.appendChild(cross);
+                let imgView = document.createElement('img');
+                imgView.src = temp.src;
+                imgView.className = 'img-view';
+                imgViewContainer.appendChild(imgView);
+            }
             divContainer.appendChild(temp);
         }
 
