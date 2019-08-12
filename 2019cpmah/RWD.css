@@ -9,6 +9,7 @@
         height: 7vh;
         line-height: 7vh;
         font-size: 20px;
+        position: fixed;
     }
     .nav-item {
         background-color: inherit;
@@ -47,5 +48,9 @@
     }
     .index-scope {
         height: 93vh;
+    }
+    #content>.text{
+        width: 90%;
+        margin: 10px auto;
     }
 }

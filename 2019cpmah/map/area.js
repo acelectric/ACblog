@@ -4,7 +4,7 @@ class area {
         this.eName = obj.eName;
         // this.type = feature.geometry.type;
         // this.coordinates = feature.geometry.coordinates;
-        this.fillColor = color('#EDDBCD');
+        this.fillColor = createRandomColor();//color('#EDDBCD');
         this.initColor = this.fillColor;
         this.path = obj.path;
         // console.log(this.properties, this.coordinates);

@@ -43,12 +43,16 @@ function ajaxFooter() {
         document.getElementById('footer').innerHTML = obj.feature;
     }
 }
-function initPage(contentClass = '') {
+function initPage(contentClass = '', mode = 'noSave') {
+    let temp = document.body.innerHTML;
     document.body.innerHTML = '';
     ajaxNav();
     let content = document.createElement('div');
     content.id = 'content';
     content.className += contentClass;
+    if (mode == 'save') {
+        content.innerHTML = temp;
+    }
     document.body.appendChild(content);
     ajaxFooter();
     let back = document.createElement('div');
