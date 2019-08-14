@@ -53,11 +53,16 @@ function preload() {
 }
 var a;
 let bigPage;
+let smallPage;
 function setup() {
     let urlParams = new URLSearchParams(window.location.search);
 
     // console.log(urlParams.get('p'));
     bigPage = urlParams.get('p');
+    smallPage = urlParams.get('sp');
+    if (smallPage == null && bigPage == null) {
+        createClassificationSubPage(bigPage, smallPage);
+    }
     if (bigPage == null) {
         bigPage = 'all';
     }

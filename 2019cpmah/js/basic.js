@@ -66,7 +66,7 @@ function initPage(contentClass = '', mode = 'noSave') {
         location.assign(address + 'option.html');
     }
 }
-function ajaxPage(page, link) {
+function ajaxPage(page, link, bigPage = null, smallPage = null) {
     initPage('');
 
     let xhr = new XMLHttpRequest();
@@ -184,6 +184,9 @@ function ajaxPage(page, link) {
         }
 
     }
+    back.onclick = function () {
+        location.assign(address + 'map.html?p=' + bigPage + '&sp=' + smallPage);
+    }
 }
 
 function eNameToCName(target) {
@@ -197,7 +200,7 @@ function eNameToCName(target) {
     }
     return result;
 }
-function generateBox(obj) {
+function generateBox(obj, bigPage = null, smallPage = null) {
     let temp;
     temp = addChildInContent();
     temp.classList += ' box';
@@ -205,25 +208,25 @@ function generateBox(obj) {
     boxImg.classList += ' box-img';
     boxImg.style.backgroundImage = 'url(' + address + 'img/img' + obj.img[0] + '.jpg' + ')';
     boxImg.onclick = function () {
-        ajaxPage(obj.json, 'all');
+        ajaxPage(obj.json, 'all', bigPage, smallPage);
     };
     temp.appendChild(boxImg);
     let boxText = document.createElement('div');
     boxText.classList += ' box-text';
     boxText.innerHTML = obj.name;
     temp.appendChild(boxText);
-    let boxLinkContainer = document.createElement('div');
-    boxLinkContainer.classList += 'box-link-container';
-    for (let i = 0; i < obj.link.length; i++) {
-        let boxLink = document.createElement('div');
-        boxLink.classList += 'box-link';
-        boxLink.innerHTML += obj.link[i];
-        boxLink.onclick = function () {
-            ajaxPage(obj.json, obj.link[i]);
-        };
-        boxLinkContainer.appendChild(boxLink);
-    }
-    temp.appendChild(boxLinkContainer);
+    // let boxLinkContainer = document.createElement('div');
+    // boxLinkContainer.classList += 'box-link-container';
+    // for (let i = 0; i < obj.link.length; i++) {
+    //     let boxLink = document.createElement('div');
+    //     boxLink.classList += 'box-link';
+    //     boxLink.innerHTML += obj.link[i];
+    //     boxLink.onclick = function () {
+    //         ajaxPage(obj.json, obj.link[i]);
+    //     };
+    //     boxLinkContainer.appendChild(boxLink);
+    // }
+    // temp.appendChild(boxLinkContainer);
     return temp;
 }
 function ajaxClassificationPage(category) {
@@ -277,9 +280,9 @@ function ajaxClassificationPage(category) {
 function createClassificationSubPage(bigPage, smallPage) {
     // let temp = document.getElementById('optionSetContainer');
     document.getElementById('content').innerHTML = "";
-    let titleStr = eNameToCName(bigPage);
-    titleStr += '-';
-    titleStr += eNameToCName(smallPage);
+    // let titleStr = eNameToCName(bigPage);
+    // titleStr += '-';
+    let titleStr = eNameToCName(smallPage);
     let title = addChildInContent(titleStr, 'h1');
     title.className += ' text';
     // document.getElementById('content').appendChild(temp);
@@ -295,12 +298,16 @@ function createClassificationSubPage(bigPage, smallPage) {
         let boxCounter = 0;
         for (let i = 0; i < obj.length; i++) {
             if (obj[i].area == smallPage) {
-                generateBox(obj[i]);
+                generateBox(obj[i], bigPage, smallPage);
                 boxCounter++;
             }
         }
         if (boxCounter == 0) {
             alert(eNameToCName(smallPage) + '沒有' + eNameToCName(bigPage));
+            location.assign(address + 'map.html?p=' + bigPage);
+        }
+
+        back.onclick = function () {
             location.assign(address + 'map.html?p=' + bigPage);
         }
     }
@@ -338,7 +345,8 @@ function ajaxMapPage(areas, t) {
     document.body.appendChild(content);
 
     let title = document.createElement('h1');
-    title.innerHTML = '古蹟地圖-' + eNameToCName(t);
+    // title.innerHTML = '古蹟地圖-';
+    title.innerHTML = eNameToCName(t);
     title.className += ' text';
     content.appendChild(title);
 
