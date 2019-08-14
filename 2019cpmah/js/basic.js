@@ -301,7 +301,7 @@ function createClassificationSubPage(bigPage, smallPage) {
         }
         if (boxCounter == 0) {
             alert(eNameToCName(smallPage) + '沒有' + eNameToCName(bigPage));
-            location.assign(address + 'map.html?' + bigPage);
+            location.assign(address + 'map.html?p=' + bigPage);
         }
     }
 }

@@ -51,4 +51,11 @@
         width: 90%;
         margin: 10px auto;
     }
+    .title{
+        font-size: 50px;
+        letter-spacing: 10px;
+        padding: 40px 0px;
+        color: #000000;
+        -webkit-text-stroke: 2px white;
+    }
 }
