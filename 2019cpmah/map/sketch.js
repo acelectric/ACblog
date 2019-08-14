@@ -60,7 +60,7 @@ function setup() {
     // console.log(urlParams.get('p'));
     bigPage = urlParams.get('p');
     smallPage = urlParams.get('sp');
-    if (smallPage == null && bigPage == null) {
+    if (smallPage != null && bigPage != null) {
         createClassificationSubPage(bigPage, smallPage);
     }
     if (bigPage == null) {
