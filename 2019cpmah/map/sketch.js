@@ -83,11 +83,11 @@ function draw() {
 
     let inAreas = false;
     for (let i = 0; i < areas.length; i++) {
-        if (areas[i].isPointInArea(mouseX, mouseY)) {
+        if (areas[i].isPointInArea(mouseX, mouseY) && i != 18) {
             areas[i].showName();
             areas[i].fillColor = color('#C06014');
-            let a = document.getElementById('optionList');
-            a.options[i].selected = true;
+            // let a = document.getElementById('optionList');
+            // a.options[i].selected = true;
 
 
             inAreas = true;
@@ -104,7 +104,7 @@ function mousePressed() {
     for (let i = 0; i < areas.length; i++) {
         if (areas[i].isPointInArea(mouseX, mouseY)) {
             document.getElementById(areas[i].eName).click();
-            console.log(document.getElementById('areas').value);
+
         }
     }
 }

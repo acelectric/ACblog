@@ -46,7 +46,7 @@ function ajaxFooter() {
 function initPage(contentClass = '', mode = 'noSave') {
     let temp = document.body.innerHTML;
     document.body.innerHTML = '';
-    ajaxNav();
+    // ajaxNav();
     let content = document.createElement('div');
     content.id = 'content';
     content.className += contentClass;
@@ -54,10 +54,15 @@ function initPage(contentClass = '', mode = 'noSave') {
         content.innerHTML = temp;
     }
     document.body.appendChild(content);
-    ajaxFooter();
+    // ajaxFooter();
     let back = document.createElement('div');
     back.id = 'back';
     document.body.appendChild(back);
+    back.innerText = 'back';
+    back.style.display = 'block';
+    back.onclick = function () {
+        location.assign(address + 'option.html');
+    }
 }
 function ajaxPage(page, link) {
     initPage('');
@@ -177,12 +182,6 @@ function ajaxPage(page, link) {
         }
 
     }
-    let back = document.getElementById('back');
-    back.innerText = 'back';
-    back.style.display = 'block';
-    back.onclick = function () {
-        location.reload();
-    };
 }
 
 function eNameToCName(target) {
@@ -323,13 +322,21 @@ function createSelectOption(options, buttonOnclockFunc) {
 }
 
 function ajaxMapPage(areas) {
-    initPage('flex-center');
+    ajaxNav();
+    let content = document.createElement('div');
+    content.id = 'content';
+    content.className += 'flex-center';
+    document.body.appendChild(content);
+
+    let back = document.createElement('div');
+    back.id = 'back';
+    document.body.appendChild(back);
 
     let title = addChildInContent('古蹟地圖', 'h1');
     title.className += ' text';
 
-    createSelectOption(areas, function () {
-        location.assign(address + 'result/' + optionList.value + '.html');
-    });
+    // createSelectOption(areas, function () {
+    //     location.assign(address + 'result/' + optionList.value + '.html');
+    // });
 
 }
