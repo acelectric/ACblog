@@ -292,10 +292,16 @@ function createClassificationSubPage(bigPage, smallPage) {
     xhr.onload = function () {
         let obj = JSON.parse(xhr.responseText);
         obj = obj.feature;
+        let boxCounter = 0;
         for (let i = 0; i < obj.length; i++) {
             if (obj[i].area == smallPage) {
                 generateBox(obj[i]);
+                boxCounter++;
             }
+        }
+        if (boxCounter == 0) {
+            alert(eNameToCName(smallPage) + '沒有' + eNameToCName(bigPage));
+            location.assign(address + 'map.html?' + bigPage);
         }
     }
 }
