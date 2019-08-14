@@ -60,9 +60,7 @@ function setup() {
     // console.log(urlParams.get('p'));
     bigPage = urlParams.get('p');
     smallPage = urlParams.get('sp');
-    if (smallPage != null && bigPage != null) {
-        createClassificationSubPage(bigPage, smallPage);
-    }
+
     if (bigPage == null) {
         bigPage = 'all';
     }
@@ -87,7 +85,9 @@ function setup() {
     // newSize -= margin * 2;
     // newSize -= 100; // nav's height
     //createCanvas(sizeX * scl + margin * 2, sizeY * scl + margin * 2);
-
+    if (smallPage != null && bigPage != null) {
+        createClassificationSubPage(bigPage, smallPage);
+    }
 
     mapJSON = mapJSON.feature;
     for (let i = 0; i < mapJSON.length; i++) {
