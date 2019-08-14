@@ -430,8 +430,8 @@ a:hover {
     position: absolute;
     bottom: 30%;
     top: 30%;  
-    right: 15%;
-    left: 15%;
+    right: 0%;
+    left: 0%;
     z-index: 10;
     padding-top: 20px;
     padding-bottom: 20px;
@@ -441,35 +441,37 @@ a:hover {
 }
 .title{
     font-size: 100px;
-    letter-spacing: 20px;
+    word-spacing: 50px;
     padding: 40px 0px;
     color: #000000;
     -webkit-text-stroke: 4px white;
 }
 .button {
-    border: 4px solid white;
+    border: 4px solid #C06014;
     box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
     border-radius: .5em;
 
 
     line-height: 70px;
-    font-size: 20px;
-    letter-spacing: 5px;
+    font-size: 30px;
+    /* -webkit-text-stroke: 1px white; */
+    /* word-spacing: 10px; */
 
     width: 200px;
     height: 70px;
     margin: 0px auto;
     
-    background-color: #C06014;
+    background-color: #EDDBCD;
     cursor: pointer;
 
     position: relative;
-    top: 30px;
+    top: 100px;
 
     color: black;
 }
 .button:hover {
-    color: white;
+    border-color: #000000;
+    color: #C06014;
 }
 .button:focus {
     /* border-color: #aaa; */
