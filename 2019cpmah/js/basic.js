@@ -327,18 +327,30 @@ function createSelectOption(options, buttonOnclockFunc) {
 function ajaxMapPage(areas, t) {
     // ajaxNav();
     let content = document.createElement('div');
-    content.id = 'container';
-    content.className += 'fullscreen';
+    content.id = 'content';
+    content.className += 'flex-center';
     document.body.appendChild(content);
+
+    let title = document.createElement('h1');
+    title.innerHTML = '古蹟地圖-' + eNameToCName(t);
+    title.className += ' text';
+    content.appendChild(title);
+
+    let container = addChildInContent();
+    container.id = 'container';
+    container.className += 'fullscreen';
+    container.style.textAlign = 'center';
+
 
     let back = document.createElement('div');
     back.id = 'back';
     document.body.appendChild(back);
+    back.innerText = 'back';
+    back.style.display = 'block';
+    back.onclick = function () {
+        location.assign(address + 'option.html');
+    }
 
-    let title = document.createElement('h2');
-    title.innerHTML = '古蹟地圖-' + eNameToCName(t);
-    title.className += ' text';
-    content.appendChild(title);
 
     // createSelectOption(areas, function () {
     //     location.assign(address + 'result/' + optionList.value + '.html');

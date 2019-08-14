@@ -12,11 +12,11 @@ let areas = new Array(22);
 // let sizeX = Math.round(maxX - minX);
 // let sizeY = Math.round(maxY - minY);
 
-// const sizeX = 519;
-// const sizeY = 679;
+const sizeX = 519;
+const sizeY = 679;
 
-const sizeX = 850;
-const sizeY = 855;
+// const sizeX = 850;
+// const sizeY = 855;
 // const scl = 200;
 const margin = 0;
 
@@ -37,7 +37,7 @@ function coordinate2xy(coordinate) {
 }
 
 function size2newSize(point) {
-    return [point[0] * scl, point[1] * scl];
+    return [point[0] * sclX, point[1] * sclX];
 }
 
 function createRandomColor() {
@@ -49,13 +49,14 @@ function createRandomColor() {
 
 function preload() {
     mapJSON = loadJSON(address + "map/map.json");
+    allJSON = loadJSON(address + "data/categorys/all.json");
 }
 var a;
 let bigPage;
 function setup() {
     let urlParams = new URLSearchParams(window.location.search);
 
-    console.log(urlParams.get('p'));
+    // console.log(urlParams.get('p'));
     bigPage = urlParams.get('p');
     if (bigPage == null) {
         bigPage = 'all';
@@ -66,27 +67,31 @@ function setup() {
     let content = document.getElementById('container');
     if (content.offsetWidth < 1024) {
         newSize = content.offsetWidth < content.offsetHeight ? content.offsetWidth : content.offsetHeight;
+        canvas = createCanvas(newSize, newSize * (sizeY / sizeX));
+        canvas.parent(content);
+        sclX = newSize / sizeX;
+        sclY = (newSize * (sizeY / sizeX)) / sizeY;
     } else {
-        newSize = content.offsetWidth < content.offsetHeight ? content.offsetWidth : content.offsetHeight;
+        newSize = content.offsetHeight;
+        canvas = createCanvas(newSize / (sizeY / sizeX), newSize);
+        canvas.parent(content);
+        sclX = (newSize / (sizeY / sizeX)) / sizeX;
+        sclY = newSize / sizeY;
     }
     // newSize = windowWidth < windowHeight ? windowWidth : windowHeight;
     // newSize -= margin * 2;
     // newSize -= 100; // nav's height
-    sclX = newSize / sizeX;
-    sclY = newSize / sizeY;
-    canvas = createCanvas(newSize + margin * 2, newSize + margin * 2);
-    canvas.parent(content);
     //createCanvas(sizeX * scl + margin * 2, sizeY * scl + margin * 2);
 
 
     mapJSON = mapJSON.feature;
     for (let i = 0; i < mapJSON.length; i++) {
         areas[i] = new area(mapJSON[i]);
-        // areas[i].reSize();
+        areas[i].reSize();
     }
-    console.log(areas);
+    // console.log(areas);
 
-    for (let i = 0; i < areas[21].path.length; i++) {
+    /*for (let i = 0; i < areas[21].path.length; i++) {
         for (let j = 0; j < areas[21].path[i].length; j++) {
             for (let k = 0; k < areas[21].path[i][j].length; k++) {
                 areas[21].path[i][j][k][1] += 200;
@@ -126,12 +131,12 @@ function setup() {
         modiflyPoint(i);
     }
     console.log(minX, maxX, minY, maxY);
-
+    */
 
     //-------------
     // noLoop();
     //frameRate(10);
-    console.log(JSON.stringify(areas, ["cName", "eName", "path"]));
+    // console.log(JSON.stringify(areas, ["cName", "eName", "path"]));
 }
 function draw() {
     background(color(255));
