@@ -12,7 +12,7 @@ class Circle {
         this.startY = y;
         this.inAnimation = false;
         this.animationStop = false;
-        this.fillColor = color('#EDDBCD');
+        this.fillColor = color('#C06014');
         this.initFillColor = this.fillColor;
     }
     setHref(href) {
@@ -73,7 +73,7 @@ function setup() {
 
     let texts = ["台灣古蹟", "國定古蹟", "直轄市定古蹟", "縣市定古蹟", "製作團隊"];
     let title = "台\n灣\n古\n蹟";
-    let hrefs = ["index.html", "result/national.html", "result/municipality.html", "result/county.html", "aboutUs.html"];
+    let hrefs = ["index.html", "map.html?p=national", "map.html?p=municipality", "map.html?p=county", "aboutUs.html"];
     let bigX;
     let bigY;
     let bigR;
@@ -115,7 +115,7 @@ function draw() {
         obj[i].animation(30);
         obj[i].show();
         if (obj[i].isMouseInArea()) {
-            obj[i].fillColor = color('#C06014');
+            obj[i].fillColor = color('#EDDBCD');
         } else {
             obj[i].fillColor = obj[i].initFillColor;
         }

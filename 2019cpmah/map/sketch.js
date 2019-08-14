@@ -11,12 +11,17 @@ let areas = new Array(22);
 
 // let sizeX = Math.round(maxX - minX);
 // let sizeY = Math.round(maxY - minY);
-const size = 855;
+
+// const sizeX = 519;
+// const sizeY = 679;
+
+const sizeX = 850;
+const sizeY = 855;
 // const scl = 200;
 const margin = 0;
 
 let newSize;
-let scl;
+let sclX, sclY;
 
 let canvas;
 
@@ -46,34 +51,87 @@ function preload() {
     mapJSON = loadJSON(address + "map/map.json");
 }
 var a;
+let bigPage;
 function setup() {
-    ajaxMapPage(mapJSON.feature);
-    newSize = windowWidth < windowHeight ? windowWidth : windowHeight;
-    newSize -= margin * 2;
-    newSize -= 100; // nav's height
-    scl = newSize / size;
+    let urlParams = new URLSearchParams(window.location.search);
+
+    console.log(urlParams.get('p'));
+    bigPage = urlParams.get('p');
+    if (bigPage == null) {
+        bigPage = 'all';
+    }
+    ajaxMapPage(mapJSON.feature, bigPage);
+
+
+    let content = document.getElementById('container');
+    if (content.offsetWidth < 1024) {
+        newSize = content.offsetWidth < content.offsetHeight ? content.offsetWidth : content.offsetHeight;
+    } else {
+        newSize = content.offsetWidth < content.offsetHeight ? content.offsetWidth : content.offsetHeight;
+    }
+    // newSize = windowWidth < windowHeight ? windowWidth : windowHeight;
+    // newSize -= margin * 2;
+    // newSize -= 100; // nav's height
+    sclX = newSize / sizeX;
+    sclY = newSize / sizeY;
     canvas = createCanvas(newSize + margin * 2, newSize + margin * 2);
-    canvas.parent("content");
+    canvas.parent(content);
     //createCanvas(sizeX * scl + margin * 2, sizeY * scl + margin * 2);
 
 
     mapJSON = mapJSON.feature;
     for (let i = 0; i < mapJSON.length; i++) {
         areas[i] = new area(mapJSON[i]);
-        areas[i].reSize();
+        // areas[i].reSize();
     }
     console.log(areas);
 
-    for (let i = 0; i < areas.length; i++) {
-        createA(address + 'result/' + areas[i].eName + ".html", "").id(areas[i].eName);
+    for (let i = 0; i < areas[21].path.length; i++) {
+        for (let j = 0; j < areas[21].path[i].length; j++) {
+            for (let k = 0; k < areas[21].path[i][j].length; k++) {
+                areas[21].path[i][j][k][1] += 200;
+            }
+        }
     }
+    for (let i = 0; i < areas[19].path.length; i++) {
+        for (let j = 0; j < areas[19].path[i].length; j++) {
+            for (let k = 0; k < areas[19].path[i][j].length; k++) {
+                areas[19].path[i][j][k][0] += 250;
+            }
+        }
+    }
+    let maxX = -1, minX = 900, maxY = -1, minY = 900;
+    let modiflyPoint = function (target) {
+        for (let i = 0; i < areas[target].path.length; i++) {
+            for (let j = 0; j < areas[target].path[i].length; j++) {
+                for (let k = 0; k < areas[target].path[i][j].length; k++) {
+                    areas[target].path[i][j][k][0] -= 239;
+                    areas[target].path[i][j][k][1] -= 176;
 
+                    if (areas[target].path[i][j][k][0] > maxX) {
+                        maxX = areas[target].path[i][j][k][0];
+                    } else if (areas[target].path[i][j][k][0] < minX) {
+                        minX = areas[target].path[i][j][k][0];
+                    }
+                    if (areas[target].path[i][j][k][1] > maxY) {
+                        maxY = areas[target].path[i][j][k][1];
+                    } else if (areas[target].path[i][j][k][1] < minY) {
+                        minY = areas[target].path[i][j][k][1];
+                    }
+                }
+            }
+        }
+    }
+    for (let i = 0; i < areas.length; i++) {
+        modiflyPoint(i);
+    }
+    console.log(minX, maxX, minY, maxY);
 
 
     //-------------
     // noLoop();
     //frameRate(10);
-    //console.log(JSON.stringify(areas, ["cName", "eName", "path"]));
+    console.log(JSON.stringify(areas, ["cName", "eName", "path"]));
 }
 function draw() {
     background(color(255));
@@ -102,9 +160,9 @@ function draw() {
 }
 function mousePressed() {
     for (let i = 0; i < areas.length; i++) {
-        if (areas[i].isPointInArea(mouseX, mouseY)) {
-            document.getElementById(areas[i].eName).click();
-
+        if (areas[i].isPointInArea(mouseX, mouseY) && i != 18) {
+            // document.getElementById(areas[i].eName).click();
+            createClassificationSubPage(bigPage, areas[i].eName);
         }
     }
 }

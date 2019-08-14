@@ -476,6 +476,10 @@ a:hover {
     color: #222; 
     outline: none;
 }
+.fullscreen {
+    width: 100vw;
+    height: 100vh;
+}
 .bgc-ochre {
     background-color: #C06014;
 }

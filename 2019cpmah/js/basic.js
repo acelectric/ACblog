@@ -1,3 +1,5 @@
+
+
 var address = 'https://acblog.nctu.me/2019cpmah/';
 
 function addChildInContent(resource = '', label = 'div') {
@@ -271,15 +273,16 @@ function ajaxClassificationPage(category) {
 
 }
 
+
 function createClassificationSubPage(bigPage, smallPage) {
-    let temp = document.getElementById('optionSetContainer');
+    // let temp = document.getElementById('optionSetContainer');
     document.getElementById('content').innerHTML = "";
     let titleStr = eNameToCName(bigPage);
     titleStr += '-';
     titleStr += eNameToCName(smallPage);
     let title = addChildInContent(titleStr, 'h1');
     title.className += ' text';
-    document.getElementById('content').appendChild(temp);
+    // document.getElementById('content').appendChild(temp);
 
 
 
@@ -321,19 +324,21 @@ function createSelectOption(options, buttonOnclockFunc) {
     return optionSetContainer;
 }
 
-function ajaxMapPage(areas) {
-    ajaxNav();
+function ajaxMapPage(areas, t) {
+    // ajaxNav();
     let content = document.createElement('div');
-    content.id = 'content';
-    content.className += 'flex-center';
+    content.id = 'container';
+    content.className += 'fullscreen';
     document.body.appendChild(content);
 
     let back = document.createElement('div');
     back.id = 'back';
     document.body.appendChild(back);
 
-    let title = addChildInContent('古蹟地圖', 'h1');
+    let title = document.createElement('h2');
+    title.innerHTML = '古蹟地圖-' + eNameToCName(t);
     title.className += ' text';
+    content.appendChild(title);
 
     // createSelectOption(areas, function () {
     //     location.assign(address + 'result/' + optionList.value + '.html');
