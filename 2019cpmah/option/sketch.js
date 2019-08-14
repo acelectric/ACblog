@@ -1,4 +1,3 @@
-
 class Circle {
     constructor(x, y, r, text = 'text', href) {
         this.x = x;
@@ -111,15 +110,18 @@ function setup() {
 }
 function draw() {
     background(255);
+    let c = 'default';
     for (i = 0; i < obj.length; i++) {
         obj[i].animation(30);
         obj[i].show();
         if (obj[i].isMouseInArea()) {
             obj[i].fillColor = color('#EDDBCD');
+            c = 'pointer';
         } else {
             obj[i].fillColor = obj[i].initFillColor;
         }
     }
+    cursor(c);
 }
 function mousePressed() {
     for (let i = 0; i < obj.length; i++) {

@@ -146,7 +146,7 @@ function draw() {
 
     let inAreas = false;
     for (let i = 0; i < areas.length; i++) {
-        if (areas[i].isPointInArea(mouseX, mouseY) && i != 18) {
+        if (areas[i].isPointInArea(mouseX, mouseY)) {
             areas[i].showName();
             areas[i].fillColor = color('#C06014');
             // let a = document.getElementById('optionList');
@@ -165,7 +165,7 @@ function draw() {
 }
 function mousePressed() {
     for (let i = 0; i < areas.length; i++) {
-        if (areas[i].isPointInArea(mouseX, mouseY) && i != 18) {
+        if (areas[i].isPointInArea(mouseX, mouseY)) {
             // document.getElementById(areas[i].eName).click();
             createClassificationSubPage(bigPage, areas[i].eName);
         }
