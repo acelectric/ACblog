@@ -279,6 +279,7 @@ function ajaxClassificationPage(category) {
 
 
 function createClassificationSubPage(bigPage, smallPage) {
+    initPage();
     // let temp = document.getElementById('optionSetContainer');
     document.getElementById('content').innerHTML = "";
     // let titleStr = eNameToCName(bigPage);
