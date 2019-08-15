@@ -53,10 +53,10 @@ function size2newSize(point) {
 }
 
 function createRandomColor() {
-    let r = Math.round(Math.random() * 255);
-    let g = Math.round(Math.random() * 255);
-    let b = Math.round(Math.random() * 255);
-    return color(r, g, b);
+    let r = Math.round(Math.random() * 170);
+    let g = Math.round(Math.random() * 170);
+    let b = Math.round(Math.random() * 170);
+    return color(r + 80, g + 80, b + 80);
 }
 
 function preload() {
