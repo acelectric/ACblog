@@ -288,6 +288,7 @@ a:hover {
     background-position: center center;
     border-radius: 10px 10px 0px 0px;
     cursor: pointer;
+    object-fit: cover;
 }
 .box-text {
     width: 100%;

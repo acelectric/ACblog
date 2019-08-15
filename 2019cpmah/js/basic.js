@@ -48,7 +48,7 @@ function ajaxFooter() {
 function initPage(contentClass = '', mode = 'noSave') {
     let temp = document.body.innerHTML;
     document.body.innerHTML = '';
-    console.log(document.body);
+    //console.log(document.body);
     // ajaxNav();
     let content = document.createElement('div');
     content.id = 'content';
@@ -207,9 +207,10 @@ function generateBox(obj, bigPage = null, smallPage = null) {
     let temp;
     temp = addChildInContent();
     temp.classList += ' box';
-    let boxImg = document.createElement('div');
-    boxImg.classList += ' box-img';
-    boxImg.style.backgroundImage = 'url(' + address + 'img/img' + obj.img[0] + '.jpg' + ')';
+    let boxImg = document.createElement('img');
+    boxImg.className += ' box-img lazyload';
+    boxImg.dataset.src = address + 'img/img' + obj.img[0] + '.jpg';
+    boxImg.src = loading.gif(address + 'loading.gif');
     boxImg.onclick = function () {
         ajaxPage(obj.json, 'all', bigPage, smallPage);
     };
@@ -315,6 +316,7 @@ function createClassificationSubPage(bigPage, smallPage) {
             location.assign(address + 'map.html?p=' + bigPage);
         }
     }
+    $("img.lazyload").lazyload();
 }
 
 function createSelectOption(options, buttonOnclockFunc) {

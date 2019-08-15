@@ -121,7 +121,7 @@ function setup() {
             // console.log(i);
         }
     }
-    console.log(areas);
+    //console.log(areas);
 
 
 
