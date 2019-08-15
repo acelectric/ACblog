@@ -52,10 +52,11 @@ function size2newSize(point) {
     return [point[0] * sclX, point[1] * sclX];
 }
 
-function createRandomColor() {
+function createRandomColor(eName) {
     let r = Math.round(Math.random() * 170);
     let g = Math.round(Math.random() * 170);
     let b = Math.round(Math.random() * 170);
+    console.log(color(r + 80, g + 80, b + 80));
     return color(r + 80, g + 80, b + 80);
 }
 
