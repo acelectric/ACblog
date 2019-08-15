@@ -61,6 +61,10 @@ class Circle {
         }
     }
 }
+let img;
+function preload() {
+    img = loadImage(address + 'bg1.jpg');
+}
 
 let obj = [];
 function setup() {
@@ -109,7 +113,8 @@ function setup() {
 
 }
 function draw() {
-    background(255);
+    // background(255);
+    image(img, 0, 0, width, height);
     let c = 'default';
     for (i = 0; i < obj.length; i++) {
         obj[i].animation(30);

@@ -175,7 +175,7 @@ function setup() {
     // console.log(JSON.stringify(areas, ["cName", "eName", "path"]));
 }
 function draw() {
-    background(color(255));
+    background(color(0, 0, 0, 0));
     for (let i = 0; i < areas.length; i++) {
         areas[i].show();
     }

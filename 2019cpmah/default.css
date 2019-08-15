@@ -12,6 +12,11 @@ body {
     font-size: 20px;
     line-height: 2em;
 
+
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
 }
 h1,h2,h3 {
     margin:auto;
