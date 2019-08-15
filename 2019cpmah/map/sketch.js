@@ -90,6 +90,7 @@ function preload() {
 var a;
 let bigPage;
 let smallPage;
+let smallSmallPage;
 
 let pointBlocks = [[0, 302], [38.5, 321]];
 let pointLine = [[16.5, 326], [129.5, 365]];
@@ -100,6 +101,7 @@ function setup() {
     // console.log(urlParams.get('p'));
     bigPage = urlParams.get('p');
     smallPage = urlParams.get('sp');
+    smallSmallPage = urlParams.get('ssp');
 
     if (bigPage == null) {
         bigPage = 'all';
@@ -129,7 +131,14 @@ function setup() {
     // newSize -= 100; // nav's height
     //createCanvas(sizeX * scl + margin * 2, sizeY * scl + margin * 2);
     if (smallPage != null && bigPage != null) {
-        createClassificationSubPage(bigPage, smallPage);
+        if (smallSmallPage != null) {
+            console.log(smallSmallPage);
+            ajaxPage(smallSmallPage, 'all', bigPage, smallPage);
+            return;
+        } else {
+            createClassificationSubPage(bigPage, smallPage);
+            return;
+        }
     }
 
     for (let i = 0; i < textsPosition.length; i++) {

@@ -20,7 +20,7 @@ class Circle {
             strokeWeight(this.r * 0.03);
             noFill();
             stroke(this.fillColor);
-            circle(this.x, this.y, (this.rNow / 0.8) * 0.9);
+            circle(this.x, this.y, (this.rNow / 0.8));
         }
         textAlign(CENTER, CENTER);
         textSize(this.rNow / 3);
