@@ -210,7 +210,7 @@ function generateBox(obj, bigPage = null, smallPage = null) {
     let boxImg = document.createElement('img');
     boxImg.className += ' box-img lazyload';
     boxImg.dataset.src = address + 'img/img' + obj.img[0] + '.jpg';
-    boxImg.src = loading.gif(address + 'loading.gif');
+    boxImg.src = 'loading.gif';
     boxImg.onclick = function () {
         ajaxPage(obj.json, 'all', bigPage, smallPage);
     };
@@ -315,8 +315,8 @@ function createClassificationSubPage(bigPage, smallPage) {
         back.onclick = function () {
             location.assign(address + 'map.html?p=' + bigPage);
         }
+        $("img.lazyload").lazyload();
     }
-    $("img.lazyload").lazyload();
 }
 
 function createSelectOption(options, buttonOnclockFunc) {
