@@ -70,7 +70,7 @@ function initPage(contentClass = '', mode = 'noSave') {
 }
 function ajaxPage(page, link, bigPage = null, smallPage = null) {
     initPage('flex-center');
-    location.href = address + 'map.html?p=' + bigPage + '&sp=' + smallPage + '&ssp=' + page;
+
 
     let xhr = new XMLHttpRequest();
     xhr.open('GET', address + 'data/raw/' + page + '.json');

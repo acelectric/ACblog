@@ -132,8 +132,10 @@ function setup() {
     //createCanvas(sizeX * scl + margin * 2, sizeY * scl + margin * 2);
     if (smallPage != null && bigPage != null) {
         if (smallSmallPage != null) {
-            // console.log(smallSmallPage);
+            console.log(smallSmallPage);
+            history.pushState('', '', address + 'map.html?p=' + bigPage + '&sp=' + smallPage + '&ssp=' + page);
             ajaxPage(smallSmallPage, 'all', bigPage, smallPage);
+
         } else {
             createClassificationSubPage(bigPage, smallPage);
         }
