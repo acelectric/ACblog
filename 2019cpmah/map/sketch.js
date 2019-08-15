@@ -27,6 +27,15 @@ let canvas;
 
 let eName = [["連江縣", "LJF"], ["金門縣", "JME"], ["宜蘭縣", "ILA"], ["新竹縣", "HSQ"], ["苗栗縣", "MIA"], ["彰化縣", "CHA"], ["南投縣", "NAN"], ["雲林縣", "YUN"], ["嘉義縣", "CYQ"], ["屏東縣", "PIF"], ["臺東縣", "TTT"], ["花蓮縣", "HUA"], ["澎湖縣", "PEN"], ["基隆市", "KEE"], ["新竹市", "HSZ"], ["嘉義市", "CYI"], ["臺北市", "TPE"], ["高雄市", "KHH"], ["新北市", "TPQ"], ["臺中市", "TXG"], ["臺南市", "TNN"], ["桃園市", "TAO"]];
 
+
+let canIn = {
+    all: [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, false, true, true, true],
+    national: [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, false, false, false, true, true, true],
+    municipality: [false, true, true, true, false, false, false, true, false, false, false, false, true, true, false, false, false, false, false, false, false, false],
+    county: [true, false, false, false, true, true, true, false, true, true, true, true, false, false, true, true, true, true, false, true, true, true]
+}
+
+
 function coordinate2xy(coordinate) {
     let x = (coordinate[0] - minX) * scl;
     let y = (coordinate[1] - minY) * scl;
@@ -93,8 +102,17 @@ function setup() {
     for (let i = 0; i < mapJSON.length; i++) {
         areas[i] = new area(mapJSON[i]);
         areas[i].reSize();
+        if (canIn[bigPage][i] == false) {
+            areas[i].fillColor = color(200);
+            areas[i].initColor = areas[i].fillColor;
+            // console.log(i);
+        }
     }
     // console.log(areas);
+
+
+
+
 
     /*for (let i = 0; i < areas[21].path.length; i++) {
         for (let j = 0; j < areas[21].path[i].length; j++) {
@@ -151,7 +169,7 @@ function draw() {
 
     let inAreas = false;
     for (let i = 0; i < areas.length; i++) {
-        if (areas[i].isPointInArea(mouseX, mouseY)) {
+        if (areas[i].isPointInArea(mouseX, mouseY) && canIn[bigPage][i]) {
             areas[i].showName();
             areas[i].fillColor = color('#C06014');
             // let a = document.getElementById('optionList');
@@ -170,7 +188,7 @@ function draw() {
 }
 function mousePressed() {
     for (let i = 0; i < areas.length; i++) {
-        if (areas[i].isPointInArea(mouseX, mouseY)) {
+        if (areas[i].isPointInArea(mouseX, mouseY) && canIn[bigPage][i]) {
             // document.getElementById(areas[i].eName).click();
             createClassificationSubPage(bigPage, areas[i].eName);
         }

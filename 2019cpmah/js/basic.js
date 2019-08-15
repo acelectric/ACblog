@@ -68,7 +68,7 @@ function initPage(contentClass = '', mode = 'noSave') {
     }
 }
 function ajaxPage(page, link, bigPage = null, smallPage = null) {
-    initPage('');
+    initPage('flex-center');
 
     let xhr = new XMLHttpRequest();
     xhr.open('GET', address + 'data/raw/' + page + '.json');
@@ -279,7 +279,7 @@ function ajaxClassificationPage(category) {
 
 
 function createClassificationSubPage(bigPage, smallPage) {
-    initPage();
+    initPage('flex-center');
     // let temp = document.getElementById('optionSetContainer');
     document.getElementById('content').innerHTML = "";
     // let titleStr = eNameToCName(bigPage);
