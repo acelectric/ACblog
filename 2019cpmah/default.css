@@ -2,6 +2,9 @@
     font-family: "王漢宗勘亭流繁";
     src: url(WangHanZongKanTingLiuFan.ttf);
 }
+html{
+    height: 100%;
+}
 body {
     margin: 0px;
     overflow: scroll;
