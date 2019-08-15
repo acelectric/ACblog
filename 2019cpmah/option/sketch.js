@@ -95,7 +95,7 @@ function draw() {
     for (i = 0; i < obj.length; i++) {
         obj[i].show(i);
         if (obj[i].isMouseInArea()) {
-            obj[i].fillColor = color('#EDDBCD');
+            obj[i].fillColor = color('#9b29ff');
             c = 'pointer';
         } else {
             obj[i].fillColor = obj[i].initFillColor;
