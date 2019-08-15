@@ -48,6 +48,7 @@ function ajaxFooter() {
 function initPage(contentClass = '', mode = 'noSave') {
     let temp = document.body.innerHTML;
     document.body.innerHTML = '';
+    document.body.scrollTo(0, 0);
     //console.log(document.body);
     // ajaxNav();
     let content = document.createElement('div');

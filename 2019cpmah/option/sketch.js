@@ -61,7 +61,7 @@ function setup() {
     if (height < width) {
         // 電腦
         const maxSR = height / 8;
-        const maxBR = width / 4;
+        const maxBR = width / 4 < height / 2 ? width / 4 : height / 2;
         obj.push(new Circle(width / 4, height / 2, maxBR));
         obj.push(new Circle(5 * width / 8, height / 8, maxSR));
         obj.push(new Circle(7 * width / 8, 3 * height / 8, maxSR));
