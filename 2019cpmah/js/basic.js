@@ -1,6 +1,6 @@
 
 
-var address = 'https://acblog.nctu.me/2019cpmah/';
+var address = './';
 
 function addChildInContent(resource = '', label = 'div') {
     let temp = document.createElement(label);

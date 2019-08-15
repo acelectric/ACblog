@@ -3,7 +3,7 @@ let fs = require('fs');
 
 // ===================
 let fileCount = 202;
-let address = 'https://acblog.nctu.me/2019cpmah/';
+let address = './';
 // ===================
 
 let datas = new Array(fileCount);
