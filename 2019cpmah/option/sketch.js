@@ -56,7 +56,7 @@ function setup() {
     let texts = ["台灣古蹟", "國定古蹟", "直轄市定古蹟", "縣市定古蹟", "製作團隊"];
     let title = "台\n灣\n古\n蹟";
     let hrefs = ["index.html", "map.html?p=national", "map.html?p=municipality", "map.html?p=county", "aboutUs.html"];
-    let colors = ["#775253", "#0C1B33", "#7A306C", "#03B5AA", "#212922"];
+    let colors = ["#775253", "#0C1B33", "#7A306C", "#03B5AA", "#eb6e21"];
 
     if (height < width) {
         // 電腦
