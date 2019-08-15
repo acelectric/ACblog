@@ -64,9 +64,9 @@ function setup() {
         const maxBR = width / 4 < height / 2 ? width / 4 : height / 2;
         obj.push(new Circle(width / 4, height / 2, maxBR));
         obj.push(new Circle(5 * width / 8, 2 * height / 8, maxSR));
-        obj.push(new Circle(6 * width / 8, 3.5 * height / 8, maxSR));
+        obj.push(new Circle(6.5 * width / 8, 3.5 * height / 8, maxSR));
         obj.push(new Circle(5 * width / 8, 4.5 * height / 8, maxSR));
-        obj.push(new Circle(6 * width / 8, 6 * height / 8, maxSR));
+        obj.push(new Circle(6.5 * width / 8, 6 * height / 8, maxSR));
     } else {
         // 手機
         const maxSR = width / 8;
