@@ -122,7 +122,7 @@ function setup() {
             // console.log(i);
         }
     }
-    console.log(areas);
+    // console.log(areas);
 
     pointBlocks[0] = size2newSize(pointBlocks[0]);
     pointBlocks[1] = size2newSize(pointBlocks[1]);
