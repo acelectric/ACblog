@@ -154,6 +154,9 @@ function ajaxPage(page, link, bigPage = null, smallPage = null) {
                         temp.className += 'articleImg';
                         container.appendChild(temp);
                         labelCount++;
+                    } else if (obj.traffic[i][0] == '') {
+                        addChildInContent(obj.traffic[i][1]).classList += ' text';
+                        labelCount++;
                     } else {
                         let temp = addChildInContent((i + 1 - labelCount) + "." + obj.traffic[i][0]);
                         temp.classList += ' text';
