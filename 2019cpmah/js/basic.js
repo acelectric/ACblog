@@ -162,6 +162,7 @@ function ajaxPage(page, link, bigPage = null, smallPage = null) {
                 }
                 let mapContainer = addChildInContent();
                 mapContainer.style.textAlign = 'center';
+                mapContainer.style.width = '100%';
                 let googleMap = document.createElement('iframe');
                 googleMap.src = 'https://www.google.com/maps/embed/v1/place?key=AIzaSyDUhIo7me0xLxCnncSfh9iE9RFs5c1XNJI&language=zh-tw&q=' + obj.name;
                 googleMap.frameBorder = "0";
