@@ -5,58 +5,38 @@ class Circle {
         this.r = r;
         this.text = text;
         this.href = address + href;
-        this.initX = x;
-        this.initY = y;
-        this.startX = x;
-        this.startY = y;
-        this.inAnimation = false;
-        this.animationStop = false;
         this.fillColor = color('#C06014');
         this.initFillColor = this.fillColor;
+        this.rNow = 0;
     }
     setHref(href) {
         this.href = address + href;
     }
-    show() {
+    show(target = 1) {
         noStroke(color('#C06014'));
         fill(this.fillColor);
-        circle(this.x, this.y, this.r);
+        circle(this.x, this.y, this.rNow);
+        if (target == 0) {
+            strokeWeight(this.r * 0.03);
+            noFill();
+            stroke(this.fillColor);
+            circle(this.x, this.y, (this.rNow / 0.8) * 0.9);
+        }
         textAlign(CENTER, CENTER);
-        textSize(this.r / 3);
+        textSize(this.rNow / 3);
         noStroke();
-        fill(0);
-        if (this.text == '台灣古蹟') {
-            text(this.text, this.x, this.y - this.r / 6);
-        } else if (this.text == '台\n灣\n古\n蹟') {
-            text(this.text, this.x + this.r / 6, this.y);
-        } else {
-            text(this.text, this.x, this.y);
+        fill(255);
+        text(this.text, this.x, this.y);
+        if (this.rNow < this.r * 0.8) {
+            this.rNow += this.r / 20;
         }
     }
-    animation(frame) {
-        if (this.inAnimation == false) {
-            this.x = this.startX;
-            this.y = this.startY;
-            this.inAnimation = true;
-        }
-        let xOffset = Math.abs(this.x - this.initX);
-        let yOffset = Math.abs(this.y - this.initY);
-        let xV = (this.initX - this.startX) / frame;
-        let yV = (this.initY - this.startY) / frame;
-        if (!this.animationStop && xOffset > Math.abs(xV) && yOffset > Math.abs(yV)) {
-            this.x += xV;
-            this.y += yV;
-        } else {
-            this.x = this.initX;
-            this.y = this.initY;
-        }
 
-    }
     isMouseInArea() {
         let a = Math.abs(this.x - mouseX);
         let b = Math.abs(this.y - mouseY);
         let c = Math.sqrt(a * a + b * b);
-        if (c <= this.r) {
+        if (c <= this.r * 0.9) {
             return true;
         }
     }
@@ -72,61 +52,39 @@ function setup() {
     let container = document.getElementById('canvas');
     let cvs = createCanvas(container.offsetWidth, container.offsetHeight);
     cvs.parent(container);
-    let pointX = 0, pointY = height / 2;
 
     let texts = ["台灣古蹟", "國定古蹟", "直轄市定古蹟", "縣市定古蹟", "製作團隊"];
     let title = "台\n灣\n古\n蹟";
     let hrefs = ["index.html", "map.html?p=national", "map.html?p=municipality", "map.html?p=county", "aboutUs.html"];
-    let bigX;
-    let bigY;
-    let bigR;
-    /*if (height < width) {
+    let colors = ["#775253", "#0C1B33", "#7A306C", "#03B5AA", "#212922"];
+
+    if (height < width) {
         // 電腦
-        bigX = width / 2;
-        bigY = height;
-
-        let ans1 = width / 2 * (3 * cos(180 / 5) + 1);
-        let ans2 = height / 4;
-        bigR = ans1 < ans2 ? ans1 : ans2;
-        bigR *= 2;
-
-
-        obj.push(new Circle(bigX, bigY, bigR));
-        for (i = 1; i <= 4; i++) {
-            pointX = bigX - (3 / 2) * bigR * cos(i * 180 / 5);
-            pointY = bigY - (3 / 2) * bigR * sin(i * 180 / 5);
-            obj.push(new Circle(pointX, pointY, bigR * (1 / 3)));
-        }
+        const maxSR = height / 8;
+        const maxBR = width / 4;
+        obj.push(new Circle(width / 4, height / 2, maxBR));
+        obj.push(new Circle(5 * width / 8, height / 8, maxSR));
+        obj.push(new Circle(7 * width / 8, 3 * height / 8, maxSR));
+        obj.push(new Circle(5 * width / 8, 5 * height / 8, maxSR));
+        obj.push(new Circle(7 * width / 8, 7 * height / 8, maxSR));
     } else {
         // 手機
-        bigX = 0;
-        bigY = height / 2;
+        const maxSR = width / 8;
+        const maxBR = height / 4;
+        obj.push(new Circle(width / 2, height / 4, maxBR));
+        obj.push(new Circle(width / 8, 5 * height / 8, maxSR));
+        obj.push(new Circle(3 * width / 8, 7 * height / 8, maxSR));
+        obj.push(new Circle(5 * width / 8, 5 * height / 8, maxSR));
+        obj.push(new Circle(7 * width / 8, 7 * height / 8, maxSR));
+    }
 
-        let ans1 = height / 2 * (3 * cos(180 / 5) + 1);
-        let ans2 = width / 4;
-        bigR = ans1 < ans2 ? ans1 : ans2;
-        bigR *= 2;
-
-        obj.push(new Circle(bigX, bigY, bigR));
-        for (i = 4; i >= 1; i--) {
-            pointX = bigX + (3 / 2) * bigR * sin(i * 180 / 5);
-            pointY = bigY + (3 / 2) * bigR * cos(i * 180 / 5);
-            obj.push(new Circle(pointX, pointY, bigR * (1 / 3)));
-        }
-        texts[0] = title;
-    }*/
-
-    obj.push(new Circle(0, height / 2, width / 3));
-    obj.push(new Circle(width / 2, 2 * height / 13, height / 13));
-    obj.push(new Circle(2 * width / 3, 5 * height / 13, height / 13));
-    obj.push(new Circle(2 * width / 3, 8 * height / 13, height / 13));
-    obj.push(new Circle(width / 2, 11 * height / 13, height / 13));
 
     for (i = 0; i < obj.length; i++) {
-        obj[i].startX = bigX;
-        obj[i].startY = bigY;
+        // obj[i].startX = bigX;
+        // obj[i].startY = bigY;
         obj[i].text = texts[i];
         obj[i].setHref(hrefs[i]);
+        obj[i].initFillColor = color(colors[i]);
     }
 
 }
@@ -135,8 +93,7 @@ function draw() {
     image(img, 0, 0, width, height);
     let c = 'default';
     for (i = 0; i < obj.length; i++) {
-        obj[i].animation(30);
-        obj[i].show();
+        obj[i].show(i);
         if (obj[i].isMouseInArea()) {
             obj[i].fillColor = color('#EDDBCD');
             c = 'pointer';

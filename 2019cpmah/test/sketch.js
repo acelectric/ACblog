@@ -11,8 +11,9 @@ class Circle {
     }
 }
 let a, b, c, d;
+let obj = [];
 function setup() {
-    createCanvas(355, 667);
+    createCanvas(800, 800);
     angleMode(DEGREES);
     const theta = 180 / 5;
     const co = cos(theta);
@@ -21,11 +22,19 @@ function setup() {
     let sr = height / (2 * (3 * co + 1));
 
     a = new Circle(0, height / 2, 2 * sr);
-    b = new Circle(0 + 3 * sr * si, height / 2 - 3 * sr * co, sr);
+    obj.push(a);
+    for (let i = 1; i <= 4; i++) {
+        obj.push(new Circle(0 + 3 * sr * sin(i * theta), height / 2 - 3 * sr * cos(i * theta), sr));
+    }
+
 }
 function draw() {
     background(51);
     a.show();
-    b.show();
-    c.show();
+    for (let i = 0; i < obj.length; i++) {
+        obj[i].show();
+    }
+    for (let i = 1; i < obj.length; i++) {
+        line(a.x, a.y, obj[i].x, obj[i].y)
+    }
 }
