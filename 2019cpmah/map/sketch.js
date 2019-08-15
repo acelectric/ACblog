@@ -243,20 +243,25 @@ function draw() {
     line(pointLine[0][0], pointLine[0][1], pointLine[1][0], pointLine[1][1]);
     // text('測試中', mouseX, mouseY);
 }
-function mousePressed() {
-
+function mousePressed(e) {
+    console.log(e);
     if (canIn[bigPage][11] && mouseX > pointBlocks[0][0] && mouseX < pointBlocks[1][0] && mouseY > pointBlocks[0][1] && mouseY < pointBlocks[1][1]) {
         createClassificationSubPage(bigPage, areas[11].eName);
+        e.stopPropagation();
         return;
     }
     for (let i = 0; i < areas.length; i++) {
         if (areas[i].isPointInArea(mouseX, mouseY) && canIn[bigPage][i]) {
             // document.getElementById(areas[i].eName).click();
             createClassificationSubPage(bigPage, areas[i].eName);
+            e.stopPropagation();
         }
     }
 
     // console.log(mouseX, mouseY);
+}
+function touchStarted(e) {
+
 }
 function mouseMoved() {
 }

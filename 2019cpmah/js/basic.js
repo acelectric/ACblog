@@ -212,9 +212,11 @@ function generateBox(obj, bigPage = null, smallPage = null) {
     boxImg.className += ' box-img lazyload';
     boxImg.dataset.src = address + 'img/img' + obj.img[0] + '.jpg';
     boxImg.src = 'loading.gif';
-    boxImg.onclick = function () {
+    boxImg.onclick = function (e) {
         ajaxPage(obj.json, 'all', bigPage, smallPage);
+        e.stopPropagation();
     };
+
     temp.appendChild(boxImg);
     let boxText = document.createElement('div');
     boxText.classList += ' box-text';
@@ -316,8 +318,9 @@ function createClassificationSubPage(bigPage, smallPage) {
             location.assign(address + 'map.html?p=' + bigPage);
         }
 
-        back.onclick = function () {
+        back.onclick = function (e) {
             location.assign(address + 'map.html?p=' + bigPage);
+            e.stopPropagation();
         }
         $("img.lazyload").lazyload();
     }
@@ -361,6 +364,11 @@ function ajaxMapPage(areas, t) {
     title.innerHTML = eNameToCName(t);
     title.className += ' text';
     content.appendChild(title);
+
+    let temp = addChildInContent('灰色：無古蹟');
+    temp.style.height = '20px';
+    temp.style.lineHeight = '20px';
+    temp.style.fontSize = '16px';
 
     let container = addChildInContent();
     container.id = 'container';
