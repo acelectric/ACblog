@@ -218,6 +218,7 @@ function generateBox(obj, bigPage = null, smallPage = null) {
     boxImg.src = 'loading.gif';
     boxImg.onclick = function (e) {
         history.pushState('', '', address + 'map.html?p=' + bigPage + '&sp=' + smallPage + '&ssp=' + obj.json);
+        location.reload();
         e.stopPropagation();
     };
 
