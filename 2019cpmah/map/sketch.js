@@ -134,10 +134,8 @@ function setup() {
         if (smallSmallPage != null) {
             // console.log(smallSmallPage);
             ajaxPage(smallSmallPage, 'all', bigPage, smallPage);
-            return;
         } else {
             createClassificationSubPage(bigPage, smallPage);
-            return;
         }
     }
 
