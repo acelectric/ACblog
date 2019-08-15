@@ -22,8 +22,6 @@
     .nav-item>a {
         width: 100%;
     }
-    #content {
-    }
     #content>.text{
         padding: 0px 20px;
         line-height: 1.5em;
@@ -44,8 +42,6 @@
         height: 300px;
         margin-left: auto;
         margin-right: auto;
-    }
-    .index-scope {
     }
     #content>.text{
         width: 90%;
