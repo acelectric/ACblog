@@ -217,7 +217,7 @@ function generateBox(obj, bigPage = null, smallPage = null) {
     boxImg.dataset.src = address + 'img/img' + obj.img[0] + '.jpg';
     boxImg.src = 'loading.gif';
     boxImg.onclick = function (e) {
-        history.pushState('', '', address + 'map.html?p=' + bigPage + '&sp=' + smallPage + '&ssp=' + page);
+        history.pushState('', '', address + 'map.html?p=' + bigPage + '&sp=' + smallPage + '&ssp=' + obj.json);
         e.stopPropagation();
     };
 

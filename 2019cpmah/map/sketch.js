@@ -97,7 +97,7 @@ let pointLine = [[16.5, 326], [129.5, 365]];
 
 function setup() {
     let urlParams = new URLSearchParams(window.location.search);
-    console.log(urlParams);
+    // console.log(urlParams);
     // console.log(urlParams.get('p'));
     bigPage = urlParams.get('p');
     smallPage = urlParams.get('sp');
@@ -132,7 +132,7 @@ function setup() {
     //createCanvas(sizeX * scl + margin * 2, sizeY * scl + margin * 2);
     if (smallPage != null && bigPage != null) {
         if (smallSmallPage != null) {
-            console.log(smallSmallPage);
+            // console.log(smallSmallPage);
             ajaxPage(smallSmallPage, 'all', bigPage, smallPage);
 
         } else {
