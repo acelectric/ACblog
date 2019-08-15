@@ -35,11 +35,7 @@ const canIn = {
     county: [true, false, false, false, true, true, true, false, true, true, true, true, false, false, true, true, true, true, false, true, true, true]
 }
 
-let textsPosition =
-    [[460, 18], [407, 89], [405, 51], [336, 76], [327, 128],
-    [258, 106], [270, 165], [243, 225], [188, 273], [165, 323],
-    [228, 383], [181, 367], [160, 438], [227, 469], [216, 551],
-    [290, 298], [423, 157], [376, 315], [305, 490], [111.5, 255], [80.5, 552], [199.5, 62]];
+let textsPosition = [[385, 18], [332, 89], [330, 51], [261, 76], [252, 128], [183, 106], [195, 165], [168, 225], [113, 273], [90, 323], [153, 383], [106, 367], [85, 438], [152, 469], [141, 551], [215, 298], [348, 157], [301, 315], [230, 490], [36.5, 255], [5.5, 552], [124.5, 62]]
 
 
 
@@ -83,7 +79,7 @@ function setup() {
     ajaxMapPage(mapJSON.feature, bigPage);
 
 
-    /*let content = document.getElementById('container');
+    let content = document.getElementById('container');
     if (content.offsetWidth < 1024) {
         newSize = content.offsetWidth < content.offsetHeight ? content.offsetWidth : content.offsetHeight;
         canvas = createCanvas(newSize, newSize * (sizeY / sizeX));
@@ -96,8 +92,8 @@ function setup() {
         canvas.parent(content);
         sclX = (newSize / (sizeY / sizeX)) / sizeX;
         sclY = newSize / sizeY;
-    }*/
-    createCanvas(sizeX, sizeY);
+    }
+    // createCanvas(sizeX, sizeY);
 
 
     // newSize = windowWidth < windowHeight ? windowWidth : windowHeight;
@@ -122,13 +118,13 @@ function setup() {
             // console.log(i);
         }
     }
-    console.log(areas);
+    // console.log(areas);
 
 
 
 
 
-    for (let i = 0; i < areas[19].path.length; i++) {
+    /*for (let i = 0; i < areas[19].path.length; i++) {
         for (let j = 0; j < areas[19].path[i].length; j++) {
             for (let k = 0; k < areas[19].path[i][j].length; k++) {
                 areas[19].path[i][j][k][0] *= 1.3;
@@ -186,18 +182,18 @@ function setup() {
     }
     for (let i = 0; i < areas.length; i++) {
         modiflyPoint(i);
-    }
-    for (let i = 0; i < textsPosition.length; i++) {
-        textsPosition[i][0] -= 75;
-    }
-    console.log(textsPosition);
-    console.log(minX, maxX, minY, maxY);
+    }*/
+    // for (let i = 0; i < textsPosition.length; i++) {
+    //     textsPosition[i][0] -= 75;
+    // }
+    // console.log(textsPosition);
+    // console.log(minX, maxX, minY, maxY);
 
 
     //-------------
     // noLoop();
     //frameRate(10);
-    console.log(JSON.stringify(areas, ["cName", "eName", "path"]));
+    // console.log(JSON.stringify(areas, ["cName", "eName", "path"]));
 }
 function draw() {
     background(color(0, 0, 0, 0));
