@@ -226,7 +226,7 @@ function draw() {
         }
 
     }
-    if (mouseX > pointBlocks[0][0] && mouseX < pointBlocks[1][0] && mouseY > pointBlocks[0][1] && mouseY < pointBlocks[1][1]) {
+    if (canIn[bigPage][11] && mouseX > pointBlocks[0][0] && mouseX < pointBlocks[1][0] && mouseY > pointBlocks[0][1] && mouseY < pointBlocks[1][1]) {
         inAreas = true;
     }
     for (let i = 0; i < areas.length; i++) {
@@ -250,7 +250,7 @@ function mousePressed() {
             // document.getElementById(areas[i].eName).click();
             createClassificationSubPage(bigPage, areas[i].eName);
         }
-        if (mouseX > pointBlocks[0][0] && mouseX < pointBlocks[1][0] && mouseY > pointBlocks[0][1] && mouseY < pointBlocks[1][1]) {
+        if (canIn[bigPage][11] && mouseX > pointBlocks[0][0] && mouseX < pointBlocks[1][0] && mouseY > pointBlocks[0][1] && mouseY < pointBlocks[1][1]) {
             createClassificationSubPage(bigPage, areas[11].eName);
         }
     }
