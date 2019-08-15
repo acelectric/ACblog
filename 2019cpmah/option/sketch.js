@@ -15,7 +15,7 @@ class Circle {
     show(target = 1) {
         noStroke(color('#C06014'));
         fill(this.fillColor);
-        circle(this.x, this.y, this.rNow);
+        circle(this.x, this.y, (this.rNow / 0.8) * 0.9);
         if (target == 0) {
             strokeWeight(this.r * 0.03);
             noFill();

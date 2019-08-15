@@ -35,7 +35,7 @@ const canIn = {
     county: [true, false, false, false, true, true, true, false, true, true, true, true, false, false, true, true, true, true, false, true, true, true]
 }
 
-let textsPosition = [[385, 18], [332, 89], [330, 51], [261, 76], [252, 128], [183, 106], [195, 165], [168, 225], [113, 273], [90, 323], [153, 383], [106, 367], [85, 438], [152, 469], [141, 551], [215, 298], [348, 157], [301, 315], [230, 490], [36.5, 255], [5.5, 552], [124.5, 62]]
+let textsPosition = [[385, 18], [332, 89], [330, 51], [261, 76], [252, 128], [183, 106], [195, 165], [168, 225], [113, 273], [90, 323], [153, 383], [-0.5, 317], [85, 438], [152, 469], [141, 551], [215, 298], [348, 157], [301, 315], [230, 490], [36.5, 255], [5.5, 552], [124.5, 62]]
 
 
 
@@ -66,6 +66,10 @@ function preload() {
 var a;
 let bigPage;
 let smallPage;
+
+let pointBlocks = [[0, 302], [38.5, 321]];
+let pointLine = [[16.5, 326], [129.5, 365]];
+
 function setup() {
     let urlParams = new URLSearchParams(window.location.search);
 
@@ -118,9 +122,12 @@ function setup() {
             // console.log(i);
         }
     }
-    // console.log(areas);
+    console.log(areas);
 
-
+    pointBlocks[0] = size2newSize(pointBlocks[0]);
+    pointBlocks[1] = size2newSize(pointBlocks[1]);
+    pointLine[0] = size2newSize(pointLine[0]);
+    pointLine[1] = size2newSize(pointLine[1]);
 
 
 
@@ -219,6 +226,9 @@ function draw() {
         }
 
     }
+    if (mouseX > pointBlocks[0][0] && mouseX < pointBlocks[1][0] && mouseY > pointBlocks[0][1] && mouseY < pointBlocks[1][1]) {
+        inAreas = true;
+    }
     for (let i = 0; i < areas.length; i++) {
         areas[i].showName();
     }
@@ -229,13 +239,19 @@ function draw() {
     } else {
         cursor('default');
     }
+    stroke(0);
+    line(pointLine[0][0], pointLine[0][1], pointLine[1][0], pointLine[1][1]);
     // text('測試中', mouseX, mouseY);
 }
 function mousePressed() {
+
     for (let i = 0; i < areas.length; i++) {
         if (areas[i].isPointInArea(mouseX, mouseY) && canIn[bigPage][i]) {
             // document.getElementById(areas[i].eName).click();
             createClassificationSubPage(bigPage, areas[i].eName);
+        }
+        if (mouseX > pointBlocks[0][0] && mouseX < pointBlocks[1][0] && mouseY > pointBlocks[0][1] && mouseY < pointBlocks[1][1]) {
+            createClassificationSubPage(bigPage, areas[11].eName);
         }
     }
 
