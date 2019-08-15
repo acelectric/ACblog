@@ -133,7 +133,6 @@ function setup() {
     if (smallPage != null && bigPage != null) {
         if (smallSmallPage != null) {
             console.log(smallSmallPage);
-            history.pushState('', '', address + 'map.html?p=' + bigPage + '&sp=' + smallPage + '&ssp=' + page);
             ajaxPage(smallSmallPage, 'all', bigPage, smallPage);
 
         } else {
@@ -282,13 +281,14 @@ function draw() {
 function mousePressed(e) {
     e.stopPropagation();
     if (canIn[bigPage][11] && mouseX > pointBlocks[0][0] && mouseX < pointBlocks[1][0] && mouseY > pointBlocks[0][1] && mouseY < pointBlocks[1][1]) {
-        createClassificationSubPage(bigPage, areas[11].eName);
+        history.pushState('', '', address + 'map.html?p=' + bigPage + '&sp=' + areas[11].eName);
         return;
     }
     for (let i = 0; i < areas.length; i++) {
         if (areas[i].isPointInArea(mouseX, mouseY) && canIn[bigPage][i]) {
             // document.getElementById(areas[i].eName).click();
-            createClassificationSubPage(bigPage, areas[i].eName);
+            history.pushState('', '', address + 'map.html?p=' + bigPage + '&sp=' + areas[i].eName);
+
         }
     }
 
