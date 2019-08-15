@@ -48,7 +48,7 @@ let colors = [
     "#7297C2",
     "#03AA49",
     "#C11147",
-    "#8A9CA4"
+    "#E60A75"
 ]
 
 const canIn = {
