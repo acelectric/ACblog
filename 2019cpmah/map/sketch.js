@@ -26,7 +26,30 @@ let sclX = 1, sclY = 1;
 let canvas;
 
 let eName = [["連江縣", "LJF"], ["金門縣", "JME"], ["宜蘭縣", "ILA"], ["新竹縣", "HSQ"], ["苗栗縣", "MIA"], ["彰化縣", "CHA"], ["南投縣", "NAN"], ["雲林縣", "YUN"], ["嘉義縣", "CYQ"], ["屏東縣", "PIF"], ["臺東縣", "TTT"], ["花蓮縣", "HUA"], ["澎湖縣", "PEN"], ["基隆市", "KEE"], ["新竹市", "HSZ"], ["嘉義市", "CYI"], ["臺北市", "TPE"], ["高雄市", "KHH"], ["新北市", "TPQ"], ["臺中市", "TXG"], ["臺南市", "TNN"], ["桃園市", "TAO"]];
-
+let colors = [
+    "#7B6CEC",
+    "#8492EC",
+    "#01DCAA",
+    "#7CD167",
+    "#C673D8",
+    "#C9A51C",
+    "#834710",
+    "#7E83D6",
+    "#73E446",
+    "#C7878E",
+    "#83BA03",
+    "#DA2D94",
+    "#5340A2",
+    "#CC4BBA",
+    "#C21AC3",
+    "#E4C77B",
+    "#956518",
+    "#A26B8E",
+    "#7297C2",
+    "#03AA49",
+    "#C11147",
+    "#8A9CA4"
+]
 
 const canIn = {
     all: [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, false, true, true, true],
@@ -116,6 +139,9 @@ function setup() {
     for (let i = 0; i < mapJSON.length; i++) {
         areas[i] = new area(mapJSON[i]);
         areas[i].reSize();
+        areas[i].fillColor = colors[i];
+        areas[i].initColor = areas[i].fillColor;
+
         areas[i].textPosition = textsPosition[i];
         if (canIn[bigPage][i] == false) {
             areas[i].fillColor = color(200);

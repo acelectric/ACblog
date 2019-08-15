@@ -63,10 +63,10 @@ function setup() {
         const maxSR = height / 12;
         const maxBR = width / 4 < height / 2 ? width / 4 : height / 2;
         obj.push(new Circle(width / 4, height / 2, maxBR * 0.9));
-        obj.push(new Circle(8 * width / 12, 2 * height / 8, maxSR));
-        obj.push(new Circle(10 * width / 12, 3.5 * height / 8, maxSR));
-        obj.push(new Circle(8 * width / 12, 4.5 * height / 8, maxSR));
-        obj.push(new Circle(10 * width / 12, 6 * height / 8, maxSR));
+        obj.push(new Circle(8 * width / 12, 2 * height / 8, maxSR * 1.1));
+        obj.push(new Circle(10 * width / 12, 3.5 * height / 8, maxSR * 1.1));
+        obj.push(new Circle(8 * width / 12, 4.5 * height / 8, maxSR * 1.1));
+        obj.push(new Circle(10 * width / 12, 6 * height / 8, maxSR * 1.1));
     } else {
         // 手機
         const maxSR = width / 8;
