@@ -284,6 +284,7 @@ function ajaxClassificationPage(category) {
 function createClassificationSubPage(bigPage, smallPage) {
     initPage('flex-center');
     document.body.style.backgroundImage = 'url(' + address + 'bg3.jpg)';
+    document.body.style.backgroundPosition = 'right bottom';
     // let temp = document.getElementById('optionSetContainer');
     content = document.getElementById('content');
     content.innerHTML = "";
@@ -351,6 +352,7 @@ function ajaxMapPage(areas, t) {
     content.id = 'content';
     content.className += 'flex-center';
     document.body.style.backgroundImage = 'url(' + address + 'bg2.jpg)';
+    document.body.style.backgroundPosition = 'left bottom';
     document.body.appendChild(content);
 
     let title = document.createElement('h1');
