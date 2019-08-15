@@ -12,7 +12,7 @@ let areas = new Array(22);
 // let sizeX = Math.round(maxX - minX);
 // let sizeY = Math.round(maxY - minY);
 
-const sizeX = 519;
+const sizeX = 444;
 const sizeY = 679;
 
 // const sizeX = 850;
@@ -39,8 +39,9 @@ let textsPosition =
     [[460, 18], [407, 89], [405, 51], [336, 76], [327, 128],
     [258, 106], [270, 165], [243, 225], [188, 273], [165, 323],
     [228, 383], [181, 367], [160, 438], [227, 469], [216, 551],
-    [290, 298], [423, 157], [376, 315], [305, 490], [19, 206],
-    [13, 380], [83, 54]];
+    [290, 298], [423, 157], [376, 315], [305, 490], [111.5, 255], [80.5, 552], [199.5, 62]];
+
+
 
 function coordinate2xy(coordinate) {
     let x = (coordinate[0] - minX) * scl;
@@ -82,7 +83,7 @@ function setup() {
     ajaxMapPage(mapJSON.feature, bigPage);
 
 
-    let content = document.getElementById('container');
+    /*let content = document.getElementById('container');
     if (content.offsetWidth < 1024) {
         newSize = content.offsetWidth < content.offsetHeight ? content.offsetWidth : content.offsetHeight;
         canvas = createCanvas(newSize, newSize * (sizeY / sizeX));
@@ -95,8 +96,8 @@ function setup() {
         canvas.parent(content);
         sclX = (newSize / (sizeY / sizeX)) / sizeX;
         sclY = newSize / sizeY;
-    }
-    // createCanvas(sizeX, sizeY);
+    }*/
+    createCanvas(sizeX, sizeY);
 
 
     // newSize = windowWidth < windowHeight ? windowWidth : windowHeight;
@@ -121,33 +122,53 @@ function setup() {
             // console.log(i);
         }
     }
-    //console.log(areas);
+    console.log(areas);
 
 
 
 
 
-    /*for (let i = 0; i < areas[21].path.length; i++) {
-        for (let j = 0; j < areas[21].path[i].length; j++) {
-            for (let k = 0; k < areas[21].path[i][j].length; k++) {
-                areas[21].path[i][j][k][1] += 200;
-            }
-        }
-    }
     for (let i = 0; i < areas[19].path.length; i++) {
         for (let j = 0; j < areas[19].path[i].length; j++) {
             for (let k = 0; k < areas[19].path[i][j].length; k++) {
-                areas[19].path[i][j][k][0] += 250;
+                areas[19].path[i][j][k][0] *= 1.3;
+                areas[19].path[i][j][k][1] *= 1.3;
+                areas[19].path[i][j][k][0] += 100;
             }
         }
     }
+    for (let i = 0; i < areas[20].path.length; i++) {
+        for (let j = 0; j < areas[20].path[i].length; j++) {
+            for (let k = 0; k < areas[20].path[i][j].length; k++) {
+                areas[20].path[i][j][k][0] *= 1.5;
+                areas[20].path[i][j][k][1] *= 1.5;
+                areas[20].path[i][j][k][0] += 50;
+            }
+        }
+    }
+
+    areas[20].path[0] = areas[20].path[1];
+    areas[20].path.pop();
+    for (let i = 0; i < areas[21].path.length; i++) {
+        for (let j = 0; j < areas[21].path[i].length; j++) {
+            for (let k = 0; k < areas[21].path[i][j].length; k++) {
+                areas[21].path[i][j][k][0] *= 4;
+                areas[21].path[i][j][k][1] *= 4;
+                areas[21].path[i][j][k][0] -= 200;
+                areas[21].path[i][j][k][1] -= 80;
+            }
+        }
+    }
+
     let maxX = -1, minX = 900, maxY = -1, minY = 900;
     let modiflyPoint = function (target) {
         for (let i = 0; i < areas[target].path.length; i++) {
             for (let j = 0; j < areas[target].path[i].length; j++) {
                 for (let k = 0; k < areas[target].path[i][j].length; k++) {
-                    areas[target].path[i][j][k][0] -= 239;
-                    areas[target].path[i][j][k][1] -= 176;
+                    areas[target].path[i][j][k][0] -= 75;
+
+                    areas[target].path[i][j][k][0] = Math.round(areas[target].path[i][j][k][0]);
+                    areas[target].path[i][j][k][1] = Math.round(areas[target].path[i][j][k][1]);
 
                     if (areas[target].path[i][j][k][0] > maxX) {
                         maxX = areas[target].path[i][j][k][0];
@@ -166,13 +187,17 @@ function setup() {
     for (let i = 0; i < areas.length; i++) {
         modiflyPoint(i);
     }
+    for (let i = 0; i < textsPosition.length; i++) {
+        textsPosition[i][0] -= 75;
+    }
+    console.log(textsPosition);
     console.log(minX, maxX, minY, maxY);
-    */
+
 
     //-------------
     // noLoop();
     //frameRate(10);
-    // console.log(JSON.stringify(areas, ["cName", "eName", "path"]));
+    console.log(JSON.stringify(areas, ["cName", "eName", "path"]));
 }
 function draw() {
     background(color(0, 0, 0, 0));

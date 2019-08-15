@@ -80,30 +80,48 @@ function setup() {
     let bigX;
     let bigY;
     let bigR;
-    if (height < width) {
+    /*if (height < width) {
         // 電腦
         bigX = width / 2;
         bigY = height;
-        bigR = width / 2;
-        obj.push(new Circle(bigX, bigY, bigR * (3 / 6)));
+
+        let ans1 = width / 2 * (3 * cos(180 / 5) + 1);
+        let ans2 = height / 4;
+        bigR = ans1 < ans2 ? ans1 : ans2;
+        bigR *= 2;
+
+
+        obj.push(new Circle(bigX, bigY, bigR));
         for (i = 1; i <= 4; i++) {
-            pointX = bigX - bigR * cos(i * 180 / 5) * (5 / 6);
-            pointY = bigY - bigR * sin(i * 180 / 5) * (5 / 6);
-            obj.push(new Circle(pointX, pointY, bigR * (1 / 6)));
+            pointX = bigX - (3 / 2) * bigR * cos(i * 180 / 5);
+            pointY = bigY - (3 / 2) * bigR * sin(i * 180 / 5);
+            obj.push(new Circle(pointX, pointY, bigR * (1 / 3)));
         }
     } else {
         // 手機
         bigX = 0;
         bigY = height / 2;
-        bigR = width / 2;
-        obj.push(new Circle(bigX, bigY, bigR * (3 / 6)));
+
+        let ans1 = height / 2 * (3 * cos(180 / 5) + 1);
+        let ans2 = width / 4;
+        bigR = ans1 < ans2 ? ans1 : ans2;
+        bigR *= 2;
+
+        obj.push(new Circle(bigX, bigY, bigR));
         for (i = 4; i >= 1; i--) {
-            pointX = bigX + bigR * sin(i * 180 / 5) * (5 / 6);
-            pointY = bigY + bigR * cos(i * 180 / 5) * (5 / 6);
-            obj.push(new Circle(pointX, pointY, bigR * (1 / 6)));
+            pointX = bigX + (3 / 2) * bigR * sin(i * 180 / 5);
+            pointY = bigY + (3 / 2) * bigR * cos(i * 180 / 5);
+            obj.push(new Circle(pointX, pointY, bigR * (1 / 3)));
         }
         texts[0] = title;
-    }
+    }*/
+
+    obj.push(new Circle(0, height / 2, width / 3));
+    obj.push(new Circle(width / 2, 2 * height / 13, height / 13));
+    obj.push(new Circle(2 * width / 3, 5 * height / 13, height / 13));
+    obj.push(new Circle(2 * width / 3, 8 * height / 13, height / 13));
+    obj.push(new Circle(width / 2, 11 * height / 13, height / 13));
+
     for (i = 0; i < obj.length; i++) {
         obj[i].startX = bigX;
         obj[i].startY = bigY;
