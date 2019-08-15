@@ -156,6 +156,7 @@ function ajaxPage(page, link, bigPage = null, smallPage = null) {
                     } else {
                         let temp = addChildInContent((i + 1 - labelCount) + "." + obj.traffic[i][0]);
                         temp.classList += ' text';
+                        temp.style.margin = '0px auto';
                         addChildInContent(obj.traffic[i][1]).classList += ' text';
                     }
                     //addChildInContent().style.height = '10px';
