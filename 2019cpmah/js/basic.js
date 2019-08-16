@@ -370,7 +370,7 @@ function ajaxMapPage(areas, t) {
     title.className += ' text';
     content.appendChild(title);
 
-    let temp2 = document.createElement('div');
+    let temp2 = addChildInContent();
     temp2.style.width = '100%';
     let temp = addChildInContent('灰色：無古蹟');
     temp.style.margin = '0px auto';
