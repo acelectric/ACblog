@@ -374,6 +374,7 @@ function ajaxMapPage(areas, t) {
     temp2.style.width = '100%';
     let temp = addChildInContent('灰色：無古蹟');
     temp.style.margin = '0px auto';
+    temp.style.width = 'initial';
     temp.style.height = '20px';
     temp.style.lineHeight = '20px';
     temp.style.fontSize = '16px';
