@@ -62,11 +62,13 @@ function setup() {
         // 電腦
         const maxSR = height / 12;
         const maxBR = width / 4 < height / 2 ? width / 4 : height / 2;
+        const r = height / 13;
+        let offset = (width / 2 - 2 * r) / 3;
         obj.push(new Circle(width / 4, height / 2, maxBR * 0.9));
-        obj.push(new Circle(8 * width / 12, 2.5 * height / 11, maxSR));
-        obj.push(new Circle(10 * width / 12, 6.5 * height / 11, maxSR));
-        obj.push(new Circle(8 * width / 12, 4.5 * height / 11, maxSR));
-        obj.push(new Circle(10 * width / 12, 8.5 * height / 11, maxSR));
+        obj.push(new Circle(width / 2 + offset * 1 + r * 1, 3 * height / 13, maxSR));
+        obj.push(new Circle(width / 2 + offset * 2 + r * 3, 8 * height / 13, maxSR));
+        obj.push(new Circle(width / 2 + offset * 1 + r * 1, 5 * height / 13, maxSR));
+        obj.push(new Circle(width / 2 + offset * 2 + r * 3, 10 * height / 13, maxSR));
     } else {
         // 手機
         const maxSR = width / 8;
