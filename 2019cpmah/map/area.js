@@ -40,7 +40,7 @@ class area {
     showName() {
         fill('#000000');
         noStroke();
-        textSize(newSize / 35);
+        textSize(473 / 35);
         //text(this.cName, mouseX + 10, mouseY + 20);
         text(this.cName, this.textPosition[0], this.textPosition[1]);
     }

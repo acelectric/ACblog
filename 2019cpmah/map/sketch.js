@@ -41,7 +41,7 @@ let colors = [
     "#DA2D94",
     "#5340A2",
     "#CC4BBA",
-    "#C21AC3",
+    "#6773f5",
     "#E4C77B",
     "#956518",
     "#A26B8E",
@@ -59,7 +59,7 @@ const canIn = {
 }
 
 let textsPosition = [
-    [414, 18], [361, 89], [359, 51], [290, 76], [281, 128], [212, 106], [224, 165], [197, 225], [142, 273], [119, 323]
+    [414, 18], [361, 89], [359, 51], [290, 76], [281, 128], [114.5, 112], [224, 165], [197, 225], [142, 273], [119, 323]
     , [182, 383], [28.5, 317], [114, 438], [181, 469], [170, 551], [244, 298], [377, 157], [330, 315], [259, 490], [55.5, 205], [4.5, 402], [153.5, 62]
 ];
 
@@ -97,7 +97,9 @@ let smallPage;
 let smallSmallPage;
 
 let pointBlocks = [[29, 302], [67.5, 321]];
+let pointBlocks2 = [[11.5, 98], [150.5, 115]];
 let pointLine = [[45.5, 326], [158.5, 365]];
+let pointLine2 = [[256, 100], [155, 107]];
 
 function setup() {
     let urlParams = new URLSearchParams(window.location.search);
@@ -113,7 +115,7 @@ function setup() {
     ajaxMapPage(mapJSON.feature, bigPage);
 
 
-    /*let content = document.getElementById('container');
+    let content = document.getElementById('container');
     if (content.offsetWidth < 1024) {
         newSize = content.offsetWidth < content.offsetHeight ? content.offsetWidth : content.offsetHeight;
         canvas = createCanvas(newSize, newSize * (sizeY / sizeX));
@@ -126,8 +128,8 @@ function setup() {
         canvas.parent(content);
         sclX = (newSize / (sizeY / sizeX)) / sizeX;
         sclY = newSize / sizeY;
-    }*/
-    createCanvas(sizeX, sizeY);
+    }
+    // createCanvas(sizeX, sizeY);
 
 
     // newSize = windowWidth < windowHeight ? windowWidth : windowHeight;
@@ -161,15 +163,18 @@ function setup() {
             // console.log(i);
         }
     }
-    console.log(areas);
+    // console.log(areas);
 
     pointBlocks[0] = size2newSize(pointBlocks[0]);
     pointBlocks[1] = size2newSize(pointBlocks[1]);
+    pointBlocks2[0] = size2newSize(pointBlocks2[0]);
+    pointBlocks2[1] = size2newSize(pointBlocks2[1]);
     pointLine[0] = size2newSize(pointLine[0]);
     pointLine[1] = size2newSize(pointLine[1]);
+    pointLine2[0] = size2newSize(pointLine2[0]);
+    pointLine2[1] = size2newSize(pointLine2[1]);
 
-
-
+    /*
     for (let i = 0; i < areas[19].path.length; i++) {
         for (let j = 0; j < areas[19].path[i].length; j++) {
             for (let k = 0; k < areas[19].path[i][j].length; k++) {
@@ -205,7 +210,7 @@ function setup() {
         for (let i = 0; i < areas[target].path.length; i++) {
             for (let j = 0; j < areas[target].path[i].length; j++) {
                 for (let k = 0; k < areas[target].path[i][j].length; k++) {
-                    areas[target].path[i][j][k][0] += 29;
+                    // areas[target].path[i][j][k][0] += 29;
 
                     // areas[target].path[i][j][k][0] = Math.round(areas[target].path[i][j][k][0]);
                     // areas[target].path[i][j][k][1] = Math.round(areas[target].path[i][j][k][1]);
@@ -226,24 +231,25 @@ function setup() {
     }
     for (let i = 0; i < areas.length; i++) {
         modiflyPoint(i);
-    }
-    for (let i = 0; i < textsPosition.length; i++) {
-        textsPosition[i][0] += 29;
-    }
-    for (let i = 0; i < areas.length; i++) {
-        areas[i].textPosition = textsPosition[i];
-    }
-    console.log(textsPosition);
-    console.log(minX, maxX, minY, maxY);
+    }*/
+    // for (let i = 0; i < textsPosition.length; i++) {
+    //     textsPosition[i][0] += 29;
+    // }
+    // for (let i = 0; i < areas.length; i++) {
+    //     areas[i].textPosition = textsPosition[i];
+    // }
+    // console.log(textsPosition);
+    // console.log(minX, maxX, minY, maxY);
 
 
     //-------------
     // noLoop();
     //frameRate(10);
-    console.log(JSON.stringify(areas, ["cName", "eName", "path"]));
+    // console.log(JSON.stringify(areas, ["cName", "eName", "path"]));
 }
 function draw() {
     background(color(0, 0, 0, 0));
+    // background(255);
     for (let i = 0; i < areas.length; i++) {
         areas[i].show();
     }
@@ -268,6 +274,8 @@ function draw() {
     }
     if (canIn[bigPage][11] && mouseX > pointBlocks[0][0] && mouseX < pointBlocks[1][0] && mouseY > pointBlocks[0][1] && mouseY < pointBlocks[1][1]) {
         inAreas = true;
+    } else if (canIn[bigPage][11] && mouseX > pointBlocks2[0][0] && mouseX < pointBlocks2[1][0] && mouseY > pointBlocks2[0][1] && mouseY < pointBlocks2[1][1]) {
+        inAreas = true;
     }
     for (let i = 0; i < areas.length; i++) {
         areas[i].showName();
@@ -281,12 +289,18 @@ function draw() {
     }
     stroke(0);
     line(pointLine[0][0], pointLine[0][1], pointLine[1][0], pointLine[1][1]);
+
+    line(pointLine2[0][0], pointLine2[0][1], pointLine2[1][0], pointLine2[1][1]);
     // text('測試中', mouseX, mouseY);
 }
 function mousePressed(e) {
     e.stopPropagation();
     if (canIn[bigPage][11] && mouseX > pointBlocks[0][0] && mouseX < pointBlocks[1][0] && mouseY > pointBlocks[0][1] && mouseY < pointBlocks[1][1]) {
         history.pushState('', '', address + 'map.html?p=' + bigPage + '&sp=' + areas[11].eName);
+        location.reload();
+        return;
+    } else if (canIn[bigPage][5] && mouseX > pointBlocks2[0][0] && mouseX < pointBlocks2[1][0] && mouseY > pointBlocks2[0][1] && mouseY < pointBlocks2[1][1]) {
+        history.pushState('', '', address + 'map.html?p=' + bigPage + '&sp=' + areas[5].eName);
         location.reload();
         return;
     }
