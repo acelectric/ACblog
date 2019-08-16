@@ -84,6 +84,7 @@ function createRandomColor(eName) {
 }
 
 function preload() {
+    // let address = 'https://acblog.nctu.me/2019cpmah/'
     mapJSON = loadJSON(address + "map/map.json");
     allJSON = loadJSON(address + "data/categorys/all.json");
 }
@@ -165,12 +166,10 @@ function setup() {
     pointLine[1] = size2newSize(pointLine[1]);
 
 
-
-    /*for (let i = 0; i < areas[19].path.length; i++) {
+    /*
+    for (let i = 0; i < areas[19].path.length; i++) {
         for (let j = 0; j < areas[19].path[i].length; j++) {
             for (let k = 0; k < areas[19].path[i][j].length; k++) {
-                areas[19].path[i][j][k][0] *= 1.3;
-                areas[19].path[i][j][k][1] *= 1.3;
                 areas[19].path[i][j][k][0] += 100;
             }
         }
@@ -178,26 +177,19 @@ function setup() {
     for (let i = 0; i < areas[20].path.length; i++) {
         for (let j = 0; j < areas[20].path[i].length; j++) {
             for (let k = 0; k < areas[20].path[i][j].length; k++) {
-                areas[20].path[i][j][k][0] *= 1.5;
-                areas[20].path[i][j][k][1] *= 1.5;
                 areas[20].path[i][j][k][0] += 50;
             }
         }
     }
-
-    areas[20].path[0] = areas[20].path[1];
-    areas[20].path.pop();
     for (let i = 0; i < areas[21].path.length; i++) {
         for (let j = 0; j < areas[21].path[i].length; j++) {
             for (let k = 0; k < areas[21].path[i][j].length; k++) {
-                areas[21].path[i][j][k][0] *= 4;
-                areas[21].path[i][j][k][1] *= 4;
                 areas[21].path[i][j][k][0] -= 200;
                 areas[21].path[i][j][k][1] -= 80;
             }
         }
-    }
-
+    }*/
+    /*
     let maxX = -1, minX = 900, maxY = -1, minY = 900;
     let modiflyPoint = function (target) {
         for (let i = 0; i < areas[target].path.length; i++) {
