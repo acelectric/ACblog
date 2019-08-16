@@ -372,6 +372,7 @@ function ajaxMapPage(areas, t) {
 
     let temp2 = addChildInContent();
     temp2.style.width = '100%';
+    temp2.style.textAlign = 'center';
     let temp = addChildInContent('灰色：無古蹟');
     temp.style.margin = '0px auto';
     temp.style.width = 'initial';
