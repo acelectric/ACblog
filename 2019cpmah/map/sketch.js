@@ -12,7 +12,7 @@ let areas = new Array(22);
 // let sizeX = Math.round(maxX - minX);
 // let sizeY = Math.round(maxY - minY);
 
-const sizeX = 444;
+const sizeX = 473;
 const sizeY = 679;
 
 // const sizeX = 850;
@@ -58,7 +58,10 @@ const canIn = {
     county: [true, false, false, false, true, true, true, false, true, true, true, true, false, false, true, true, true, true, false, true, true, true]
 }
 
-let textsPosition = [[385, 18], [332, 89], [330, 51], [261, 76], [252, 128], [183, 106], [195, 165], [168, 225], [113, 273], [90, 323], [153, 383], [-0.5, 317], [85, 438], [152, 469], [141, 551], [215, 298], [348, 157], [301, 315], [230, 490], [36.5, 255], [5.5, 552], [124.5, 62]]
+let textsPosition = [
+    [414, 18], [361, 89], [359, 51], [290, 76], [281, 128], [212, 106], [224, 165], [197, 225], [142, 273], [119, 323]
+    , [182, 383], [28.5, 317], [114, 438], [181, 469], [170, 551], [244, 298], [377, 157], [330, 315], [259, 490], [55.5, 205], [4.5, 402], [153.5, 62]
+];
 
 
 
@@ -84,7 +87,7 @@ function createRandomColor(eName) {
 }
 
 function preload() {
-    // let address = 'https://acblog.nctu.me/2019cpmah/'
+    let address = 'https://acblog.nctu.me/2019cpmah/'
     mapJSON = loadJSON(address + "map/map.json");
     allJSON = loadJSON(address + "data/categorys/all.json");
 }
@@ -93,8 +96,8 @@ let bigPage;
 let smallPage;
 let smallSmallPage;
 
-let pointBlocks = [[0, 302], [38.5, 321]];
-let pointLine = [[16.5, 326], [129.5, 365]];
+let pointBlocks = [[29, 302], [67.5, 321]];
+let pointLine = [[45.5, 326], [158.5, 365]];
 
 function setup() {
     let urlParams = new URLSearchParams(window.location.search);
@@ -110,7 +113,7 @@ function setup() {
     ajaxMapPage(mapJSON.feature, bigPage);
 
 
-    let content = document.getElementById('container');
+    /*let content = document.getElementById('container');
     if (content.offsetWidth < 1024) {
         newSize = content.offsetWidth < content.offsetHeight ? content.offsetWidth : content.offsetHeight;
         canvas = createCanvas(newSize, newSize * (sizeY / sizeX));
@@ -123,8 +126,8 @@ function setup() {
         canvas.parent(content);
         sclX = (newSize / (sizeY / sizeX)) / sizeX;
         sclY = newSize / sizeY;
-    }
-    // createCanvas(sizeX, sizeY);
+    }*/
+    createCanvas(sizeX, sizeY);
 
 
     // newSize = windowWidth < windowHeight ? windowWidth : windowHeight;
@@ -158,7 +161,7 @@ function setup() {
             // console.log(i);
         }
     }
-    // console.log(areas);
+    console.log(areas);
 
     pointBlocks[0] = size2newSize(pointBlocks[0]);
     pointBlocks[1] = size2newSize(pointBlocks[1]);
@@ -166,39 +169,46 @@ function setup() {
     pointLine[1] = size2newSize(pointLine[1]);
 
 
-    /*
+
     for (let i = 0; i < areas[19].path.length; i++) {
         for (let j = 0; j < areas[19].path[i].length; j++) {
             for (let k = 0; k < areas[19].path[i][j].length; k++) {
-                areas[19].path[i][j][k][0] += 100;
+                areas[19].path[i][j][k][0] -= 20;
+                areas[19].path[i][j][k][1] -= 50;
             }
         }
     }
     for (let i = 0; i < areas[20].path.length; i++) {
         for (let j = 0; j < areas[20].path[i].length; j++) {
             for (let k = 0; k < areas[20].path[i][j].length; k++) {
-                areas[20].path[i][j][k][0] += 50;
+                areas[20].path[i][j][k][0] -= 30;
+                areas[20].path[i][j][k][1] -= 150;
             }
         }
     }
     for (let i = 0; i < areas[21].path.length; i++) {
         for (let j = 0; j < areas[21].path[i].length; j++) {
             for (let k = 0; k < areas[21].path[i][j].length; k++) {
-                areas[21].path[i][j][k][0] -= 200;
-                areas[21].path[i][j][k][1] -= 80;
+                areas[21].path[i][j][k][0] += 0;
+                areas[21].path[i][j][k][1] += 0;
             }
         }
-    }*/
-    /*
+    }
+
+    textsPosition[19][0] -= 10;
+    textsPosition[19][1] -= 50;
+    textsPosition[20][0] -= 30;
+    textsPosition[20][1] -= 150;
+
     let maxX = -1, minX = 900, maxY = -1, minY = 900;
     let modiflyPoint = function (target) {
         for (let i = 0; i < areas[target].path.length; i++) {
             for (let j = 0; j < areas[target].path[i].length; j++) {
                 for (let k = 0; k < areas[target].path[i][j].length; k++) {
-                    areas[target].path[i][j][k][0] -= 75;
+                    areas[target].path[i][j][k][0] += 29;
 
-                    areas[target].path[i][j][k][0] = Math.round(areas[target].path[i][j][k][0]);
-                    areas[target].path[i][j][k][1] = Math.round(areas[target].path[i][j][k][1]);
+                    // areas[target].path[i][j][k][0] = Math.round(areas[target].path[i][j][k][0]);
+                    // areas[target].path[i][j][k][1] = Math.round(areas[target].path[i][j][k][1]);
 
                     if (areas[target].path[i][j][k][0] > maxX) {
                         maxX = areas[target].path[i][j][k][0];
@@ -216,18 +226,21 @@ function setup() {
     }
     for (let i = 0; i < areas.length; i++) {
         modiflyPoint(i);
-    }*/
-    // for (let i = 0; i < textsPosition.length; i++) {
-    //     textsPosition[i][0] -= 75;
-    // }
-    // console.log(textsPosition);
-    // console.log(minX, maxX, minY, maxY);
+    }
+    for (let i = 0; i < textsPosition.length; i++) {
+        textsPosition[i][0] += 29;
+    }
+    for (let i = 0; i < areas.length; i++) {
+        areas[i].textPosition = textsPosition[i];
+    }
+    console.log(textsPosition);
+    console.log(minX, maxX, minY, maxY);
 
 
     //-------------
     // noLoop();
     //frameRate(10);
-    // console.log(JSON.stringify(areas, ["cName", "eName", "path"]));
+    console.log(JSON.stringify(areas, ["cName", "eName", "path"]));
 }
 function draw() {
     background(color(0, 0, 0, 0));
