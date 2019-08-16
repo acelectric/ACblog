@@ -15,12 +15,12 @@ class Circle {
     show(target = 1) {
         noStroke(color('#C06014'));
         fill(this.fillColor);
-        circle(this.x, this.y, (this.rNow / 0.8) * 0.9);
+        circle(this.x, this.y, this.rNow);
         if (target == 0) {
             strokeWeight(this.r * 0.03);
             noFill();
             stroke(this.fillColor);
-            circle(this.x, this.y, (this.rNow / 0.8));
+            circle(this.x, this.y, this.rNow + 10);
         }
         textAlign(CENTER, CENTER);
         textSize(this.rNow / 3);
@@ -29,6 +29,8 @@ class Circle {
         text(this.text, this.x, this.y);
         if (this.rNow < this.r * 0.8) {
             this.rNow += this.r / 20;
+        } else {
+            this.rNow = this.r;
         }
     }
 
@@ -43,7 +45,7 @@ class Circle {
 }
 let img;
 function preload() {
-    img = loadImage(address + 'bg1.jpg');
+    // img = loadImage(address + 'bg1.jpg');
 }
 
 let obj = [];
@@ -60,15 +62,36 @@ function setup() {
 
     if (height < width) {
         // 電腦
-        const maxSR = height / 12;
-        const maxBR = width / 4 < height / 2 ? width / 4 : height / 2;
-        const r = height / 13;
-        let offset = (width / 2 - 2 * r) / 3;
-        obj.push(new Circle(width / 4, height / 2, maxBR * 0.9));
-        obj.push(new Circle(width / 2 + offset * 1 + r * 1, 3 * height / 13, maxSR));
-        obj.push(new Circle(width / 2 + offset * 2 + r * 3, 8 * height / 13, maxSR));
-        obj.push(new Circle(width / 2 + offset * 1 + r * 1, 5 * height / 13, maxSR));
-        obj.push(new Circle(width / 2 + offset * 2 + r * 3, 10 * height / 13, maxSR));
+        // const maxSR = height / 12;
+        // const maxBR = width / 4 < height / 2 ? width / 4 : height / 2;
+        // const r = 2 * height / 13;
+        // let offset = (width / 2 - 2 * r) / 3;
+        // obj.push(new Circle(width / 4, height / 2, maxBR * 0.9));
+        // obj.push(new Circle(width / 2 + offset * 1 + r * 1, 3 * height / 13, r));
+        // obj.push(new Circle(width / 2 + offset * 2 + r * 3, 8 * height / 13, r));
+        // obj.push(new Circle(width / 2 + offset * 1 + r * 1, 5 * height / 13, r));
+        // obj.push(new Circle(width / 2 + offset * 2 + r * 3, 10 * height / 13, r));
+
+        let r1 = height / 8 < width / 8 ? height / 8 : width / 8;
+        const br = (height / 2) * 0.9;
+        line(0, height / 2, width, height / 2);
+        line(width / 4, 0, width / 4, height);
+        let rb = width / 4 < height / 2 ? width / 4 : height / 2;
+        rb = rb < r1 * 3.5 ? rb : r1 * 3.5;
+        circle(width / 4, height / 2, rb);
+        line(width / 2, 0, width / 2, height);
+        line(3 * width / 4, 0, 3 * width / 4, height);
+        line(width / 2, height / 8, width, height / 8);
+        line(width / 2, 2 * height / 8, width, 2 * height / 8);
+        line(width / 2, 3 * height / 8, width, 3 * height / 8);
+        line(width / 2, 5 * height / 8, width, 5 * height / 8);
+        line(width / 2, 6 * height / 8, width, 6 * height / 8);
+        line(width / 2, 7 * height / 8, width, 7 * height / 8);
+
+        // let r1 = height / 8 < width / 8 ? height / 8 : width / 8;
+        circle(5 * width / 8, 2 * height / 8, height / 8);
+
+
     } else {
         // 手機
         const maxSR = width / 8;
@@ -92,7 +115,7 @@ function setup() {
 }
 function draw() {
     // background(255);
-    image(img, 0, 0, width, height);
+    // image(img, 0, 0, width, height);
     let c = 'default';
     for (i = 0; i < obj.length; i++) {
         obj[i].show(i);

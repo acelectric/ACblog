@@ -371,8 +371,7 @@ function ajaxMapPage(areas, t) {
     content.appendChild(title);
 
     let temp = addChildInContent('灰色：無古蹟');
-    temp.style.margin = '0px 30%';
-    temp.style.width = '30%';
+    temp.style.margin = '0px auto';
     temp.style.height = '20px';
     temp.style.lineHeight = '20px';
     temp.style.fontSize = '16px';

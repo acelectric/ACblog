@@ -27,6 +27,8 @@ h1,h2,h3 {
     width: 100%;
     color: #C06014;
     line-height: 3em;
+    display: block;
+    width: 100%;
 }
 h2 {
     color: rgb(182, 125, 79);
