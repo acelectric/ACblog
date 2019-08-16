@@ -103,6 +103,8 @@ a:hover {
     bottom: 30px;
     text-align: center;
     cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
 }
 #footer {
     width: 100%;
@@ -449,6 +451,8 @@ a:hover {
     color: transparent;
     text-align: center;
     font-family: '王漢宗勘亭流繁';
+    -webkit-user-select: none;
+    -moz-user-select: none;
 }
 .title{
     font-size: 100px;
