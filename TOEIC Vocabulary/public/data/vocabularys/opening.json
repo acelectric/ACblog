@@ -1,0 +1,39 @@
+{
+    "answerTimes": 0,
+    "correctTimes": 0,
+    "vocabulary": "opening",
+    "descriptions": [
+        {
+            "partOfSpeech": "n",
+            "meaning": "空缺，職缺；開張，開始",
+            "sentences": [
+                {
+                    "text": "There are several job openings at the restaurant right now.",
+                    "meaning": "那間餐廳目前有幾個空缺"
+                },
+                {
+                    "text": "JX Finances officially announced the opening of its first international branch.",
+                    "meaning": "JX Finances公司正式宣布第一間海外分公司開始營業"
+                }
+            ]
+        }
+    ],
+    "frequency": "2",
+    "relates": [
+        {
+            "type": "同義詞",
+            "text": "vacancy 空缺，職缺"
+        }
+    ],
+    "remarks": [
+        {
+            "title": "文法",
+            "text": "an opening 空缺(可數名詞)<br />opening 表示「空缺、職缺」時是可數名詞，前面要有不定冠詞 an ，或是用複數形 openings。"
+        },
+        {
+            "title": "同義詞",
+            "text": "表示「空缺」時，opening 可以換成 vacancy"
+        }
+    ],
+    "timeline": "2019-01-01"
+}

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>TOEIC Vocabulary</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+        integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+        crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+        integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+        crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="./css/all.css" type="text/css">
+    <link rel="shortcut icon" href="#">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
+    <script src="./js/LearnUnit.js"></script>
+    <script src="./js/home.js"></script>
+    <script src="./js/addWord.js"></script>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow" onclick="hideSidebar();">
+        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#"
+            style="font-weight: bold;letter-spacing: .2rem">TOVOCA</a>
+
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <nav id="sidebar" class="col-md-2 d-none d-xl-block bg-light sidebar">
+                <div class="sidebar-sticky">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <div class="nav-link active mainPageLink" onclick="changeMainPage(this,'overview')">
+                                <span data-feather="home"></span>
+                                Overview
+                                <!-- <span class="sr-only">(current)</span> -->
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <div class="nav-link mainPageLink" onclick="changeMainPage(this,'practice')">
+                                <span data-feather="file"></span>
+                                Practice
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <div class="nav-link mainPageLink" onclick="changeMainPage(this,'quiz')">
+                                <span data-feather="shopping-cart"></span>
+                                Quiz
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <div class="nav-link mainPageLink" onclick="changeMainPage(this,'score')">
+                                <span data-feather="users"></span>
+                                Score
+                            </div>
+                        </li>
+                    </ul>
+
+                    <h6
+                        class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                        <span>Special function</span>
+                    </h6>
+                    <ul class="nav flex-column mb-2">
+                        <li class="nav-item">
+                            <div class="nav-link mainPageLink" onclick="changeMainPage(this,'addWord')">
+                                <span data-feather="file-text"></span>
+                                Add word set
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <div class="nav-link mainPageLink" onclick="changeMainPage(this,'editWord')">
+                                <span data-feather="file-text"></span>
+                                Edit word set
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <!-- <main role="main"
+                class="col-sm-12 col-md-10 col-lg-10 col-xl-8 offset-md-1 offset-lg-1 offset-xl-2 mx-sm-auto"> -->
+            <div class="col-12 col-md-10 col-xl-8 offset-md-1 offset-xl-3 justify-content-center">
+                <main role="main" class="">
+                    <div id="overview">
+                        <table id="overviewTable" class="table table-bordered">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th class="" scope="col">#</th>
+                                    <th scope="col">英文</th>
+                                    <th scope="col">中文</th>
+                                    <!-- <th scope="col">????</th> -->
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                    <div id="practice" class="d-none">
+
+                    </div>
+                    <div id="quiz" class="d-none">quiz</div>
+                    <div id="score" class="d-none">score</div>
+                    <div id="addWord" class="d-none">
+                        <!-- <form class="" action="./addWord" method="POST"> -->
+                        <div class="form-group row">
+                            <label for="vocabulary" class="col-sm-2 col-form-label">單字</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="vocabulary" name="vocabulary"
+                                    placeholder="vocabulary" autocomplete="off">
+                            </div>
+                        </div>
+
+                        <div id="descriptions">
+                            <div class="row mb-2">
+                                <label for="descriptions" class="col-6 col-sm-2 col-form-label mr-auto">描述</label>
+                                <div class="col-auto my-auto">
+                                    <span class="" onclick="addDescriptionsTemplate();"
+                                        data-feather="plus-circle"></span>
+                                </div>
+
+                            </div>
+                            <div class="form-group bg-gray py-2 ml-md-5">
+                                <div class="row">
+                                    <div class="col-sm col-ml-1">
+                                        <div class="form-group row">
+                                            <label for="partOfSpeech" class="col-sm-2 col-form-label">詞性</label>
+                                            <div class="col-sm-4">
+                                                <input type="text" class="form-control" id="partOfSpeech0"
+                                                    name="partOfSpeech0" placeholder="partOfSpeech" autocomplete="off">
+                                            </div>
+                                            <label for="meaning" class="col-sm-2 col-form-label">注釋</label>
+                                            <div class="col-sm-4">
+                                                <input type="text" class="form-control" id="meaning0" name="meaning0"
+                                                    placeholder="meaning" autocomplete="off">
+                                            </div>
+                                        </div>
+                                        <div id="sentences0">
+                                            <div class="row mb-2">
+                                                <label for="sentences"
+                                                    class="col-6 col-sm-2 col-form-label mr-auto">例句</label>
+                                                <div class="col-auto my-auto">
+                                                    <span class="float-right" onclick="addSentencesTemplate(0);"
+                                                        data-feather="plus-circle"></span>
+                                                </div>
+
+
+
+                                            </div>
+
+                                            <div class="form-group bg-gray py-2 ml-md-5">
+                                                <div class="row">
+                                                    <div class="col-sm col-ml-1">
+                                                        <div class="row mb-2">
+                                                            <label for="sentences"
+                                                                class="col-sm-2 col-form-label mr-auto">英文</label>
+                                                            <div class="col-sm">
+                                                                <input type="text" class="form-control"
+                                                                    id="englishSentences0-0" name="englishSentences0-0"
+                                                                    placeholder="english sentences" autocomplete="off">
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <label for="sentences"
+                                                                class="col-sm-2 col-form-label mr-auto">中文</label>
+                                                            <div class="col-sm">
+                                                                <input type="text" class="form-control"
+                                                                    id="chineseSentences0-0" name="chineseSentences0-0"
+                                                                    placeholder="chinese sentences" autocomplete="off">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="frequency" class="form-group row">
+                            <label for="frequency" class="col-sm-2 col-form-label">出題頻率</label>
+                            <!-- <div class="col-sm-10">
+                            <div class="d-flex justify-content-around h-100">
+                                <div class="form-check form-check-inline align-middle">
+                                    <input class="form-check-input" type="radio" name="frequency" id="frequency1" value="1"
+                                        checked>
+                                    <label class="form-check-label" for="inlineRadio1">Low</label>
+                                </div>
+                                <div class="form-check form-check-inline align-middle">
+                                    <input class="form-check-input" type="radio" name="frequency" id="frequency2" value="2">
+                                    <label class="form-check-label" for="inlineRadio2">Medium</label>
+                                </div>
+                                <div class="form-check form-check-inline align-middle">
+                                    <input class="form-check-input" type="radio" name="frequency" id="frequency3" value="3">
+                                    <label class="form-check-label" for="inlineRadio3">High</label>
+                                </div>
+                            </div>
+                        </div> -->
+                            <div class="btn-group btn-group-toggle col-sm-10 col-12 justify-content-center"
+                                data-toggle="buttons">
+                                <label class="btn btn-secondary active col-3">
+                                    <input type="radio" name="frequency" id="frequency1" autocomplete="off" value="1"
+                                        checked>
+                                    Low
+                                </label>
+                                <label class="btn btn-secondary col-3">
+                                    <input type="radio" name="frequency" id="frequency2" autocomplete="off" value="2">
+                                    Medium
+                                </label>
+                                <label class="btn btn-secondary col-3">
+                                    <input type="radio" name="frequency" id="frequency3" autocomplete="off" value="3">
+                                    High
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="relates" class="col-6 col-sm-2 col-form-label mr-auto">相關詞</label>
+                            <div class="col-auto my-auto">
+                                <span class="float-right" onclick="addRelatesTemplate();"
+                                    data-feather="plus-circle"></span>
+                            </div>
+
+                        </div>
+                        <div id="relates" class="ml-md-5">
+
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="remarks" class="col-6 col-sm-2 col-form-label mr-auto">備註</label>
+                            <div class="col-auto my-auto">
+                                <span class="float-right" onclick="addRemarksTemplate();"
+                                    data-feather="plus-circle"></span>
+                            </div>
+                        </div>
+                        <div id="remarks" class="ml-md-5">
+
+                        </div>
+                        <div class="row m-0 mb-3">
+                            <button type="submit" class="btn btn-primary col-md-2 col-8 mx-auto"
+                                onclick="postaddWordData();">送出</button>
+                        </div>
+
+                        <div id="alert" class="mt-2">
+                        </div>
+
+                        <!-- </form> -->
+                    </div>
+                    <div id="editWord" class="d-none">editWord</div>
+                </main>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+
+</script>
+
+</html>
