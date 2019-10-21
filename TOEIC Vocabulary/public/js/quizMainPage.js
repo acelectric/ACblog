@@ -53,7 +53,10 @@ document.onkeydown = function (e) {
         }
     } else if (keyCode == 39) {
         //console.log(">>>")
-        now++;
-        changeCard();
+
+        if (now < cards.length - 1) {
+            now++;
+            changeCard();
+        }
     }
 }

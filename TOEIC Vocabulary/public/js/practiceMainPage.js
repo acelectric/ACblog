@@ -9,25 +9,57 @@
 
 function createCardHeaderElement(word, cardBody) {
     let vocabulary = document.createElement('h4');
-    vocabulary.classList.add('mr-auto');
     vocabulary.classList.add('my-auto');
+    vocabulary.classList.add('col-4');
     vocabulary.innerHTML = normalizationVocabulary(word.vocabulary);
     vocabulary.onclick = function () {
         cardBody.classList.toggle('d-none');
     }
 
+    let volume = document.createElement('span');
+    volume.dataset["feather"] = "volume-2";
+    volume.onclick = function () {
+        console.log("test");
+    }
+    let volumeContainer = document.createElement('div');
+    volumeContainer.classList.add('my-auto');
+    volumeContainer.classList.add('mr-auto');
+    //console.log(voices);
+    volumeContainer.onclick = function () {
+        let synth = window.speechSynthesis;
+        let u = new SpeechSynthesisUtterance();
+        // u.lang = 'zh-TW';
+        // u.text = "你要讀出的中文內容";
+        u.text = word.vocabulary;
+
+        let en_us = [];
+        let voices = synth.getVoices();
+        for (let i = 0; i < voices.length; i++) {
+            if (voices[i].lang == "en-US") {
+                en_us.push(voices[i]);
+            }
+        }
+
+        let random = Math.round(Math.random() * en_us.length);
+        u.voice = en_us[random];
+        //console.log(u.voice, en_us.length);
+        synth.speak(u);
+    }
+    volumeContainer.appendChild(volume);
+
     let frequency = document.createElement('div');
     frequency.classList.add('my-auto');
     for (let i = 0; i < word.frequency; i++) {
-        let frequencyStar = document.createElement('span');
-        frequencyStar.dataset["feather"] = "star";
-        frequency.appendChild(frequencyStar);
+        let star = document.createElement('span');
+        star.dataset["feather"] = "star";
+        frequency.appendChild(star);
     }
 
     let cardHeaderRow = document.createElement('div');
     cardHeaderRow.classList.add('row');
     cardHeaderRow.classList.add('mx-0');
     cardHeaderRow.appendChild(vocabulary);
+    cardHeaderRow.appendChild(volumeContainer);
     cardHeaderRow.appendChild(frequency);
 
     let cardHeader = document.createElement('div');
@@ -36,9 +68,11 @@ function createCardHeaderElement(word, cardBody) {
     return cardHeader;
 }
 
-function createSentenceElement(description, j) {
+function createSentenceElement(description, j, vocabulary) {
     let text = document.createElement('div');
     text.innerHTML = description.sentences[j].text;
+    text.innerHTML = strongKeyWord(description.sentences[j].text, vocabulary);
+    //console.log();
     text.classList.add("mb-1");
 
     let meaning = document.createElement('div');
@@ -80,7 +114,7 @@ function createDescriptionElement(word, i) {
     let sentences = document.createElement('div');
     sentences.classList.add('mb-3');
     for (let j = 0; j < word.descriptions[i].sentences.length; j++) {
-        let sentence = createSentenceElement(word.descriptions[i], j);
+        let sentence = createSentenceElement(word.descriptions[i], j, word.vocabulary);
         sentences.appendChild(sentence);
     }
     description.append(sentences);
@@ -91,10 +125,13 @@ function createRelateElement(relateData) {
     type.innerHTML = relateData.type;
     type.classList.add('badge');
     type.classList.add('badge-primary');
-    type.classList.add("col-1");
+    type.classList.add("col-3");
+    type.classList.add("col-md-2");
+    type.classList.add("col-lg-1");
 
     let text = document.createElement('div');
     text.innerHTML = relateData.text;
+    //text.innerHTML = strongKeyWord(relateData.text, vocabulary);
     text.classList.add("col");
 
     let relate = document.createElement('div');
@@ -106,15 +143,17 @@ function createRelateElement(relateData) {
 
     return relate;
 }
-function createRemarkElement(remarkData) {
+function createRemarkElement(remarkData, vocabulary) {
     let title = document.createElement('div');
     title.innerHTML = remarkData.title;
     title.classList.add('badge');
     title.classList.add('badge-primary');
-    title.classList.add("col-2");
+    title.classList.add("col-3");
+    title.classList.add("col-md-2");
 
     let text = document.createElement('div');
     text.innerHTML = remarkData.text;
+    //text.innerHTML = strongKeyWord(remarkData.text, vocabulary);
     text.classList.add("border-bold");
     text.classList.add("mb-1");
 
@@ -134,13 +173,13 @@ function createCardBodyElement(word) {
     let relates = document.createElement('div');
     relates.classList.add("mb-2");
     for (let i = 0; i < word.relates.length; i++) {
-        let relate = createRelateElement(word.relates[i]);
+        let relate = createRelateElement(word.relates[i], word.vocabulary);
         relates.appendChild(relate);
     }
 
     let remarks = document.createElement('div');
     for (let i = 0; i < word.remarks.length; i++) {
-        let remark = createRemarkElement(word.remarks[i]);
+        let remark = createRemarkElement(word.remarks[i], word.vocabulary);
         remarks.appendChild(remark);
     }
 
@@ -151,7 +190,7 @@ function createCardBodyElement(word) {
 
     let cardBody = document.createElement('div');
     cardBody.classList.add('card-body');
-    //cardBody.classList.add('d-none');
+    cardBody.classList.add('d-none');
     cardBody.appendChild(descriptions);
     cardBody.appendChild(relates);
     cardBody.appendChild(remarks);

@@ -1,1 +1,26 @@
-{"answerTimes":0,"correctTimes":0,"vocabulary":"identify","descriptions":[{"partOfSpeech":"v","meaning":"辨認，認出","sentences":[{"text":"Staff members wear uniforms so that they are easy for customers to identiby.","meaning":"員工穿著制服，讓顧客容易認出他們。"}]}],"frequency":"2","relates":[{"type":"衍伸詞","text":"identification n 識別，身分證明"}],"remarks":[],"timeline":"2019/010/22 12:06:39"}
+{
+    "answerTimes": 0,
+    "correctTimes": 0,
+    "vocabulary": "identify",
+    "descriptions": [
+        {
+            "partOfSpeech": "v",
+            "meaning": "辨認，認出",
+            "sentences": [
+                {
+                    "text": "Staff members wear uniforms so that they are easy for customers to identify.",
+                    "meaning": "員工穿著制服，讓顧客容易認出他們。"
+                }
+            ]
+        }
+    ],
+    "frequency": "2",
+    "relates": [
+        {
+            "type": "衍伸詞",
+            "text": "identification n 識別，身分證明"
+        }
+    ],
+    "remarks": [],
+    "timeline": "2019/010/22 12:06:39"
+}
