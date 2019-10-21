@@ -26,24 +26,7 @@ function createCardHeaderElement(word, cardBody) {
     volumeContainer.classList.add('mr-auto');
     //console.log(voices);
     volumeContainer.onclick = function () {
-        let synth = window.speechSynthesis;
-        let u = new SpeechSynthesisUtterance();
-        // u.lang = 'zh-TW';
-        // u.text = "你要讀出的中文內容";
-        u.text = word.vocabulary;
-
-        let en_us = [];
-        let voices = synth.getVoices();
-        for (let i = 0; i < voices.length; i++) {
-            if (voices[i].lang == "en-US") {
-                en_us.push(voices[i]);
-            }
-        }
-
-        let random = Math.round(Math.random() * en_us.length);
-        u.voice = en_us[random];
-        //console.log(u.voice, en_us.length);
-        synth.speak(u);
+        speakSomething(word.vocabulary);
     }
     volumeContainer.appendChild(volume);
 
@@ -74,14 +57,36 @@ function createSentenceElement(description, j, vocabulary) {
     text.innerHTML = strongKeyWord(description.sentences[j].text, vocabulary);
     //console.log();
     text.classList.add("mb-1");
+    text.classList.add("mr-auto");
+
+    let volume = document.createElement('span');
+    volume.dataset["feather"] = "volume-2";
+    volume.onclick = function () {
+        console.log("test");
+    }
+    let volumeContainer = document.createElement('div');
+    volumeContainer.classList.add('my-auto');
+    volumeContainer.onclick = function () {
+        speakSomething(description.sentences[j].text);
+    }
+    volumeContainer.appendChild(volume);
 
     let meaning = document.createElement('div');
     meaning.innerHTML = description.sentences[j].meaning;
+    meaning.classList.add("mx-3");
+
+    let textRow = document.createElement('div');
+    textRow.classList.add("row");
+    textRow.classList.add("mx-3");
+    textRow.appendChild(text);
+    textRow.appendChild(volumeContainer);
+
 
     let sentence = document.createElement('div');
     sentence.classList.add("bg-gray");
     sentence.classList.add("mb-2");
-    sentence.appendChild(text);
+    //sentence.appendChild(text);
+    sentence.appendChild(textRow);
     sentence.appendChild(meaning);
     return sentence;
 }

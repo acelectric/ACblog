@@ -1,1 +1,40 @@
-{"answerTimes":0,"correctTimes":0,"vocabulary":"professional","descriptions":[{"partOfSpeech":"adj","meaning":"專業的，職業的","sentences":[{"text":"Jeff is known as professional photographer.","meaning":"Jeff 以職業攝影師的身分為人所知。"}]},{"partOfSpeech":"n","meaning":"專家","sentences":[{"text":"Merseyside Hospital is looking for a certified health.","meaning":"Merseyside 醫院正在尋找有證照的醫療專業人士。"}]}],"frequency":"3","relates":[{"type":"衍伸詞","text":"profession n 職業"},{"type":"衍伸詞","text":"professionally adv 專業地，職業地"}],"remarks":[],"timeline":"2019/10/6 22:48:15"}
+{
+    "answerTimes": 0,
+    "correctTimes": 0,
+    "vocabulary": "professional",
+    "descriptions": [
+        {
+            "partOfSpeech": "adj",
+            "meaning": "專業的，職業的",
+            "sentences": [
+                {
+                    "text": "Jeff is known as professional photographer.",
+                    "meaning": "Jeff 以職業攝影師的身分為人所知。"
+                }
+            ]
+        },
+        {
+            "partOfSpeech": "n",
+            "meaning": "專家",
+            "sentences": [
+                {
+                    "text": "Merseyside Hospital is looking for a certified health professional.",
+                    "meaning": "Merseyside 醫院正在尋找有證照的醫療專業人士。"
+                }
+            ]
+        }
+    ],
+    "frequency": "3",
+    "relates": [
+        {
+            "type": "衍伸詞",
+            "text": "profession n 職業"
+        },
+        {
+            "type": "衍伸詞",
+            "text": "professionally adv 專業地，職業地"
+        }
+    ],
+    "remarks": [],
+    "timeline": "2019/10/6 22:48:15"
+}

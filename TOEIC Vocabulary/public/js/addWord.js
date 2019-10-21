@@ -35,7 +35,8 @@ function addRelatesTemplate() {
 
 let remarksCount = -1;
 function addRemarksTemplate() {
-    let remarksTemplate = '<div class="row"><div class="col-md-3 col-sm-12 mb-1"><input type="text" class="form-control" id="remarksTitle$$$" name="remarksTitle$$$"placeholder="title" autocomplete="off"></div><div class="col-md-9 col-sm-12"><input type="text" class="form-control" id="remarksText$$$" name="remarksText$$$"placeholder="text" autocomplete="off"></div></div>';
+    //let remarksTemplate = '<div class="row"><div class="col-md-3 col-sm-12 mb-1"><input type="text" class="form-control" id="remarksTitle$$$" name="remarksTitle$$$"placeholder="title" autocomplete="off"></div><div class="col-md-9 col-sm-12"><input type="text" class="form-control" id="remarksText$$$" name="remarksText$$$"placeholder="text" autocomplete="off"></div></div>';
+    let remarksTemplate = '<div class="row"><div class="col-12 mb-1"><input type="text" class="form-control"id="remarksTitle$$$" name="remarksTitle$$$" placeholder="title" autocomplete="off"></div></div><div class="row"><div class="col-12"><textarea class="form-control" name="remarksText$$$" id="remarksText$$$" rows="3" placeholder="text" autocomplete="off"></textarea></div></div></div>';
     remarksCount++;
     remarksTemplate = remarksTemplate.replace(/\$\$\$/g, remarksCount);
     let temp = document.createElement('div');
