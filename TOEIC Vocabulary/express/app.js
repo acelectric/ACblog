@@ -16,19 +16,19 @@ function getTime() {
     str += date.getFullYear() + '/';
 
     let temp = date.getMonth() + 1;
-    str += temp > 10 ? temp : ("0" + temp);
+    str += temp >= 10 ? temp : ("0" + temp);
     str += '/';
-    let temp = date.getDate() + 1;
-    str += temp > 10 ? temp : ("0" + temp);
+    temp = date.getDate();
+    str += temp >= 10 ? temp : ("0" + temp);
     str += ' ';
-    let temp = date.getHours() + 1;
-    str += temp > 10 ? temp : ("0" + temp);
+    temp = date.getHours();
+    str += temp >= 10 ? temp : ("0" + temp);
     str += ':';
-    let temp = date.getMinutes() + 1;
-    str += temp > 10 ? temp : ("0" + temp);
+    temp = date.getMinutes();
+    str += temp >= 10 ? temp : ("0" + temp);
     str += ':';
-    let temp = date.getSeconds() + 1;
-    str += temp > 10 ? temp : ("0" + temp);
+    temp = date.getSeconds();
+    str += temp >= 10 ? temp : ("0" + temp);
     return str;
 }
 

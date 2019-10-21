@@ -1,4 +1,4 @@
-/**
+/*
  * require list
  * -------------------
  * util.js
@@ -151,7 +151,7 @@ function createCardBodyElement(word) {
 
     let cardBody = document.createElement('div');
     cardBody.classList.add('card-body');
-    cardBody.classList.add('d-none');
+    //cardBody.classList.add('d-none');
     cardBody.appendChild(descriptions);
     cardBody.appendChild(relates);
     cardBody.appendChild(remarks);

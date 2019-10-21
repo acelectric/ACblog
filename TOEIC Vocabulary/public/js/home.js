@@ -1,8 +1,9 @@
-/** 
+/*
  * require list
  * -------------------
  * overviewMainPage.js
  * practiceMainPage.js
+ * quizMainPage.js
  * util.js
  * addWord.js
  * -------------------
@@ -39,6 +40,7 @@ function init() {
         let obj = JSON.parse(xhr.responseText)
         overviewMainPageDataProcess(obj);
         practiceMainPageDataProcess(obj);
+        quizMainPageDataProcess(obj);
     }
 }
 init();
