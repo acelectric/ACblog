@@ -58,5 +58,10 @@ document.onkeydown = function (e) {
             now++;
             changeCard();
         }
+    } else if (keyCode == 40) {
+        //console.log("down");
+        cards[now].querySelector(".card-body").classList.toggle('d-none');
+    } else {
+        console.log(keyCode);
     }
 }
