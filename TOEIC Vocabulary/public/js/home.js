@@ -49,3 +49,12 @@ function init() {
     }
 }
 init();
+// GAS
+
+// let xhrGAS = new XMLHttpRequest();
+// xhrGAS.open('POST', address);
+// xhrGAS.setRequestHeader('Content-type', 'application/json');
+// //xhrGAS.setRequestHeader('Access-Control-Allow-Origin', '*');
+
+// // xhr.send(data);
+// xhrGAS.send("data測試中");
