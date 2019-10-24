@@ -19,6 +19,7 @@ function speakSomething(something) {
     let u = new SpeechSynthesisUtterance();
     // u.lang = 'zh-TW';
     // u.text = "你要讀出的中文內容";
+    u.lang = 'en-US';
     u.text = something;
 
     let en_us = [];
