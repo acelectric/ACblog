@@ -1,5 +1,6 @@
 
 let address = "./data/";
+//let address = "https://script.google.com/macros/s/AKfycbwDzBYHtiDakYe6wMrq9Em9MXS-ZCUZ_umxRaRYFh5mAzd86wFF/exec";
 
 
 function normalizationVocabulary(vocabulary) {
