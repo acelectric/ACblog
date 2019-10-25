@@ -1,0 +1,21 @@
+<script src="./js/LearnUnit.js"></script>
+
+<script>
+    let address = "https://script.google.com/macros/s/AKfycbwDzBYHtiDakYe6wMrq9Em9MXS-ZCUZ_umxRaRYFh5mAzd86wFF/exec";
+
+    let xhr = new XMLHttpRequest();
+    let obj = new LearnUnit();
+
+    let request = {
+        method: "method",
+    };
+
+
+    request.data = obj;
+    console.log(request);
+    xhr.open("POST", address);
+    //xhr.setRequestHeader('Content-type', 'application/json');
+    //xhr.send(request);
+    xhr.send(JSON.stringify(request));
+
+</script>

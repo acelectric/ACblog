@@ -34,10 +34,6 @@ function changeMainPage(link, mainPageID) {
 function init() {
     feather.replace();
     let xhr = new XMLHttpRequest();
-    let xhrTEST = new XMLHttpRequest();
-
-    xhrTEST.open('POST', address);
-    xhrTEST.send();
 
     xhr.open('GET', address + 'overview.json');
     xhr.send();
