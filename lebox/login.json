@@ -1,5 +1,5 @@
 {
     "account": "test",
     "password": "123",
-    "其他": "else"
+    "else": "測試中文"
 }
