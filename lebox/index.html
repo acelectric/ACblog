@@ -1,0 +1,27 @@
+<canvas id="canvas"></canvas>
+<img src="image.jpg" id="img" style="">
+<script>
+    window.onload = function () {
+        var canvas = document.getElementById('canvas');
+        //var ctx = canvas.getContext('2d');
+        var img = document.getElementById('img');
+        ctx.drawImage(img, 0, 0);
+
+        var w = img.naturalWidth;
+        var h = img.naturalHeight;
+        var imgdt = ctx.getImageData(0, 0, w, h);
+        var a = imgdt.data;
+
+        for (var k = 0; k < a.length; k += 4) {
+            a[k] = 255 - a[k];  // R
+            a[k + 1] = 255 - a[k + 1];  // G
+            a[k + 2] = 255 - a[k + 2];  // B
+            a[k + 3] = 255;           // A
+        }
+
+        canvas.width = w;
+        canvas.height = h;
+        ctx.putImageData(imgdt, 0, 0);
+    }
+
+</script>
