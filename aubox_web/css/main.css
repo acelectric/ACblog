@@ -16,6 +16,7 @@ body,button, input,select, textarea,h1 ,h2, h3, h4, h5, h6 {
 }
 body {
     font-size: 1rem;
+    -webkit-user-select: none;
 }
 
 .feather {
@@ -164,6 +165,12 @@ th {
 
 nav>a:hover {
     color: rgb(255, 157, 0);
+}
+
+a:hover {
+    text-decoration: none;
+    cursor: pointer;
+    -webkit-user-select: none;
 }
 
 .bg-black {
