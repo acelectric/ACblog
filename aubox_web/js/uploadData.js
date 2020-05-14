@@ -11,21 +11,42 @@ function randomString(length) {
 }
 
 function setQRcode(id) {
-    let randomID = randomString(32);
     $('#qrcode').qrcode({
         width: 200,
         height: 200,
-        text: randomID
+        text: id
     });
-    console.log(randomID);
+    console.log(id);
 }
 
 function submit() {
-    setQRcode(123);
+    let randomID = randomString(10);
+    setQRcode(randomID);
     $('#submit').toggleClass('d-none');
-    $('input').attr('readonly', 1);
+    $('#uploadData').attr('readonly', 1);
 
-    let form = document.getElementById('form');
+    let uri = apiAddress + "PRegister?";
+    let getDataList = ["Rname", "Raddress", "Rcellphone", "Sname", "Saddress", "Scellphone", "Rboxnumber", "Deliveryman"];
+    for (let i = 0; i < getDataList.length; i++) {
+        if (i != 0) {
+            uri += '&';
+        }
+        let inputElement = $("#" + getDataList[i]);
+        uri += getDataList[i] + "=" + inputElement.val();
+        inputElement.attr('readonly', 1);
+        //console.log(uri);
+    }
+    uri += "&QRcode=" + randomID + "&company=" + companyName;
+    let res = encodeURI(uri);
+
+    $.get(res, function (data, status) {
+        //alert("Data: " + data + "\nStatus: " + status);
+        console.log(data);
+        if (data != '"True"') {
+            console.log(data);
+            alert("ERROR: " + status);
+        }
+    });
 
     window.print();
 }

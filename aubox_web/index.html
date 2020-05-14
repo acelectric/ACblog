@@ -5,9 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>物流寄送系統｜註冊</title>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.5.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
         integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
         crossorigin="anonymous"></script>
@@ -20,6 +18,8 @@
     <script type="text/javascript" src="./js/jquery.qrcode.js"></script>
 
     <script type="text/javascript" src="./js/nav.js"></script>
+    <script type="text/javascript" src="./js/login.js"></script>
+    <script type="text/javascript" src="./js/register.js"></script>
     <script type="text/javascript" src="./js/uploadData.js"></script>
     <script type="text/javascript" src="./js/packageInfo.js"></script>
 
@@ -102,37 +102,44 @@
                     <label class="col text-center" style="font-weight: bold;font-size: 1.2rem;">註冊</label>
                 </div>
                 <div class="form-group row justify-content-center">
-                    <label class="col-sm-2 col-form-label">用戶名稱</label>
+                    <label class="col-sm-2 col-form-label">公司名稱</label>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control" id="username" name="username" placeholder="username"
+                        <input type="text" class="form-control" id="R_companyname" name="R_companyname"
+                            placeholder="公司名稱" autocomplete="off">
+                    </div>
+                </div>
+                <div class="form-group row justify-content-center">
+                    <label class="col-sm-2 col-form-label">負責人名稱</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="R_principal" name="R_principal" placeholder="負責人名稱"
                             autocomplete="off">
                     </div>
                 </div>
                 <div class="form-group row justify-content-center">
                     <label class="col-sm-2 col-form-label">帳號</label>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control" id="account" name="account" placeholder="account"
+                        <input type="text" class="form-control" id="R_account" name="R_account" placeholder="帳號"
                             autocomplete="off">
                     </div>
                 </div>
                 <div class="form-group row mb-3 justify-content-center">
                     <label class="col-sm-2 col-form-label">密碼</label>
                     <div class="col-sm-6">
-                        <input type="password" class="form-control" id="password" name="password" placeholder="password"
+                        <input type="password" class="form-control" id="R_password" name="R_password" placeholder="密碼"
                             autocomplete="off">
                     </div>
                 </div>
                 <div class="form-group row mb-3 justify-content-center">
                     <label class="col-sm-2 col-form-label">再次輸入密碼</label>
                     <div class="col-sm-6">
-                        <input type="password" class="form-control" id="passwordAgain" name="passwordAgain"
-                            placeholder="password" autocomplete="off">
+                        <input type="password" class="form-control" id="R_passwordAgain" name="R_passwordAgain"
+                            placeholder="再次輸入" autocomplete="off">
                     </div>
                 </div>
                 <div class="form-group row mb-3 justify-content-center">
                     <label class="col-sm-2 col-form-label">Email</label>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control" id="email" name="email" placeholder="email"
+                        <input type="text" class="form-control" id="R_email" name="R_email" placeholder="Email"
                             autocomplete="off">
                     </div>
                 </div>
@@ -141,7 +148,7 @@
 
                 <div class="row m-0 mb-5">
                     <button type="submit" class="btn btn-theme text-white bg-theme col-8 mx-auto"
-                        onclick="openPage('login');">送出</button>
+                        onclick="register();">送出</button>
                 </div>
 
                 <div class="row"></div>
@@ -161,7 +168,7 @@
                 <div class="form-group row justify-content-center">
                     <label class="col-sm-2 col-form-label">帳號</label>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control" id="account" name="account" placeholder="account"
+                        <input type="text" class="form-control" id="f_account" name="f_account" placeholder="account"
                             autocomplete="off">
                     </div>
                 </div>
@@ -200,51 +207,58 @@
                 <div class="form-group row justify-content-center">
                     <label class="col-sm-2 col-form-label">寄件人</label>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control" id="s_name" name="s_name" placeholder="收件人"
+                        <input type="text" class="pRegister form-control" id="Sname" name="Sname" placeholder="收件人"
                             autocomplete="off">
                     </div>
                 </div>
                 <div class="form-group row justify-content-center">
                     <label class="col-sm-2 col-form-label">寄件人地址</label>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control" id="s_address" name="s_address" placeholder="地址"
+                        <input type="text" class="pRegister form-control" id="Saddress" name="Saddress" placeholder="地址"
                             autocomplete="off">
                     </div>
                 </div>
                 <div class="form-group row justify-content-center pb-4">
                     <label class="col-sm-2 col-form-label">寄件人電話</label>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control" id="s_phone" name="s_phone" placeholder="電話"
-                            autocomplete="off">
+                        <input type="text" class="pRegister form-control" id="Scellphone" name="Scellphone"
+                            placeholder="電話" autocomplete="off">
                     </div>
                 </div>
 
                 <div class="form-group row justify-content-center">
                     <label class="col-sm-2 col-form-label">收件人</label>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control" id="r_name" name="r_name" placeholder="收件人"
+                        <input type="text" class="pRegister form-control" id="Rname" name="Rname" placeholder="收件人"
                             autocomplete="off">
                     </div>
                 </div>
                 <div class="form-group row justify-content-center">
                     <label class="col-sm-2 col-form-label">收件人地址</label>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control" id="r_address" name="r_address" placeholder="地址"
+                        <input type="text" class="pRegister form-control" id="Raddress" name="Raddress" placeholder="地址"
                             autocomplete="off">
                     </div>
                 </div>
                 <div class="form-group row justify-content-center">
                     <label class="col-sm-2 col-form-label">收件人電話</label>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control" id="r_phone" name="r_phone" placeholder="地址"
-                            autocomplete="off">
+                        <input type="text" class="pRegister form-control" id="Rcellphone" name="Rcellphone"
+                            placeholder="地址" autocomplete="off">
                     </div>
                 </div>
                 <div class="form-group row justify-content-center">
                     <label class="col-sm-2 col-form-label">收件人郵箱編號</label>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control" id="r_id" name="r_id" placeholder="郵箱編號"
-                            autocomplete="off">
+                        <input type="text" class="pRegister form-control" id="Rboxnumber" name="Rboxnumber"
+                            placeholder="郵箱編號" autocomplete="off">
+                    </div>
+                </div>
+                <div class="form-group row justify-content-center">
+                    <label class="col-sm-2 col-form-label">送貨員</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="pRegister form-control" id="Deliveryman" name="Deliveryman"
+                            placeholder="送貨員" autocomplete="off">
                     </div>
                 </div>
 
@@ -264,11 +278,12 @@
             <table id="packageInfoTable" class="table table-bordered">
                 <thead class="thead-dark">
                     <tr>
-                        <th scope="col">#</th>
+                        <th scope="col">物流編號</th>
                         <th scope="col">收件人</th>
                         <th scope="col">寄件人</th>
+                        <th scope="col">送貨員</th>
                         <th scope="col">送達時間</th>
-                        <th scope="col">詳細</th>
+                        <th scope="col">包裹狀態</th>
                     </tr>
                 </thead>
             </table>

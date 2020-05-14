@@ -1,14 +1,20 @@
 let nowPage = "login";
 let pages = ["login", "register", "forgetPassword", "packageInfo", "uploadData"];
 
+let account = "";
+let password = "";
 let hasLogin = false;
+let companyName = "testCompany";
+
+let apiAddress = "http://120.101.8.52/aubox604/WebService1.asmx/";
+let packageStatus = ["錯誤", "包裹運送中", "包裹成功送達", "收件者確認收貨"]
 
 function openPage(page) {
     let pageIndex = pages.indexOf(page);
 
-    if (pageIndex == 0) {
-        hasLogin = false;
-    }
+    // if (pageIndex == 0) {
+    //     hasLogin = false;
+    // }
 
     if (hasLogin) {
         if (pageIndex != -1) {
@@ -37,7 +43,3 @@ function openPage(page) {
 
 }
 
-function login() {
-    hasLogin = true;
-    openPage('packageInfo');
-}
