@@ -8,7 +8,7 @@ let companyName = "testCompany";
 
 let apiAddress = "http://120.101.8.52/aubox604/WebService1.asmx/";
 let packageStatus = ["錯誤", "包裹運送中", "包裹成功送達", "收件者確認收貨"]
-
+let table, uploadData;
 function openPage(page) {
     let pageIndex = pages.indexOf(page);
 
@@ -26,6 +26,9 @@ function openPage(page) {
             $("#" + page + "_item").removeClass("text-white");
             nowPage = page;
         }
+        if (pages[pageIndex] == "packageInfo") {
+            loadPackageInfo();
+        }
         $('#login_item').text('登出');
     } else {
         if (pageIndex == 0 || pageIndex == 1 || pageIndex == 2) {
@@ -42,4 +45,7 @@ function openPage(page) {
 
 
 }
-
+window.onload = function () {
+    table = document.getElementById('packageInfoTable').innerHTML;
+    uploadData = document.getElementById('uploadData').innerHTML;
+}

@@ -18,7 +18,6 @@ function login() {
             } else {
                 hasLogin = true;
                 companyName = obj.companyname;
-                loadPackageInfo();
                 openPage('packageInfo');
             }
 

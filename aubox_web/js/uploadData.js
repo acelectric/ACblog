@@ -49,4 +49,5 @@ function submit() {
     });
 
     window.print();
+    document.getElementById('uploadData').innerHTML = uploadData;
 }

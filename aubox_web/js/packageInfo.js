@@ -20,6 +20,8 @@ function loadPackageInfo() {
         // }
         objs = JSON.parse(data);
         console.log(objs);
+        console.log(table);
+        document.getElementById('packageInfoTable').innerHTML = table;
         for (let i = 0; i < objs.length; i++) {
             $.get(apiAddress + "Packagedata_Get?QRcode=" + objs[i], function (data, status) {
                 //alert("Data: " + data + "\nStatus: " + status);
@@ -30,43 +32,58 @@ function loadPackageInfo() {
                 // }
                 objs[i] = JSON.parse(data);
                 console.log(objs);
-                addPackageInfoRow(objs[i].QRcode, objs[i].Rname, objs[i].Sname, objs[i].Deliveryman, objs[i].time, objs[i].nowpackage);
+                //addPackageInfoRow(objs[i].QRcode, objs[i].Rname, objs[i].Sname, objs[i].Deliveryman, objs[i].time, objs[i].nowpackage);
+                addPackageInfoRow(objs[i]);
             });
         }
     });
-
-
-
 }
-function addPackageInfoRow(QR, r, s, d, t, l) {
+let packageInfoList = ["QRcode", "Rname", "Raddress", "Rcellphone", "Rboxnumber", "Sname", "Saddress",
+    "Scellphone", "time", "nowpackage", "company", "Deliveryman", "sign", "picture"];
+
+function addPackageInfoOneBlock(data, index) {
+    let el = document.createElement('th');
+    el.innerHTML = data;
+    if (packageInfoList[index] == "nowpackage") {
+        data = parseInt(data, 10);
+        el.innerHTML = packageStatus[data];
+    }
+    if (packageInfoList[index] == "sign") {
+        if (data == "0") {
+            el.innerHTML = "x";
+        } else {
+            let link = document.createElement('a');
+            //data = JSON.parse(data);
+            link.href = data;
+            link.target = "_blank";
+            link.innerHTML = "link";
+            el.innerHTML = "";
+            el.appendChild(link)
+        }
+    }
+    if (packageInfoList[index] == "picture") {
+        if (data == "0" || data == undefined) {
+            el.innerHTML = "x";
+        } else {
+            let link = document.createElement('a');
+            //data = JSON.parse(data);
+            link.href = data;
+            link.target = "_blank";
+            link.innerHTML = "link";
+            el.innerHTML = "";
+            el.appendChild(link)
+        }
+    }
+    return el;
+}
+function addPackageInfoRow(obj) {
     let packageInfoTable = document.getElementById('packageInfoTable');
-    //let rand = Math.floor(Math.random() * 100);
+
     let tr = document.createElement('tr');
-    let id = document.createElement('th');
-    id.scope = "row";
-    id.innerHTML = QR;
-    tr.appendChild(id);
-    let recieve = document.createElement('th');
-    //recieve.innerHTML = randomString(5);
-    recieve.innerHTML = r;
-    let sender = document.createElement('th');
-    //sender.innerHTML = randomString(5);
-    sender.innerHTML = s;
-    let Deliveryman = document.createElement('th');
-    //Deliveryman.innerHTML = randomString(5);
-    Deliveryman.innerHTML = d;
-    let time = document.createElement('th');
-    //time.innerHTML = randomString(5);
-    time.innerHTML = t;
-    let link = document.createElement('th');
-    //link.innerHTML = randomString(5);
-    link.innerHTML = packageStatus[l];
-    tr.appendChild(recieve);
-    tr.appendChild(sender);
-    tr.appendChild(Deliveryman);
-    tr.appendChild(time);
-    tr.appendChild(link);
+
+    for (let i = 0; i < packageInfoList.length; i++) {
+        tr.appendChild(addPackageInfoOneBlock(obj[packageInfoList[i]], i));
+    }
+
     packageInfoTable.appendChild(tr);
-}
-window.onload = function () {
 }
